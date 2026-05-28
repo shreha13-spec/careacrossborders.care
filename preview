@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Save Preview Image</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#111;font-family:-apple-system,sans-serif;padding:2rem;}
+.label{color:#C4993A;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1rem;}
+.hint{color:#5C5248;font-size:0.65rem;margin-top:0.75rem;font-style:italic;}
+.dl-btn{background:#C4993A;color:#111;border:none;padding:0.6rem 1.4rem;font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;margin-top:0.75rem;display:block;width:1200px;max-width:100%;}
+.dl-btn:hover{background:#D4A843;}
+
+/* OG IMAGE — 1200x630px */
+.og{
+  width:1200px;height:630px;
+  background:#2E3D2F;
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;
+  padding:0 80px;
+  gap:80px;
+}
+.og-circle1{position:absolute;top:-120px;right:200px;width:400px;height:400px;background:rgba(196,153,58,0.07);border-radius:50%;}
+.og-circle2{position:absolute;bottom:-80px;left:-60px;width:300px;height:300px;background:rgba(200,184,154,0.04);border-radius:50%;}
+.og-line{position:absolute;top:0;bottom:0;left:620px;width:1px;background:rgba(196,153,58,0.15);}
+
+.og-left{position:relative;z-index:1;flex:1;}
+.og-logo{font-size:11px;letter-spacing:5px;color:#8A7A60;text-transform:uppercase;margin-bottom:28px;}
+.og-eye{font-size:11px;letter-spacing:4px;color:#C4993A;text-transform:uppercase;margin-bottom:16px;}
+.og-head{font-family:Georgia,serif;font-size:68px;color:#FAF8F5;line-height:1.05;font-weight:400;margin-bottom:20px;}
+.og-head em{font-style:italic;color:#D4A843;}
+.og-sub{font-size:18px;color:#B8A688;line-height:1.6;max-width:460px;}
+.og-url{font-size:14px;color:#8A7A60;letter-spacing:3px;text-transform:uppercase;margin-top:32px;}
+
+.og-right{position:relative;z-index:1;flex-shrink:0;width:400px;}
+.og-plans{display:flex;flex-direction:column;gap:10px;}
+.og-plan{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border:1px solid rgba(196,153,58,0.2);}
+.og-plan.hi{border-color:rgba(196,153,58,0.55);background:rgba(196,153,58,0.07);}
+.og-pname{font-family:Georgia,serif;font-size:17px;color:#FAF8F5;}
+.og-psub{font-size:11px;color:#8A7A60;margin-top:3px;letter-spacing:0.5px;}
+.og-pprice{font-family:Georgia,serif;font-size:26px;color:#D4A843;}
+.og-cta{background:#C4993A;color:#111;padding:16px;text-align:center;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-top:12px;}
+.og-pilot{font-size:11px;color:#C4993A;letter-spacing:2px;text-align:center;margin-top:10px;}
+</style>
+</head>
+<body>
+
+<div class="label">OG Preview Image — 1200×630px</div>
+
+<div class="og" id="og">
+  <div class="og-circle1"></div>
+  <div class="og-circle2"></div>
+  <div class="og-line"></div>
+
+  <div class="og-left">
+    <div class="og-logo">Care Across Borders</div>
+    <div class="og-eye">Pilot Open · 30 Families Only</div>
+    <div class="og-head">Gift them<br>a year of<br><em>being cared for</em></div>
+    <div class="og-sub">Annual wellness plans for your loved ones in Nepal — massages, retreats, hampers and personal care all year.</div>
+    <div class="og-url">careacrossborders.care</div>
+  </div>
+
+  <div class="og-right">
+    <div class="og-plans">
+      <div class="og-plan">
+        <div><div class="og-pname">The Care Starter</div><div class="og-psub">Massage · Hamper · Pickup & drop</div></div>
+        <div class="og-pprice">$199</div>
+      </div>
+      <div class="og-plan">
+        <div><div class="og-pname">The Wellness Circle</div><div class="og-psub">Massage · Day Retreat · Hamper</div></div>
+        <div class="og-pprice">$349</div>
+      </div>
+      <div class="og-plan hi">
+        <div><div class="og-pname">The Full Care ✦</div><div class="og-psub">Best Value · 5× Massage · Retreat</div></div>
+        <div class="og-pprice">$499</div>
+      </div>
+      <div class="og-plan">
+        <div><div class="og-pname">Total Sanctuary</div><div class="og-psub">6× Massage · 3-Day Resort Retreat</div></div>
+        <div class="og-pprice">$1,099</div>
+      </div>
+    </div>
+    <div class="og-cta">View Plans & Enquire</div>
+    <div class="og-pilot">Pilot pricing locked · Founding 30 families only</div>
+  </div>
+</div>
+
+<button class="dl-btn" onclick="download()">Download preview.png — then upload to GitHub</button>
+<div class="hint">After downloading: rename to preview.png → upload to your GitHub repo root → tell Claude it's uploaded</div>
+
+<script>
+function download() {
+  const el = document.getElementById('og');
+  const btn = document.querySelector('.dl-btn');
+  btn.textContent = 'Saving...';
+  btn.disabled = true;
+  html2canvas(el, {
+    scale: 1,
+    useCORS: true,
+    backgroundColor: '#2E3D2F',
+    width: 1200,
+    height: 630,
+    logging: false
+  }).then(canvas => {
+    const link = document.createElement('a');
+    link.download = 'preview.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+    btn.textContent = 'Download preview.png — then upload to GitHub';
+    btn.disabled = false;
+  }).catch(e => {
+    btn.textContent = 'Download preview.png — then upload to GitHub';
+    btn.disabled = false;
+    alert('Try right-clicking the graphic and saving as image instead.');
+  });
+}
+</script>
+</body>
+</html>
