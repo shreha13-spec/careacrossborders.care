@@ -3,1722 +3,1102 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Care Across Borders — careacrossborders.care</title>
+<title>Care Across Borders — Wellness Gifting for Families in Nepal</title>
 <style>
-  /* Self-contained font stack — works offline, no external requests */
-  .font-display-serif {
-    font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
-  }
-</style>
-<style>
-  :root {
-    --cream: #F7F3EE;
-    --warm-white: #FAF8F5;
-    --stone: #C8B89A;
-    --stone-dark: #A89070;
-    --forest: #3D4A3E;
-    --forest-light: #556655;
-    --clay: #B5735A;
-    --gold: #C9A84C;
-    --gold-light: #E8D5A3;
-    --ink: #2A2620;
-    --ink-light: #5C5248;
-    --mist: #E8E2D9;
-  }
+:root {
+  --forest: #2E3D2F;
+  --forest-mid: #3D4A3E;
+  --forest-dark: #263527;
+  --cream: #F5F0EA;
+  --warm: #FAF7F3;
+  --gold: #C4993A;
+  --gold-bright: #D4A843;
+  --stone: #B8A688;
+  --stone-dark: #8A7A60;
+  --ink: #1E1C18;
+  --ink-light: #7A726A;
+  --mist: #E5DDD3;
+  --white: #FEFCF9;
+}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--cream);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+}
 
-  body {
-    background: var(--cream);
-    color: var(--ink);
-    font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
-  }
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.2rem clamp(1.5rem,4vw,3rem);
+  background:rgba(46,61,47,0.97);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(196,153,58,0.15);
+}
+.nav-logo{
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:0.95rem;font-weight:400;
+  color:var(--white);
+  letter-spacing:0.04em;
+  text-decoration:none;
+  line-height:1.15;
+  display:flex;flex-direction:column;
+}
+.nav-logo .logo-care{
+  font-size:1.1rem;font-style:italic;
+  color:var(--gold-bright);letter-spacing:0.04em;line-height:1;
+}
+.nav-logo .logo-across{
+  font-size:0.7rem;font-style:normal;
+  color:var(--white);letter-spacing:0.22em;
+  text-transform:uppercase;line-height:1.35;
+  font-family:-apple-system,sans-serif;font-weight:300;
+}
+.nav-logo .logo-borders{
+  font-size:0.7rem;font-style:normal;
+  color:var(--white);letter-spacing:0.22em;
+  text-transform:uppercase;line-height:1;
+  font-family:-apple-system,sans-serif;font-weight:300;
+}
+.nav-logo .logo-sub{
+  display:block;font-size:0.48rem;
+  letter-spacing:0.28em;color:var(--stone-dark);
+  font-family:-apple-system,sans-serif;
+  margin-top:3px;text-transform:uppercase;font-style:normal;
+}
+.nav-links{
+  display:flex;gap:2rem;align-items:center;list-style:none;
+}
+.nav-links a{
+  font-size:0.68rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--stone);
+  text-decoration:none;transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--gold-bright);}
+.nav-cta{
+  background:var(--gold);
+  border:1.5px solid var(--gold);
+  color:var(--ink);
+  padding:0.55rem 1.4rem;
+  font-size:0.68rem;font-weight:600;
+  letter-spacing:0.15em;text-transform:uppercase;
+  text-decoration:none;transition:all 0.2s;
+}
+.nav-cta:hover{background:var(--gold-bright);color:var(--ink);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.hamburger span{width:22px;height:1.5px;background:var(--stone);transition:all 0.2s;}
+.mobile-menu{
+  display:none;position:fixed;
+  top:0;left:0;right:0;bottom:0;
+  background:var(--forest);z-index:99;
+  flex-direction:column;justify-content:center;
+  align-items:center;gap:2rem;
+}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{
+  font-size:1.2rem;color:var(--stone);
+  text-decoration:none;letter-spacing:0.1em;
+  font-family:Georgia,serif;
+}
+.mobile-menu a:hover{color:var(--gold-bright);}
+.mobile-close{
+  position:absolute;top:1.5rem;right:1.5rem;
+  font-size:1.5rem;color:var(--stone);cursor:pointer;
+  background:none;border:none;
+}
 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    background: var(--forest);
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 60% 80% at 80% 20%, rgba(201,168,76,0.12) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(200,184,154,0.08) 0%, transparent 50%);
-    pointer-events: none;
-  }
-  .hero-texture {
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    pointer-events: none;
-  }
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2.5rem 4rem;
-    position: relative;
-    z-index: 10;
-  }
-  .logo {
-    font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--gold-light);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-  .logo span {
-    display: block;
-    font-size: 0.6rem;
-    letter-spacing: 0.35em;
-    color: var(--stone);
-    font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 300;
-    margin-top: 2px;
-  }
-  .nav-pill {
-    background: rgba(201,168,76,0.15);
-    border: 1px solid rgba(201,168,76,0.3);
-    color: var(--gold-light);
-    padding: 0.5rem 1.4rem;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    cursor: pointer;
-    font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 400;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-  .nav-pill:hover { background: rgba(201,168,76,0.3); }
-  .hero-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 4rem;
-    position: relative;
-    z-index: 10;
-  }
-  .hero-eyebrow {
-    font-size: 0.7rem;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    color: var(--stone);
-    margin-bottom: 2rem;
-    font-weight: 400;
-  }
-  .hero-title {
-    font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
-    font-size: clamp(3rem, 7vw, 6.5rem);
-    font-weight: 300;
-    color: var(--warm-white);
-    line-height: 1.05;
-    margin-bottom: 1rem;
-    letter-spacing: -0.01em;
-  }
-  .hero-title em { font-style: italic; color: var(--gold-light); }
-  .hero-subtitle {
-    font-size: 0.95rem;
-    color: var(--stone);
-    letter-spacing: 0.08em;
-    margin-bottom: 3rem;
-    font-weight: 300;
-    max-width: 500px;
-    line-height: 1.8;
-  }
-  .hero-tags {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 4rem;
-  }
-  .hero-tag {
-    border: 1px solid rgba(200,184,154,0.3);
-    color: var(--stone);
-    padding: 0.4rem 1rem;
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
-  .hero-cta {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .btn-primary {
-    background: var(--gold);
-    color: var(--ink);
-    padding: 1rem 2.5rem;
-    font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .btn-primary:hover { background: var(--gold-light); }
-  .btn-secondary {
-    border: 1px solid rgba(200,184,154,0.4);
-    color: var(--stone);
-    padding: 1rem 2.5rem;
-    font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 0.75rem;
-    font-weight: 400;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-  .btn-secondary:hover { border-color: var(--stone); color: var(--warm-white); }
-  .hero-footer {
-    padding: 2rem 4rem;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    z-index: 10;
-  }
-  .scroll-hint {
-    color: var(--stone);
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .scroll-hint::before, .scroll-hint::after {
-    content: '';
-    width: 40px;
-    height: 1px;
-    background: var(--stone-dark);
-  }
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  background:var(--forest);
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  text-align:center;
+  padding:8rem clamp(1.5rem,4vw,4rem) 4rem;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 60% at 70% 20%,rgba(196,153,58,0.1) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 70% at 20% 80%,rgba(184,166,136,0.07) 0%,transparent 50%);
+  pointer-events:none;
+}
+.hero-tag{
+  font-size:0.62rem;letter-spacing:0.35em;
+  text-transform:uppercase;color:var(--stone);
+  margin-bottom:1.8rem;
+  display:flex;align-items:center;gap:1rem;
+  position:relative;z-index:1;
+}
+.hero-tag::before,.hero-tag::after{
+  content:'';width:30px;height:1px;background:var(--stone-dark);
+}
+.hero-nepali{
+  font-family:Georgia,serif;font-style:italic;
+  font-size:1rem;color:var(--stone-dark);
+  letter-spacing:0.05em;margin-bottom:0.6rem;
+  position:relative;z-index:1;
+}
+.hero h1{
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(2.8rem,7vw,6rem);
+  font-weight:400;color:var(--white);
+  line-height:1.05;letter-spacing:-0.01em;
+  margin-bottom:1.2rem;
+  position:relative;z-index:1;
+}
+.hero h1 em{font-style:italic;color:var(--gold-bright);}
+.hero-sub{
+  font-size:0.92rem;color:var(--stone);
+  max-width:480px;line-height:1.85;
+  margin-bottom:3rem;letter-spacing:0.02em;
+  position:relative;z-index:1;
+}
+.hero-actions{
+  display:flex;gap:1rem;flex-wrap:wrap;
+  justify-content:center;
+  position:relative;z-index:1;
+}
+.btn-gold{
+  background:var(--gold);color:var(--ink);
+  padding:0.9rem 2.2rem;font-size:0.72rem;
+  font-weight:600;letter-spacing:0.18em;
+  text-transform:uppercase;text-decoration:none;
+  transition:all 0.2s;display:inline-flex;
+  align-items:center;gap:0.5rem;
+}
+.btn-gold:hover{background:var(--gold-bright);color:var(--ink);}
+.btn-outline{
+  border:1px solid rgba(184,166,136,0.45);
+  color:var(--stone);padding:0.9rem 2.2rem;
+  font-size:0.72rem;letter-spacing:0.18em;
+  text-transform:uppercase;text-decoration:none;
+  transition:all 0.2s;
+}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold-bright);}
+.hero-badges{
+  display:flex;gap:0.6rem;flex-wrap:wrap;
+  justify-content:center;margin-top:3rem;
+  position:relative;z-index:1;
+}
+.hero-badge{
+  border:1px solid rgba(184,166,136,0.25);
+  color:var(--stone);padding:0.35rem 0.9rem;
+  font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;
+}
 
-  /* SHARED */
-  section { padding: 6rem 4rem; max-width: 1200px; margin: 0 auto; }
-  .section-eyebrow {
-    font-size: 0.65rem;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    color: var(--stone-dark);
-    margin-bottom: 1.2rem;
-    font-weight: 400;
-  }
-  .section-title {
-    font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 400;
-    color: var(--ink);
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-  }
-  .section-title em { font-style: italic; color: var(--clay); }
-  .divider { width: 60px; height: 1px; background: var(--stone); margin: 1.5rem 0 2rem; }
+/* ── SHARED ── */
+.section{padding:clamp(4rem,6vw,6rem) clamp(1.5rem,4vw,3rem);max-width:1100px;margin:0 auto;}
+.full-section{padding:clamp(4rem,6vw,6rem) clamp(1.5rem,4vw,3rem);}
+.eyebrow{
+  font-size:0.6rem;letter-spacing:0.35em;
+  text-transform:uppercase;color:var(--stone-dark);
+  margin-bottom:1rem;font-weight:400;
+}
+.eyebrow-light{color:var(--stone);}
+h2.display{
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(1.8rem,4vw,3.2rem);
+  font-weight:400;line-height:1.1;margin-bottom:1.2rem;
+}
+h2.display em{font-style:italic;color:var(--gold);}
+h2.display-light{color:var(--white);}
+h2.display-light em{color:var(--gold-bright);}
+.rule{width:50px;height:1px;background:var(--stone);margin:1.2rem 0 2rem;}
+.rule-dark{background:var(--stone-dark);}
+.body-text{font-size:0.9rem;color:var(--ink-light);line-height:1.85;max-width:600px;}
+.body-text-light{color:var(--stone);}
 
-  /* WHY CAB */
-  .why-section { background: var(--warm-white); max-width: 100%; padding: 6rem 4rem; }
-  .why-inner { max-width: 1200px; margin: 0 auto; }
-  .why-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: start;
-    margin-top: 3rem;
-  }
-  .why-left p { font-size: 1.05rem; line-height: 1.9; color: var(--ink-light); margin-bottom: 1.5rem; }
-  .why-left .highlight {
-    font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
-    font-size: 1.4rem;
-    font-style: italic;
-    color: var(--forest);
-    line-height: 1.5;
-    border-left: 2px solid var(--gold);
-    padding-left: 1.5rem;
-    margin: 2rem 0;
-  }
-  .why-cards { display: flex; flex-direction: column; gap: 1.5rem; }
-  .why-card { background: var(--cream); padding: 1.5rem 2rem; border-left: 2px solid var(--stone); }
-  .why-card h4 {
-    font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--ink);
-    margin-bottom: 0.4rem;
-  }
-  .why-card p { font-size: 0.85rem; color: var(--ink-light); line-height: 1.7; }
+/* ── WHY ── */
+.why-bg{background:var(--warm);}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3rem;}
+.why-quote{
+  font-family:Georgia,serif;font-size:1.2rem;
+  font-style:italic;color:var(--forest-mid);
+  line-height:1.65;border-left:2px solid var(--gold);
+  padding-left:1.4rem;margin:2rem 0;
+}
+.why-cards{display:flex;flex-direction:column;gap:1.2rem;}
+.why-card{background:var(--cream);padding:1.4rem 1.8rem;border-left:2px solid var(--mist);transition:border-color 0.2s;}
+.why-card:hover{border-left-color:var(--stone);}
+.why-card h4{font-family:Georgia,serif;font-size:1rem;color:var(--ink);margin-bottom:0.35rem;font-weight:400;}
+.why-card p{font-size:0.82rem;color:var(--ink-light);line-height:1.7;}
 
-  /* HOW IT WORKS */
-  .how-section { background: var(--cream); max-width: 100%; padding: 6rem 4rem; }
-  .how-inner { max-width: 1200px; margin: 0 auto; }
-  .how-steps {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 0;
-    margin-top: 3.5rem;
-    position: relative;
-  }
-  .how-steps::before {
-    content: '';
-    position: absolute;
-    top: 28px;
-    left: calc(10% + 1rem);
-    right: calc(10% + 1rem);
-    height: 1px;
-    background: var(--mist);
-    z-index: 0;
-  }
-  .how-step { text-align: center; padding: 0 1rem; position: relative; z-index: 1; }
-  .how-step-num {
-    width: 56px;
-    height: 56px;
-    border: 1px solid var(--stone);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.2rem;
-    font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
-    font-size: 1.2rem;
-    color: var(--forest);
-    background: var(--cream);
-  }
-  .how-step h4 {
-    font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--ink);
-    margin-bottom: 0.5rem;
-    line-height: 1.3;
-  }
-  .how-step p { font-size: 0.78rem; color: var(--ink-light); line-height: 1.7; }
-  .how-note {
-    margin-top: 3.5rem;
-    background: var(--warm-white);
-    border-left: 2px solid var(--gold);
-    padding: 1.5rem 2rem;
-    max-width: 700px;
-  }
-  .how-note p { font-size: 0.88rem; color: var(--ink-light); line-height: 1.8; }
-  .how-note strong { color: var(--ink); font-weight: 400; }
+/* ── HOW IT WORKS ── */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:3.5rem;position:relative;}
+.steps::before{content:'';position:absolute;top:27px;left:10%;right:10%;height:1px;background:var(--mist);z-index:0;}
+.step{text-align:center;padding:0 0.8rem;position:relative;z-index:1;}
+.step-num{
+  width:54px;height:54px;border:1px solid rgba(184,166,136,0.5);
+  border-radius:50%;display:flex;align-items:center;
+  justify-content:center;margin:0 auto 1.2rem;
+  font-family:Georgia,serif;font-size:1.05rem;
+  color:var(--forest-mid);background:var(--cream);
+}
+.step h4{font-family:Georgia,serif;font-size:0.9rem;color:var(--ink);margin-bottom:0.4rem;font-weight:400;line-height:1.3;}
+.step p{font-size:0.75rem;color:var(--ink-light);line-height:1.7;}
+.how-note{margin-top:3rem;background:var(--warm);border-left:2px solid var(--gold);padding:1.4rem 1.8rem;max-width:680px;}
+.how-note p{font-size:0.85rem;color:var(--ink-light);line-height:1.8;}
+.how-note strong{color:var(--ink);font-weight:500;}
 
-  /* TIERS */
-  .tiers-section { background: var(--forest); max-width: 100%; padding: 6rem 4rem; }
-  .tiers-inner { max-width: 1200px; margin: 0 auto; }
-  .tiers-inner .section-title { color: var(--warm-white); }
-  .tiers-inner .section-eyebrow { color: var(--stone); }
-  .tiers-inner .divider { background: var(--stone-dark); }
-  .gift-note {
-    background: rgba(201,168,76,0.1);
-    border: 1px solid rgba(201,168,76,0.25);
-    padding: 1rem 1.5rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    color: var(--gold-light);
-    font-size: 0.8rem;
-    letter-spacing: 0.05em;
-    margin-bottom: 3rem;
-    line-height: 1.6;
-  }
-  .tiers-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5px;
-    background: rgba(200,184,154,0.15);
-  }
-  .tier-card {
-    background: #2E3A2F;
-    padding: 2.5rem 2rem;
-    position: relative;
-    transition: background 0.3s ease;
-  }
-  .tier-card:hover { background: #354035; }
-  .tier-card.featured {
-    background: rgba(201,168,76,0.08);
-    border-top: 2px solid var(--gold);
-  }
-  .tier-card.featured:hover { background: rgba(201,168,76,0.13); }
-  .tier-badge {
-    font-size: 0.6rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--stone);
-    margin-bottom: 0.5rem;
-    font-weight: 400;
-  }
-  .tier-badge.gold { color: var(--gold); }
-  .tier-name-nepali {
-    font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
-    font-size: 1rem;
-    font-style: italic;
-    color: var(--stone);
-    margin-bottom: 0.3rem;
-    letter-spacing: 0.03em;
-  }
-  .tier-name {
-    font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
-    font-size: 1.8rem;
-    font-weight: 500;
-    color: var(--warm-white);
-    margin-bottom: 1.2rem;
-    line-height: 1;
-  }
-  .tier-price {
-    font-size: 2.2rem;
-    font-weight: 200;
-    color: var(--warm-white);
-    letter-spacing: -0.02em;
-    margin-bottom: 0.3rem;
-  }
-  .tier-price-sub { font-size: 0.7rem; color: var(--stone); letter-spacing: 0.1em; margin-bottom: 2rem; }
-  .tier-divider { height: 1px; background: rgba(200,184,154,0.2); margin-bottom: 1.5rem; }
-  .tier-feature {
-    font-size: 0.8rem;
-    color: var(--stone);
-    line-height: 1.8;
-    margin-bottom: 0.5rem;
-    display: flex;
-    gap: 0.6rem;
-    align-items: flex-start;
-  }
-  .tier-feature::before { content: '—'; color: var(--gold); flex-shrink: 0; margin-top: 0.05rem; }
-  .tier-feature strong { color: var(--warm-white); font-weight: 400; }
-  .tier-cta {
-    margin-top: 2.5rem;
-    width: 100%;
-    background: transparent;
-    border: 1px solid rgba(200,184,154,0.3);
-    color: var(--stone);
-    padding: 0.85rem;
-    font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: block;
-    text-align: center;
-  }
-  .tier-cta:hover { background: rgba(200,184,154,0.1); border-color: var(--stone); color: var(--warm-white); }
-  .tier-cta.gold-cta { border-color: rgba(201,168,76,0.4); color: var(--gold-light); }
-  .tier-cta.gold-cta:hover { background: rgba(201,168,76,0.15); border-color: var(--gold); }
+/* ── PLANS ── */
+.plans-bg{background:var(--forest);}
+.gift-note{
+  background:rgba(196,153,58,0.1);border:1px solid rgba(196,153,58,0.3);
+  padding:0.85rem 1.4rem;display:inline-flex;
+  align-items:flex-start;gap:0.7rem;color:var(--gold-bright);
+  font-size:0.76rem;margin-bottom:2.5rem;line-height:1.65;
+}
+.plans-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:rgba(184,166,136,0.12);}
+.plan{background:#263527;padding:2.2rem 1.8rem;transition:background 0.3s;}
+.plan:hover{background:#2d3e2e;}
+.plan.featured{background:#263527;border-top:2px solid var(--gold);}
+.plan.featured:hover{background:#2d3e2e;}
+.plan-tier{font-size:0.58rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--stone);margin-bottom:0.4rem;}
+.plan-tier.gold-tier{color:var(--gold-bright);}
+.plan-badge{display:inline-block;background:rgba(196,153,58,0.15);color:var(--gold-bright);font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.15rem 0.5rem;margin-left:0.5rem;vertical-align:middle;border:1px solid rgba(196,153,58,0.3);}
+.plan-nepali{font-family:Georgia,serif;font-style:italic;font-size:0.9rem;color:var(--stone);margin-bottom:0.3rem;}
+.plan-name{font-family:Georgia,serif;font-size:1.6rem;color:var(--white);margin-bottom:1rem;line-height:1;font-weight:400;}
+.plan-price{font-size:2rem;font-weight:200;color:var(--white);letter-spacing:-0.02em;}
+.plan-price-sub{font-size:0.65rem;color:var(--stone);letter-spacing:0.1em;margin-bottom:1.8rem;}
+.plan-rule{height:1px;background:rgba(184,166,136,0.15);margin-bottom:1.4rem;}
+.plan-feature{font-size:0.76rem;color:var(--stone);line-height:1.8;margin-bottom:0.4rem;display:flex;gap:0.5rem;align-items:flex-start;}
+.plan-feature::before{content:'—';color:var(--gold);flex-shrink:0;}
+.plan-feature strong{color:var(--white);font-weight:400;}
+.plan-btn{
+  margin-top:2rem;width:100%;background:transparent;
+  border:1px solid rgba(184,166,136,0.3);color:var(--stone);
+  padding:0.82rem;font-size:0.65rem;letter-spacing:0.2em;
+  text-transform:uppercase;cursor:pointer;transition:all 0.2s;
+  text-decoration:none;display:block;text-align:center;
+}
+.plan-btn:hover{background:rgba(184,166,136,0.1);border-color:var(--stone);color:var(--white);}
+.plan-btn.gold-btn{border-color:rgba(196,153,58,0.4);color:var(--gold-bright);}
+.plan-btn.gold-btn:hover{background:rgba(196,153,58,0.12);border-color:var(--gold);}
 
-  /* HAMPER */
-  .hamper-section { background: var(--cream); max-width: 100%; padding: 6rem 4rem; }
-  .hamper-inner { max-width: 1200px; margin: 0 auto; }
-  .hamper-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3rem; }
-  .hamper-item {
-    background: var(--warm-white);
-    padding: 1.5rem;
-    border-bottom: 2px solid transparent;
-    transition: border-color 0.3s ease;
-  }
-  .hamper-item:hover { border-color: var(--stone); }
-  .hamper-item h4 {
-    font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--ink);
-    margin-bottom: 0.4rem;
-  }
-  .hamper-item p { font-size: 0.78rem; color: var(--ink-light); line-height: 1.6; }
-  .hamper-note { margin-top: 2rem; font-size: 0.8rem; color: var(--ink-light); font-style: italic; text-align: center; }
+/* ── LUXURY BADGE ── */
+.luxury-badge{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:#2E3D2F;border:1px solid #C4993A;
+  padding:0.5rem 1.1rem;margin-bottom:1.2rem;
+}
+.luxury-badge span:first-child{color:var(--gold-bright);font-size:0.72rem;}
+.luxury-badge span:last-child{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-bright);font-weight:500;}
 
-  /* TRANQUILITY */
-  .tranq-section { background: var(--warm-white); max-width: 100%; padding: 6rem 4rem; }
-  .tranq-inner { max-width: 1200px; margin: 0 auto; }
-  .tranq-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: start;
-    margin-top: 3rem;
-  }
-  .tranq-left p { font-size: 1rem; line-height: 1.9; color: var(--ink-light); margin-bottom: 1.2rem; }
-  .tranq-right { display: flex; flex-direction: column; gap: 1rem; }
-  .tranq-card {
-    background: var(--cream);
-    padding: 1.4rem 1.8rem;
-    border-left: 2px solid var(--stone);
-  }
-  .tranq-card h4 {
-    font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--ink);
-    margin-bottom: 0.3rem;
-  }
-  .tranq-card p { font-size: 0.82rem; color: var(--ink-light); line-height: 1.6; }
+/* ── RETREAT ── */
+.experts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--mist);margin-top:3rem;}
+.expert{background:var(--warm);padding:1.8rem 1.5rem;transition:background 0.2s;}
+.expert:hover{background:var(--cream);}
+.expert-label{font-size:0.58rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--stone-dark);margin-bottom:0.4rem;}
+.expert h4{font-family:Georgia,serif;font-size:1.05rem;color:var(--ink);margin-bottom:0.4rem;font-weight:400;}
+.expert p{font-size:0.78rem;color:var(--ink-light);line-height:1.7;}
+.retreat-also{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem;}
+.also-item{background:var(--warm);padding:1.2rem 1.4rem;border-left:2px solid var(--mist);}
+.also-item h5{font-family:Georgia,serif;font-size:0.9rem;color:var(--ink);margin-bottom:0.25rem;font-weight:400;}
+.also-item p{font-size:0.74rem;color:var(--ink-light);line-height:1.6;}
+.retreat-luxury-note{
+  background:#2E3D2F;border-left:3px solid #C4993A;
+  padding:1rem 1.3rem;font-size:0.85rem;
+  color:var(--gold-bright);max-width:640px;margin:1.2rem 0 2.5rem;
+  line-height:1.8;font-weight:400;
+}
+.retreat-luxury-note strong{font-weight:600;color:#FEFCF9;}
 
-  /* DAY RETREAT */
-  .retreat-day-section { background: var(--cream); max-width: 100%; padding: 6rem 4rem; }
-  .retreat-day-inner { max-width: 1200px; margin: 0 auto; }
-  .retreat-experts {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--mist);
-    margin: 3rem 0 2rem;
-  }
-  .expert-card {
-    background: var(--warm-white);
-    padding: 2rem 1.8rem;
-    transition: background 0.3s;
-  }
-  .expert-card:hover { background: var(--cream); }
-  .expert-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--stone-dark);
-    margin-bottom: 0.5rem;
-    font-weight: 400;
-  }
-  .expert-card h4 {
-    font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
-    font-size: 1.15rem;
-    font-weight: 500;
-    color: var(--ink);
-    margin-bottom: 0.5rem;
-    line-height: 1.3;
-  }
-  .expert-card p { font-size: 0.8rem; color: var(--ink-light); line-height: 1.7; }
-  .retreat-day-also {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-  .retreat-also-item {
-    background: var(--warm-white);
-    padding: 1.2rem 1.5rem;
-    border-left: 2px solid var(--mist);
-  }
-  .retreat-also-item h5 {
-    font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--ink);
-    margin-bottom: 0.25rem;
-  }
-  .retreat-also-item p { font-size: 0.76rem; color: var(--ink-light); line-height: 1.6; }
+/* ── SCHEDULE TABS ── */
+.day-tabs{display:flex;border-bottom:1px solid rgba(184,166,136,0.2);margin-bottom:2rem;}
+.day-tab{
+  padding:0.7rem 1.8rem;font-size:0.65rem;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--stone);cursor:pointer;
+  border-bottom:2px solid transparent;margin-bottom:-1px;
+  background:none;border-top:none;border-left:none;border-right:none;transition:all 0.2s;
+}
+.day-tab.active{color:var(--gold-bright);border-bottom-color:var(--gold);}
+.day-tab:hover{color:var(--white);}
+.day-content{display:none;}
+.day-content.active{display:block;}
+.schedule{display:flex;flex-direction:column;gap:0.6rem;}
+.sched-item{display:grid;grid-template-columns:120px 1fr;gap:1.4rem;padding:0.65rem 0;border-bottom:1px solid rgba(184,166,136,0.07);}
+.sched-time{font-size:0.66rem;color:var(--gold-bright);letter-spacing:0.06em;}
+.sched-act{font-size:0.82rem;color:var(--stone);line-height:1.5;}
 
-  /* 3-DAY RETREAT */
-  .retreat-3day-section { background: var(--forest); max-width: 100%; padding: 6rem 4rem; }
-  .retreat-3day-inner { max-width: 1200px; margin: 0 auto; }
-  .retreat-3day-inner .section-title { color: var(--warm-white); }
-  .retreat-3day-inner .section-eyebrow { color: var(--stone); }
-  .retreat-3day-inner .divider { background: var(--stone-dark); }
-  .retreat-3day-inner > p { color: var(--stone); font-size: 0.9rem; line-height: 1.8; margin-bottom: 2.5rem; }
-  .day-tabs {
-    display: flex;
-    gap: 0;
-    margin-bottom: 2rem;
-    border-bottom: 1px solid rgba(200,184,154,0.2);
-  }
-  .day-tab {
-    padding: 0.8rem 2rem;
-    font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--stone);
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -1px;
-    transition: all 0.2s;
-    background: none;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-  }
-  .day-tab.active { color: var(--gold-light); border-bottom-color: var(--gold); }
-  .day-tab:hover { color: var(--warm-white); }
-  .day-content { display: none; }
-  .day-content.active { display: block; }
-  .schedule-list { display: flex; flex-direction: column; gap: 0.75rem; }
-  .schedule-item {
-    display: grid;
-    grid-template-columns: 130px 1fr;
-    gap: 1.5rem;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid rgba(200,184,154,0.08);
-    align-items: start;
-  }
-  .schedule-time { font-size: 0.7rem; color: var(--gold); letter-spacing: 0.05em; padding-top: 0.05rem; font-weight: 400; }
-  .schedule-activity { font-size: 0.85rem; color: var(--stone); line-height: 1.5; }
+/* ── TRANQUILITY ── */
+.tranq-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem;}
+.tranq-cards{display:flex;flex-direction:column;gap:1rem;}
+.tranq-card{background:var(--cream);padding:1.3rem 1.6rem;border-left:2px solid var(--mist);}
+.tranq-card.highlight{border-left-color:var(--gold);background:rgba(196,153,58,0.04);}
+.tranq-card h4{font-family:Georgia,serif;font-size:0.95rem;color:var(--ink);margin-bottom:0.3rem;font-weight:400;}
+.tranq-card.highlight h4{color:#7A5010;font-weight:500;}
+.tranq-card p{font-size:0.78rem;color:var(--ink-light);line-height:1.7;}
 
-  /* COUPLE */
-  .couple-section { background: var(--cream); max-width: 100%; padding: 6rem 4rem; }
-  .couple-inner { max-width: 1200px; margin: 0 auto; }
-  .couple-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 3rem; }
-  .couple-left p { font-size: 1rem; line-height: 1.9; color: var(--ink-light); margin-bottom: 1.2rem; }
-  .couple-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-  .couple-table th {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--stone-dark);
-    padding: 0.6rem 1rem;
-    text-align: left;
-    border-bottom: 1px solid var(--mist);
-    font-weight: 400;
-  }
-  .couple-table td { font-size: 0.85rem; padding: 0.75rem 1rem; border-bottom: 1px solid var(--mist); color: var(--ink-light); }
-  .couple-table td:first-child { font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1rem; color: var(--ink); }
-  .savings-tag { background: var(--forest); color: var(--gold-light); padding: 0.2rem 0.6rem; font-size: 0.65rem; letter-spacing: 0.1em; }
+/* ── HAMPER ── */
+.hamper-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem;}
+.hamper-item{background:var(--warm);padding:1.4rem;border-bottom:2px solid transparent;transition:border-color 0.2s;}
+.hamper-item:hover{border-bottom-color:var(--stone);}
+.hamper-item h4{font-family:Georgia,serif;font-size:0.95rem;color:var(--ink);margin-bottom:0.3rem;font-weight:400;}
+.hamper-item p{font-size:0.75rem;color:var(--ink-light);line-height:1.6;}
 
-  /* PILOT */
-  .pilot-section { background: linear-gradient(135deg, var(--forest) 0%, #2A352B 100%); max-width: 100%; padding: 6rem 4rem; }
-  .pilot-inner { max-width: 900px; margin: 0 auto; }
-  .pilot-inner .section-title { color: var(--warm-white); }
-  .pilot-inner .section-eyebrow { color: var(--stone); }
-  .pilot-inner .divider { background: var(--stone-dark); }
-  .pilot-limit {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    border: 1px solid rgba(201,168,76,0.3);
-    color: var(--gold-light);
-    padding: 0.6rem 1.2rem;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 2.5rem;
-  }
-  .pilot-limit::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--gold);
-    animation: pulse 2s infinite;
-    flex-shrink: 0;
-  }
-  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-  .pilot-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    margin-top: 2.5rem;
-  }
-  .pilot-col p { font-size: 0.88rem; color: var(--stone); line-height: 1.9; margin-bottom: 1rem; }
-  .pilot-prices {
-    background: rgba(200,184,154,0.06);
-    border: 1px solid rgba(200,184,154,0.15);
-    padding: 1.5rem;
-    margin-top: 1rem;
-  }
-  .pilot-prices h4 {
-    font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
-    font-size: 1rem;
-    color: var(--gold-light);
-    margin-bottom: 1rem;
-    letter-spacing: 0.05em;
-  }
-  .pilot-price-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(200,184,154,0.1);
-    font-size: 0.82rem;
-    color: var(--stone);
-  }
-  .pilot-price-row:last-child { border-bottom: none; }
-  .pilot-price-row .plan-name { font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 0.95rem; color: var(--warm-white); }
-  .pilot-price-row .prices { display: flex; gap: 1rem; align-items: center; }
-  .pilot-price-row .original { text-decoration: line-through; color: var(--stone-dark); font-size: 0.75rem; }
-  .pilot-price-row .pilot-p { color: var(--gold-light); font-size: 0.95rem; }
-  .pilot-cta { margin-top: 2.5rem; }
-  .pilot-note {
-    font-size: 0.75rem;
-    color: var(--stone-dark);
-    letter-spacing: 0.05em;
-    margin-top: 1rem;
-    font-style: italic;
-  }
-  .pilot-includes {
-    margin-top: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  .pilot-include-item {
-    font-size: 0.8rem;
-    color: var(--stone);
-    display: flex;
-    gap: 0.6rem;
-    align-items: flex-start;
-    line-height: 1.6;
-  }
-  .pilot-include-item::before { content: '✦'; color: var(--gold); font-size: 0.55rem; flex-shrink: 0; margin-top: 0.25rem; }
+/* ── DUO ── */
+.duo-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:3rem;}
+.duo-table{width:100%;border-collapse:collapse;}
+.duo-table th{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone-dark);padding:0.5rem 0.8rem;text-align:left;border-bottom:1px solid var(--mist);font-weight:400;}
+.duo-table td{font-size:0.82rem;padding:0.65rem 0.8rem;border-bottom:1px solid var(--mist);color:var(--ink-light);}
+.duo-table td:first-child{font-family:Georgia,serif;font-size:0.95rem;color:var(--ink);}
+.save-tag{background:var(--forest);color:var(--gold-bright);padding:0.2rem 0.55rem;font-size:0.6rem;letter-spacing:0.1em;}
 
-  /* FOOTER */
-  footer {
-    background: var(--ink);
-    padding: 3rem 4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  footer .logo { color: var(--stone); }
-  footer .logo span { color: #3A3530; }
-  .footer-links { display: flex; gap: 2rem; align-items: center; }
-  .footer-link { font-size: 0.7rem; letter-spacing: 0.15em; color: #3A3530; text-transform: uppercase; text-decoration: none; transition: color 0.2s; }
-  .footer-link:hover { color: var(--stone); }
-  .footer-copy { font-size: 0.7rem; color: #3A3530; letter-spacing: 0.1em; }
+/* ── OCCASIONS ── */
+.occasions-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--mist);margin-top:3rem;}
+.occasion{background:var(--cream);padding:1.4rem 1.2rem;}
+.occasion-month{font-size:0.58rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--stone-dark);margin-bottom:0.35rem;}
+.occasion-name{font-family:Georgia,serif;font-size:1rem;color:var(--ink);margin-bottom:0.25rem;font-weight:400;}
+.occasion-desc{font-size:0.72rem;color:var(--ink-light);line-height:1.5;}
+.occasion-nepali{font-style:italic;color:var(--stone-dark);}
+.occasion-full{background:var(--cream);padding:1rem 1.2rem;grid-column:span 4;border-top:1px solid var(--mist);text-align:center;}
+.occasion-full p{font-size:0.75rem;color:var(--ink-light);font-style:italic;line-height:1.7;}
 
-  /* ANIMATIONS */
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-  .hero-eyebrow { animation: fadeUp 0.8s ease forwards; }
-  .hero-title { animation: fadeUp 0.8s 0.2s ease forwards; opacity: 0; animation-fill-mode: forwards; }
-  .hero-subtitle { animation: fadeUp 0.8s 0.4s ease forwards; opacity: 0; animation-fill-mode: forwards; }
-  .hero-tags { animation: fadeUp 0.8s 0.5s ease forwards; opacity: 0; animation-fill-mode: forwards; }
-  .hero-cta { animation: fadeUp 0.8s 0.6s ease forwards; opacity: 0; animation-fill-mode: forwards; }
+/* ── FOUNDER ── */
+.founder-text{font-size:0.92rem;color:var(--stone);line-height:1.9;margin-bottom:1.4rem;}
+.founder-pull{font-family:Georgia,serif;font-size:1.15rem;font-style:italic;color:var(--gold-bright);border-left:2px solid var(--gold);padding-left:1.4rem;margin:2rem 0;line-height:1.6;}
+.founder-sig{font-family:Georgia,serif;font-size:1.05rem;color:var(--white);}
 
-  /* VALUE CHART */
-  .value-section { background: var(--ink); max-width: 100%; padding: 6rem 4rem; }
-  .value-inner { max-width: 1200px; margin: 0 auto; }
-  .value-inner .section-title { color: var(--warm-white); }
-  .value-inner .section-eyebrow { color: var(--stone-dark); }
-  .value-inner .divider { background: #3A3530; }
-  .value-intro { color: var(--stone); font-size: 0.9rem; line-height: 1.9; max-width: 620px; margin-bottom: 3.5rem; }
-  .value-tables { display: flex; flex-direction: column; gap: 3rem; }
-  .value-tier-block {}
-  .value-tier-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--stone-dark);
-    margin-bottom: 0.8rem;
-    font-weight: 400;
-  }
-  .value-tier-name {
-    font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
-    font-size: 1.3rem;
-    color: var(--warm-white);
-    margin-bottom: 1rem;
-    font-weight: 400;
-  }
-  .value-table { width: 100%; border-collapse: collapse; }
-  .value-table th {
-    font-size: 0.62rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--stone-dark);
-    padding: 0.5rem 1rem;
-    text-align: left;
-    border-bottom: 1px solid #2A2620;
-    font-weight: 400;
-  }
-  .value-table th:last-child { text-align: right; }
-  .value-table td {
-    font-size: 0.82rem;
-    padding: 0.65rem 1rem;
-    border-bottom: 1px solid #1E1A17;
-    color: var(--stone);
-    vertical-align: top;
-    line-height: 1.5;
-  }
-  .value-table td:first-child { color: var(--warm-white); font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 0.95rem; }
-  .value-table td:last-child { text-align: right; color: var(--gold-light); font-size: 0.9rem; white-space: nowrap; }
-  .value-table tr.total-row td {
-    border-top: 1px solid #3A3530;
-    border-bottom: none;
-    padding-top: 1rem;
-    font-weight: 400;
-  }
-  .value-table tr.total-row td:first-child { color: var(--stone); font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
-  .value-table tr.total-row td.total-value { color: var(--gold); font-size: 1.05rem; }
-  .value-table tr.cab-row td { border-bottom: none; padding-top: 0.3rem; }
-  .value-table tr.cab-row td:first-child { color: var(--stone-dark); font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
-  .value-table tr.cab-row td.cab-price { color: var(--warm-white); font-size: 1.05rem; }
-  .value-note {
-    margin-top: 3rem;
-    padding: 1.5rem 2rem;
-    border: 1px solid #2A2620;
-    color: var(--stone-dark);
-    font-size: 0.8rem;
-    line-height: 1.8;
-    font-style: italic;
-    max-width: 700px;
-  }
+/* ── PILOT ── */
+.pilot-bg{background:linear-gradient(135deg,var(--forest) 0%,#1E2B1F 100%);}
+.pilot-limit{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  border:1px solid rgba(196,153,58,0.4);
+  color:var(--gold-bright);padding:0.5rem 1.1rem;
+  font-size:0.65rem;letter-spacing:0.18em;
+  text-transform:uppercase;margin-bottom:1rem;
+}
+.pilot-limit::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite;flex-shrink:0;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.pilot-tagline{font-family:Georgia,serif;font-size:1.1rem;font-style:italic;color:var(--stone);max-width:520px;line-height:1.7;margin-bottom:2.5rem;}
+.pilot-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2.5rem;}
+.pilot-text p{font-size:0.85rem;color:var(--stone);line-height:1.9;margin-bottom:1rem;}
+.pilot-highlight{font-weight:500;color:var(--gold-bright);}
+.pilot-includes{display:flex;flex-direction:column;gap:0.45rem;margin-top:1rem;}
+.pilot-include{font-size:0.78rem;color:var(--stone);display:flex;gap:0.5rem;align-items:flex-start;line-height:1.6;}
+.pilot-include::before{content:'✦';color:var(--gold);font-size:0.5rem;flex-shrink:0;margin-top:0.25rem;}
+.pilot-prices-box{background:rgba(184,166,136,0.05);border:1px solid rgba(184,166,136,0.12);padding:1.4rem;}
+.pilot-prices-box h4{font-family:Georgia,serif;font-size:0.95rem;color:var(--gold-bright);margin-bottom:1rem;}
+.price-row{display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0;border-bottom:1px solid rgba(184,166,136,0.08);font-size:0.78rem;}
+.price-row:last-child{border-bottom:none;}
+.price-row .pname{font-family:Georgia,serif;font-size:0.9rem;color:var(--white);}
+.price-row .pval{color:var(--gold-bright);font-size:0.9rem;}
+.price-row .pval.duo{color:var(--stone);}
+.pilot-cta-wrap{margin-top:2rem;}
+.pilot-note-text{font-size:0.7rem;color:var(--stone-dark);margin-top:0.8rem;font-style:italic;}
+.pilot-email-link{display:block;text-align:center;margin-top:0.7rem;font-size:0.68rem;letter-spacing:0.12em;color:var(--stone-dark);text-decoration:none;text-transform:uppercase;transition:color 0.2s;}
+.pilot-email-link:hover{color:var(--stone);}
+.launch-table-wrap{margin-top:2.5rem;border-top:1px solid rgba(184,166,136,0.12);padding-top:2rem;}
+.launch-table-wrap p{font-size:0.82rem;color:var(--stone);line-height:1.8;margin-bottom:1.4rem;max-width:600px;}
+.launch-table{width:100%;border-collapse:collapse;}
+.launch-table th{font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.5rem 0.8rem;border-bottom:1px solid rgba(184,166,136,0.12);font-weight:400;}
+.launch-table th:first-child{text-align:left;color:var(--stone-dark);}
+.launch-table th:nth-child(2){text-align:right;color:var(--gold-bright);}
+.launch-table th:nth-child(3){text-align:right;color:var(--stone-dark);}
+.launch-table th:last-child{text-align:right;color:var(--stone-dark);}
+.launch-table td{font-size:0.8rem;padding:0.6rem 0.8rem;border-bottom:1px solid rgba(184,166,136,0.05);}
+.launch-table td:first-child{font-family:Georgia,serif;font-size:0.9rem;color:var(--white);}
+.launch-table td:nth-child(2){text-align:right;color:var(--gold-bright);font-weight:500;}
+.launch-table td:nth-child(3){text-align:right;color:var(--stone-dark);}
+.launch-table td:last-child{text-align:right;color:var(--stone);}
+.launch-divider td{border-top:1px solid rgba(184,166,136,0.12);padding-top:0.7rem;}
+.refund-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;}
+.refund-card{background:rgba(184,166,136,0.05);border:1px solid rgba(184,166,136,0.1);padding:1.4rem 1.6rem;}
+.refund-card.important{border-color:rgba(196,153,58,0.22);}
+.refund-card h4{font-family:Georgia,serif;font-size:0.95rem;color:var(--white);margin-bottom:0.5rem;font-weight:400;}
+.refund-card.important h4{color:var(--gold-bright);}
+.refund-card p{font-size:0.78rem;color:var(--stone);line-height:1.7;}
+.refund-card strong{color:var(--white);font-weight:400;}
 
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    nav, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
-    .why-section, .how-section, .tiers-section, .hamper-section, .tranq-section,
-    .retreat-day-section, .retreat-3day-section, .couple-section, .pilot-section { padding-left: 1.5rem; padding-right: 1.5rem; }
-    .tiers-grid { grid-template-columns: 1fr 1fr; }
-    .why-grid, .couple-grid, .tranq-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .hamper-grid, .retreat-experts, .retreat-day-also { grid-template-columns: 1fr 1fr; }
-    .how-steps { grid-template-columns: 1fr 1fr; }
-    .how-steps::before { display: none; }
-    .pilot-grid { grid-template-columns: 1fr; }
-    footer { flex-direction: column; text-align: center; }
-  }
-  @media (max-width: 600px) {
-    .tiers-grid, .hamper-grid, .retreat-experts, .retreat-day-also { grid-template-columns: 1fr; }
-    .how-steps { grid-template-columns: 1fr; }
-    .hero-title { font-size: 2.8rem; }
-    .retreat-experts { grid-template-columns: 1fr; }
-  }
+/* ── VALUE ── */
+.value-bg{background:var(--ink);}
+.value-tables{display:flex;flex-direction:column;gap:2.5rem;margin-top:3rem;}
+.value-tier-label{font-size:0.58rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--stone-dark);margin-bottom:0.4rem;}
+.value-tier-name{font-family:Georgia,serif;font-size:1.15rem;color:var(--white);margin-bottom:0.8rem;font-weight:400;}
+.value-table{width:100%;border-collapse:collapse;}
+.value-table th{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone-dark);padding:0.5rem 0.8rem;text-align:left;border-bottom:1px solid #1E1C18;font-weight:400;}
+.value-table th:last-child{text-align:right;}
+.value-table td{font-size:0.78rem;padding:0.6rem 0.8rem;border-bottom:1px solid #181612;color:var(--stone);vertical-align:top;line-height:1.5;}
+.value-table td:first-child{color:var(--white);font-family:Georgia,serif;font-size:0.9rem;}
+.value-table td:last-child{text-align:right;color:var(--gold-bright);white-space:nowrap;}
+.value-table tr.total td{border-top:1px solid #2A2620;padding-top:0.8rem;}
+.value-table tr.total td:first-child{color:var(--stone);font-family:-apple-system,sans-serif;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;}
+.value-table tr.total td:last-child{color:var(--gold-bright);font-size:0.95rem;}
+.value-table tr.cab td:last-child{color:var(--white);font-size:0.95rem;}
+
+/* ── FAQ ── */
+details{border-bottom:1px solid var(--mist);padding:1.3rem 0;}
+summary{font-family:Georgia,serif;font-size:1.05rem;color:var(--ink);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;font-weight:400;}
+summary .plus{font-size:1.3rem;color:var(--stone);font-family:-apple-system,sans-serif;font-weight:200;flex-shrink:0;margin-left:1rem;}
+details p{font-size:0.83rem;color:var(--ink-light);line-height:1.8;margin-top:1rem;max-width:680px;}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-logo{font-family:Georgia,serif;font-size:0.95rem;color:var(--stone);letter-spacing:0.05em;line-height:1.4;}
+.footer-logo span{display:block;font-size:0.52rem;letter-spacing:0.28em;color:#2A2520;font-family:-apple-system,sans-serif;margin-top:2px;text-transform:uppercase;}
+.footer-links{display:flex;gap:1.8rem;align-items:center;}
+.footer-link{font-size:0.62rem;letter-spacing:0.18em;color:#3A3530;text-transform:uppercase;text-decoration:none;transition:color 0.2s;}
+.footer-link:hover{color:var(--stone);}
+.footer-copy{font-size:0.62rem;color:#2A2520;letter-spacing:0.08em;}
+
+/* ── MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:200;background:var(--warm);overflow-y:auto;}
+.modal-overlay.open{display:block;}
+.modal-box{background:var(--warm);width:100%;min-height:100vh;position:relative;}
+.modal-header{
+  background:var(--forest);
+  padding:clamp(1rem,3vw,1.8rem) clamp(1.5rem,4vw,3rem);
+  position:sticky;top:0;z-index:10;
+  border-bottom:1px solid rgba(196,153,58,0.2);
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;
+}
+.modal-header-left{}
+.modal-header h2{font-family:Georgia,serif;font-size:clamp(1rem,3vw,1.4rem);font-weight:400;color:var(--white);margin-bottom:0.2rem;line-height:1.2;}
+.modal-header h2 em{font-style:italic;color:var(--gold-bright);}
+.modal-header p{font-size:0.75rem;color:var(--stone);line-height:1.5;max-width:480px;}
+.modal-close{
+  flex-shrink:0;background:rgba(255,255,255,0.08);
+  border:1px solid rgba(184,166,136,0.25);
+  color:var(--stone);cursor:pointer;
+  padding:0.4rem 0.8rem;font-size:0.7rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  transition:all 0.2s;
+}
+.modal-close:hover{background:rgba(255,255,255,0.15);color:var(--white);}
+.modal-inner{max-width:860px;margin:0 auto;padding:0 clamp(1.5rem,4vw,3rem) 3rem;}
+.modal-pilot-note{
+  background:rgba(196,153,58,0.1);
+  border:1px solid rgba(196,153,58,0.25);
+  padding:0.9rem 1.2rem;margin-top:1.5rem;
+  display:flex;gap:0.8rem;align-items:flex-start;
+  max-width:660px;
+}
+.modal-pilot-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:4px;animation:pulse 2s infinite;}
+.modal-pilot-note p{font-size:0.78rem;color:var(--gold-bright);line-height:1.65;}
+.modal-pilot-note strong{color:var(--white);font-weight:500;}
+.modal-plans{display:flex;flex-direction:column;gap:1px;background:var(--mist);margin-top:1.5rem;}
+.mplan{
+  background:var(--white);padding:clamp(1rem,2vw,1.4rem) clamp(0.8rem,2vw,1.6rem);
+  display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;
+  transition:background 0.2s;border-left:3px solid transparent;
+}
+.mplan:hover{background:var(--cream);border-left-color:var(--gold);}
+.mplan.mfeatured{border-left-color:var(--gold);background:var(--cream);}
+.mplan-tier{font-size:0.58rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--stone-dark);font-weight:400;margin-bottom:0.2rem;}
+.mplan-tier.mgold{color:#7A5E1A;font-weight:500;}
+.mplan-badge{display:inline-block;background:var(--forest);color:var(--gold-bright);font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.15rem 0.5rem;margin-left:0.5rem;vertical-align:middle;}
+.mplan-nepali{font-family:Georgia,serif;font-style:italic;font-size:0.82rem;color:var(--stone-dark);margin-bottom:0.25rem;}
+.mplan-name{font-family:Georgia,serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:0.5rem;}
+.mplan-tags{display:flex;flex-wrap:wrap;gap:0.35rem;}
+.mplan-tag{font-size:0.63rem;color:var(--ink-light);background:var(--mist);padding:0.18rem 0.55rem;letter-spacing:0.03em;}
+.mplan-right{text-align:right;flex-shrink:0;}
+.mplan-price{font-family:Georgia,serif;font-size:1.5rem;font-weight:400;color:var(--ink);line-height:1;margin-bottom:0.2rem;}
+.mplan-sub{font-size:0.6rem;color:var(--stone-dark);letter-spacing:0.08em;margin-bottom:0.8rem;}
+.mplan-btn{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  background:var(--gold);color:var(--ink);
+  padding:0.65rem 1.1rem;font-size:0.65rem;
+  letter-spacing:0.18em;text-transform:uppercase;
+  text-decoration:none;transition:all 0.2s;
+  white-space:nowrap;font-weight:600;
+}
+.mplan-btn:hover{background:var(--gold-bright);color:var(--ink);}
+.modal-footer{padding:clamp(1rem,3vw,1.5rem) 0;border-top:1px solid var(--mist);background:var(--warm);margin-top:2rem;}
+.modal-footer p{font-size:0.78rem;color:var(--ink-light);line-height:1.8;margin-bottom:0.5rem;}
+.modal-footer p:last-child{margin-bottom:0;}
+.modal-footer strong{color:var(--ink);font-weight:500;}
+.modal-footer a{color:var(--forest);text-decoration:underline;text-underline-offset:2px;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){.plans-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .why-grid,.duo-grid,.tranq-grid,.pilot-grid{grid-template-columns:1fr;gap:2rem;}
+  .plans-grid{grid-template-columns:1fr 1fr;}
+  .experts,.occasions-grid{grid-template-columns:1fr 1fr;}
+  .steps{grid-template-columns:1fr 1fr;}
+  .steps::before{display:none;}
+  .hamper-grid,.retreat-also,.refund-grid{grid-template-columns:1fr 1fr;}
+  footer{flex-direction:column;text-align:center;}
+}
+@media(max-width:600px){
+  .plans-grid,.experts,.occasions-grid,.hamper-grid,.retreat-also,.refund-grid{grid-template-columns:1fr;}
+  .steps{grid-template-columns:1fr;}
+  .hero h1{font-size:2.6rem;}
+  .occasion-full{grid-column:span 1;}
+  .mplan{grid-template-columns:1fr;}
+  .mplan-right{text-align:left;margin-top:0.5rem;}
+  .mplan-btn{width:100%;justify-content:center;}
+}
 </style>
 </head>
 <body>
 
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="logo-care">Care</span>
+    <span class="logo-across">Across</span>
+    <span class="logo-borders">Borders</span>
+    <span class="logo-sub">careacrossborders.care</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#plans">Plans</a></li>
+    <li><a href="#retreats">Retreats</a></li>
+    <li><a href="#founder">Our Story</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#" class="nav-cta" onclick="openGiftModal();return false;">Gift a Plan</a></li>
+  </ul>
+  <div class="hamburger" onclick="openMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMenu()">✕</button>
+  <a href="#how" onclick="closeMenu()">How It Works</a>
+  <a href="#plans" onclick="closeMenu()">Plans</a>
+  <a href="#retreats" onclick="closeMenu()">Retreats</a>
+  <a href="#founder" onclick="closeMenu()">Our Story</a>
+  <a href="#faq" onclick="closeMenu()">FAQ</a>
+  <a href="#" onclick="openGiftModal();closeMenu();return false;" style="background:var(--gold);color:var(--ink);padding:0.85rem 2.5rem;font-size:0.72rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;margin-top:1rem;display:inline-block;">Gift a Plan</a>
+</div>
+
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-texture"></div>
-  <nav>
-    <div class="logo">Care Across Borders<span>careacrossborders.care</span></div>
-    <a href="https://wa.me/9779815045480?text=Hi%2C%20I%20came%20across%20the%20CAB%20%E2%80%94%20Care%20Across%20Borders%20brochure%20and%20would%20love%20to%20know%20more%20about%20the%20plans." class="nav-pill">Get in Touch</a>
-  </nav>
-  <div class="hero-body">
-    <p class="hero-eyebrow">Wellness Gifting for Families in Nepal</p>
-    <h1 class="hero-title">Give them the gift<br>of <em>being cared for</em></h1>
-    <p style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1rem; font-style: italic; color: var(--stone-dark); letter-spacing: 0.05em; margin-bottom: 0.5rem;">आफ्नो माया, स्याहारको रूपमा।</p>
-    <p class="hero-subtitle">Annual wellness plans gifted from abroad — for the people who raised you, cared for you, and deserve to be looked after in return. CAB handles everything so the distance feels a little smaller.</p>
-    <div class="hero-tags">
-      <span class="hero-tag">Tranquility Massages</span>
-      <span class="hero-tag">Wellness Hamper</span>
-      <span class="hero-tag">Wellness Retreats</span>
-      <span class="hero-tag">Community & Connection</span>
-      <span class="hero-tag">Pickup & Drop Included</span>
-    </div>
-    <div class="hero-cta">
-      <a href="https://wa.me/9779815045480?text=Hi%2C%20I%20came%20across%20the%20CAB%20%E2%80%94%20Care%20Across%20Borders%20brochure%20and%20would%20love%20to%20know%20more%20about%20the%20plans." class="btn-primary">↗ Gift a Plan</a>
-      <a href="#tiers" class="btn-secondary">View Plans</a>
-    </div>
+<section class="hero">
+  <p class="hero-tag">Wellness Gifting for Families in Nepal</p>
+  <p class="hero-nepali">आफ्नो माया, स्याहारको रूपमा।</p>
+  <h1>Give them the gift<br>of <em>being cared for</em></h1>
+  <p class="hero-sub">Annual wellness plans gifted from abroad — for the people who raised you, cared for you, and deserve to be looked after in return.</p>
+  <div class="hero-actions">
+    <a href="#" class="btn-gold" onclick="openGiftModal();return false;">↗ Gift a Plan</a>
+    <a href="#plans" class="btn-outline">View Plans</a>
   </div>
-  <div class="hero-footer">
-    <p class="scroll-hint">Scroll to explore</p>
+  <div class="hero-badges">
+    <span class="hero-badge">Tranquility Massages</span>
+    <span class="hero-badge">Wellness Hamper</span>
+    <span class="hero-badge">★★★★★ Retreats</span>
+    <span class="hero-badge">Community & Connection</span>
+    <span class="hero-badge">Pickup & Drop Included</span>
   </div>
-</div>
+</section>
 
-
-<!-- WHY CAB -->
-<div class="why-section">
-  <div class="why-inner">
-    <p class="section-eyebrow">Why CAB</p>
-    <h2 class="section-title">More than a gift.<br>A <em>year of care.</em></h2>
-    <div class="divider"></div>
-    <div class="why-grid">
-      <div class="why-left">
-        <p>When you're abroad, you send money. But money disappears — into groceries, bills, things that need fixing. Rarely into something just for them. CAB exists because the people who matter most to you almost never spend on themselves.</p>
-        <div class="highlight">"They won't buy it for themselves. But they'll accept the gift of being cared for — if it comes from you."</div>
-        <p>CAB is a gifting platform built for Nepali expats — for those who grew up far from where they are now, and who carry the people back home with them. Whether you're gifting your parents, your grandparents, a sibling, or anyone who holds a special place in your life, CAB gives them a full year of wellness experiences.</p>
-        <p>We take care of everything — booking, coordination, pickup, drop-off. The gift arrives on a date that matters to you. The massages are redeemable whenever they choose. The retreats are moments they'll look forward to. You'll know they're cared for.</p>
-      </div>
-      <div class="why-cards">
-        <div class="why-card">
-          <h4>It spreads throughout the year</h4>
-          <p>Unlike a one-time gesture, a CAB plan gives your loved one recurring moments of joy — massages they can book any time, a hamper arriving on a special day, retreats to look forward to. The care keeps coming, long after the gift is given.</p>
-        </div>
-        <div class="why-card">
-          <h4>They won't spend on themselves</h4>
-          <p>Money sent home is absorbed into daily life. A gifted wellness plan guarantees it's spent on the person — not on bills, not on the household. On them.</p>
-        </div>
-        <div class="why-card">
-          <h4>Community, connection, and belonging</h4>
-          <p>Loneliness and isolation are some of the most invisible health challenges. Our retreats and wellness days bring people together — building friendships, shared experience, and a genuine sense of community.</p>
-        </div>
-        <div class="why-card">
-          <h4>We remove every friction point</h4>
-          <p>Pickup and drop is included in every plan. We book, coordinate, and follow up. Your loved one simply shows up — and is taken care of. That's the full promise of CAB.</p>
-        </div>
-      </div>
+<!-- WHY -->
+<div class="why-bg">
+<div class="section">
+  <p class="eyebrow">Why Care Across Borders</p>
+  <h2 class="display">More than a gift.<br>A <em>year of care.</em></h2>
+  <div class="rule"></div>
+  <div class="why-grid">
+    <div>
+      <p class="body-text">When you're abroad, you send money. But money disappears — into groceries, bills, things that need fixing. Rarely into something just for them. Care Across Borders exists because the people who matter most to you almost never spend on themselves.</p>
+      <div class="why-quote">"They won't buy it for themselves. But they'll accept the gift of being cared for — if it comes from you."</div>
+      <p class="body-text">Whether you're gifting your parents, grandparents, a sibling, or anyone who holds a special place in your life — we give them a full year of wellness, handled entirely by us.</p>
+    </div>
+    <div class="why-cards">
+      <div class="why-card"><h4>It spreads throughout the year</h4><p>Massages redeemable any time, a hamper on a special day, retreats to look forward to. The care keeps coming long after the gift is given.</p></div>
+      <div class="why-card"><h4>They won't spend on themselves</h4><p>Money sent home gets absorbed into daily life. A gifted plan guarantees it's spent on the person — on them, not bills.</p></div>
+      <div class="why-card"><h4>Community, connection, belonging</h4><p>Our retreats bring people together — building friendships, shared experience, and a genuine sense of community.</p></div>
+      <div class="why-card"><h4>We handle everything</h4><p>Booking, coordination, pickup, drop-off. Your loved one simply shows up. That's the full promise of Care Across Borders.</p></div>
     </div>
   </div>
 </div>
-
+</div>
 
 <!-- HOW IT WORKS -->
-<div class="how-section">
-  <div class="how-inner">
-    <p class="section-eyebrow">The Experience</p>
-    <h2 class="section-title">How <em>it works</em></h2>
-    <div class="divider"></div>
-    <p style="color: var(--ink-light); font-size: 0.92rem; line-height: 1.9; max-width: 640px; margin-bottom: 0;">
-      CAB is designed to feel personal from the very first moment — for both the person gifting, and the person receiving. Here is exactly what happens after you purchase.
-    </p>
-    <div class="how-steps">
-      <div class="how-step">
-        <div class="how-step-num">1</div>
-        <h4>You Choose a Plan & Fill a Form</h4>
-        <p>After purchasing, you fill a short form — who the gift is for, their location in Nepal, your chosen delivery date, and the personal note you'd like on their card.</p>
-      </div>
-      <div class="how-step">
-        <div class="how-step-num">2</div>
-        <h4>The Gift Reveal</h4>
-        <p>On the date you chose, three things happen: our team calls your loved one to announce the gift warmly and personally, a beautifully presented Wellness Hamper arrives at their door with your handwritten card enclosed, and we send them a WhatsApp message with a personalised gift image — so the moment lands completely.</p>
-      </div>
-      <div class="how-step">
-        <div class="how-step-num">3</div>
-        <h4>We Guide Them All Year</h4>
-        <p>Our team follows up proactively — helping them book massages, coordinating pickups and drops, gathering health information before retreats, and gently reminding them to use what's theirs. Nothing expires without a fight from us.</p>
-      </div>
-      <div class="how-step">
-        <div class="how-step-num">4</div>
-        <h4>You Stay Connected</h4>
-        <p>After each experience — a massage, a retreat, a consultation — we send you a photo or update. At year end, you receive a summary of everything your loved one experienced. You gave them care. We make sure you feel it too.</p>
-      </div>
-      <div class="how-step">
-        <div class="how-step-num">5</div>
-        <h4>The Year Renews</h4>
-        <p>As the year closes, we reach out to you first — before anyone else — to renew. Founding families are offered renewal at their locked pilot pricing. The care continues, for as long as you want it to.</p>
-      </div>
+<div id="how" style="background:var(--cream);">
+<div class="section">
+  <p class="eyebrow">The Experience</p>
+  <h2 class="display">How <em>it works</em></h2>
+  <div class="rule"></div>
+  <p class="body-text" style="margin-bottom:0;">Designed to feel personal from the very first moment — for both the person gifting, and the person receiving.</p>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><h4>Choose & Fill a Form</h4><p>Pick a plan, fill a short form — who the gift is for, delivery date, and your personal note.</p></div>
+    <div class="step"><div class="step-num">2</div><h4>The Gift Reveal</h4><p>A personal call, a Wellness Hamper at their door with your card, and a WhatsApp message — all on the date you chose.</p></div>
+    <div class="step"><div class="step-num">3</div><h4>We Guide Them</h4><p>Our team books massages, coordinates pickups, gathers health info before retreats. Nothing expires without a reminder.</p></div>
+    <div class="step"><div class="step-num">4</div><h4>You Stay Connected</h4><p>Photos after each experience, updates throughout the year, and a summary at year end.</p></div>
+    <div class="step"><div class="step-num">5</div><h4>The Year Renews</h4><p>Founding families are offered renewal first, at their locked pilot pricing.</p></div>
+  </div>
+  <div class="how-note"><p><strong>One-on-one, all year.</strong> CAB is not a booking platform. Every family has a dedicated point of contact who knows their story and ensures nothing falls through the cracks.</p></div>
+</div>
+</div>
+
+<!-- PLANS -->
+<div id="plans" class="plans-bg">
+<div class="section">
+  <p class="eyebrow eyebrow-light">The Plans</p>
+  <h2 class="display display-light">Choose the care<br>they <em>deserve</em></h2>
+  <div class="rule rule-dark"></div>
+  <div class="gift-note">✦ &nbsp;Every plan delivered on a special date of your choice — birthdays, Mother's Day, Father's Day, Dashain, or simply because. &nbsp;·&nbsp; Massages redeemable any time.</div>
+  <div class="plans-grid">
+    <div class="plan">
+      <p class="plan-tier">Basic</p><p class="plan-nepali">Pahilo Kadam</p>
+      <p class="plan-name">The Care<br>Starter</p>
+      <p class="plan-price">$199</p><p class="plan-price-sub">per year · one person</p>
+      <div class="plan-rule"></div>
+      <div class="plan-feature"><span><strong>2×</strong> Tranquility Signature Massage — redeem any time</span></div>
+      <div class="plan-feature"><span><strong>Wellness Hamper</strong> — 4 natural wellness products with your card</span></div>
+      <div class="plan-feature"><span>Delivered on a <strong>special date of your choice</strong></span></div>
+      <div class="plan-feature"><span><strong>Pickup & drop</strong> included</span></div>
+      <div class="plan-feature"><span>Personal welcome call & year-round follow-up</span></div>
+      <a href="#" class="plan-btn" onclick="openGiftModal();return false;">Gift this plan →</a>
     </div>
-    <div class="how-note">
-      <p><strong>One-on-one, all year.</strong> CAB is not a booking platform. It is a personal care service. Every family has a dedicated point of contact who knows their story, follows up proactively, and ensures nothing falls through the cracks. You don't need to coordinate — we do.</p>
+    <div class="plan">
+      <p class="plan-tier">Standard</p><p class="plan-nepali">Purnata</p>
+      <p class="plan-name">The Wellness<br>Circle</p>
+      <p class="plan-price">$349</p><p class="plan-price-sub">per year · one person</p>
+      <div class="plan-rule"></div>
+      <div class="plan-feature"><span><strong>3×</strong> Tranquility Signature Massage — redeem any time</span></div>
+      <div class="plan-feature"><span><strong>Wellness Hamper</strong> — 5–6 natural products with personal card</span></div>
+      <div class="plan-feature"><span><strong>Community Day Retreat</strong> at a luxury 5-star venue</span></div>
+      <div class="plan-feature"><span><strong>Pickup & drop</strong> for all experiences</span></div>
+      <div class="plan-feature"><span>Personal welcome call & year-round coordination</span></div>
+      <a href="#" class="plan-btn" onclick="openGiftModal();return false;">Gift this plan →</a>
+    </div>
+    <div class="plan featured">
+      <p class="plan-tier gold-tier">Premium <span class="plan-badge">Best Value</span></p>
+      <p class="plan-nepali">Sampurna Sewa</p>
+      <p class="plan-name">The Full<br>Care</p>
+      <p class="plan-price">$499</p><p class="plan-price-sub">per year · one person</p>
+      <div class="plan-rule"></div>
+      <div class="plan-feature"><span><strong>5×</strong> Tranquility Signature Massage — redeem any time</span></div>
+      <div class="plan-feature"><span><strong>Wellness Hamper</strong> — 7–8 natural products, full curated box</span></div>
+      <div class="plan-feature"><span><strong>Community Day Retreat</strong> at a luxury 5-star venue with personal Ayurvedic consultation</span></div>
+      <div class="plan-feature"><span><strong>1×</strong> Therapy massage — prescribed by Ayurvedic doctor</span></div>
+      <div class="plan-feature"><span>Body, mental health & nutrition guidance</span></div>
+      <div class="plan-feature"><span><strong>Pickup & drop</strong> for all · Dedicated coordinator</span></div>
+      <a href="#" class="plan-btn gold-btn" onclick="openGiftModal();return false;">Gift this plan →</a>
+    </div>
+    <div class="plan">
+      <p class="plan-tier gold-tier">Luxury</p><p class="plan-nepali">Param Shanti</p>
+      <p class="plan-name">Total<br>Sanctuary</p>
+      <p class="plan-price">$1,099</p><p class="plan-price-sub">per year · one person</p>
+      <div class="plan-rule"></div>
+      <div class="plan-feature"><span><strong>6×</strong> Tranquility Signature Massage — tailored after consultation</span></div>
+      <div class="plan-feature"><span><strong>Wellness Hamper</strong> — 9–11 products, premium presentation</span></div>
+      <div class="plan-feature"><span><strong>Community Day Retreat</strong> at a luxury 5-star venue</span></div>
+      <div class="plan-feature"><span><strong>3-Day Residential Retreat</strong> at a luxury 5-star resort outside Kathmandu Valley</span></div>
+      <div class="plan-feature"><span>Personal Ayurvedic consultation & <strong>2×</strong> therapy sessions</span></div>
+      <div class="plan-feature"><span>Dedicated CAB concierge · <strong>Pickup & drop</strong> for all</span></div>
+      <a href="#" class="plan-btn gold-btn" onclick="openGiftModal();return false;">Gift this plan →</a>
     </div>
   </div>
 </div>
-
-
-<!-- TIERS -->
-<div id="tiers" class="tiers-section">
-  <div class="tiers-inner">
-    <p class="section-eyebrow">The Plans</p>
-    <h2 class="section-title">Choose the care<br>they <em>deserve</em></h2>
-    <div class="divider"></div>
-    <div class="gift-note">
-      ✦ &nbsp;Every plan is delivered as a gift on a special date of your choice — a birthday, Mother's Day, Father's Day, an anniversary, or simply because you felt like celebrating them.
-      &nbsp;·&nbsp; Massages can be redeemed any time throughout the year.
-    </div>
-    <div class="tiers-grid">
-
-      <!-- BASIC -->
-      <div class="tier-card">
-        <p class="tier-badge">Basic</p>
-        <p class="tier-name-nepali">Pahilo Kadam</p>
-        <h3 class="tier-name">The Care<br>Starter</h3>
-        <p class="tier-price">$199</p>
-        <p class="tier-price-sub">per year · one person</p>
-        <div class="tier-divider"></div>
-        <div class="tier-feature"><span><strong>2×</strong> Tranquility Signature Massage (90 min) — redeem any time</span></div>
-        <div class="tier-feature"><span><strong>Wellness Hamper</strong> — 4 carefully chosen natural wellness products, beautifully boxed with your personal card</span></div>
-        <div class="tier-feature"><span>Delivered on a <strong>special date of your choice</strong></span></div>
-        <div class="tier-feature"><span><strong>Pickup & drop</strong> included for all massage appointments</span></div>
-        <div class="tier-feature"><span>Personal welcome call to your loved one from our team</span></div>
-        <div class="tier-feature"><span>Year-round booking support & follow-up</span></div>
-        <a href="https://wa.me/9779815045480?text=Hi%2C%20I%20came%20across%20the%20CAB%20%E2%80%94%20Care%20Across%20Borders%20brochure%20and%20would%20love%20to%20know%20more%20about%20the%20plans." class="tier-cta">Gift this plan →</a>
-      </div>
-
-      <!-- STANDARD -->
-      <div class="tier-card">
-        <p class="tier-badge">Standard</p>
-        <p class="tier-name-nepali">Purnata</p>
-        <h3 class="tier-name">The Wellness<br>Circle</h3>
-        <p class="tier-price">$349</p>
-        <p class="tier-price-sub">per year · one person</p>
-        <div class="tier-divider"></div>
-        <div class="tier-feature"><span><strong>3×</strong> Tranquility Signature Massage — redeem any time</span></div>
-        <div class="tier-feature"><span><strong>Wellness Hamper</strong> — 5–6 natural wellness products with personal card</span></div>
-        <div class="tier-feature"><span><strong>Community Day Retreat</strong> at a luxury 5-star venue — yoga, Ayurvedic consultation, mental health guidance, nutrition expert, foot massage, vegetarian lunch</span></div>
-        <div class="tier-feature"><span>Body pain & lifestyle consultation at retreat</span></div>
-        <div class="tier-feature"><span><strong>Pickup & drop</strong> for all experiences</span></div>
-        <div class="tier-feature"><span>Personal welcome call & year-round coordination</span></div>
-        <a href="https://wa.me/9779815045480?text=Hi%2C%20I%20came%20across%20the%20CAB%20%E2%80%94%20Care%20Across%20Borders%20brochure%20and%20would%20love%20to%20know%20more%20about%20the%20plans." class="tier-cta">Gift this plan →</a>
-      </div>
-
-      <!-- PREMIUM -->
-      <div class="tier-card featured">
-        <p class="tier-badge gold">Premium · Most Chosen</p>
-        <p class="tier-name-nepali">Sampurna Sewa</p>
-        <h3 class="tier-name">The Full<br>Care</h3>
-        <p class="tier-price">$499</p>
-        <p class="tier-price-sub">per year · one person</p>
-        <div class="tier-divider"></div>
-        <div class="tier-feature"><span><strong>5×</strong> Tranquility Signature Massage — redeem any time</span></div>
-        <div class="tier-feature"><span><strong>Wellness Hamper</strong> — 7–8 natural wellness products, full curated box</span></div>
-        <div class="tier-feature"><span><strong>Community Day Retreat</strong> at a luxury 5-star venue, with personal Ayurvedic consultation</span></div>
-        <div class="tier-feature"><span><strong>1×</strong> Therapy massage — type recommended by Ayurvedic doctor based on individual health assessment</span></div>
-        <div class="tier-feature"><span>Body pain, mental health & nutrition guidance throughout</span></div>
-        <div class="tier-feature"><span><strong>Pickup & drop</strong> for all experiences</span></div>
-        <div class="tier-feature"><span>Dedicated CAB coordinator, personal welcome call</span></div>
-        <a href="https://wa.me/9779815045480?text=Hi%2C%20I%20came%20across%20the%20CAB%20%E2%80%94%20Care%20Across%20Borders%20brochure%20and%20would%20love%20to%20know%20more%20about%20the%20plans." class="tier-cta gold-cta">Gift this plan →</a>
-      </div>
-
-      <!-- LUXURY -->
-      <div class="tier-card">
-        <p class="tier-badge gold">Luxury</p>
-        <p class="tier-name-nepali">Param Shanti</p>
-        <h3 class="tier-name">Total<br>Sanctuary</h3>
-        <p class="tier-price">$1,099</p>
-        <p class="tier-price-sub">per year · one person</p>
-        <div class="tier-divider"></div>
-        <div class="tier-feature"><span><strong>6×</strong> Tranquility Signature Massage — each tailored after Ayurvedic consultation, redeemable any time</span></div>
-        <div class="tier-feature"><span><strong>Wellness Hamper</strong> — 9–11 natural wellness products, premium presentation</span></div>
-        <div class="tier-feature"><span><strong>Community Day Retreat</strong> at a luxury 5-star venue</span></div>
-        <div class="tier-feature"><span><strong>3-Day Residential Wellness Retreat</strong> at a luxury 5-star resort outside Kathmandu Valley</span></div>
-        <div class="tier-feature"><span>Personal Ayurvedic doctor consultation & <strong>2×</strong> therapy sessions</span></div>
-        <div class="tier-feature"><span>Comprehensive body, nutrition & mental wellness guidance</span></div>
-        <div class="tier-feature"><span>Dedicated CAB concierge — personal, hands-on care all year</span></div>
-        <div class="tier-feature"><span><strong>Pickup & drop</strong> for all experiences</span></div>
-        <a href="https://wa.me/9779815045480?text=Hi%2C%20I%20came%20across%20the%20CAB%20%E2%80%94%20Care%20Across%20Borders%20brochure%20and%20would%20love%20to%20know%20more%20about%20the%20plans." class="tier-cta gold-cta">Gift this plan →</a>
-      </div>
-
-    </div>
-  </div>
 </div>
 
-
-<!-- HAMPER -->
-<div class="hamper-section">
-  <div class="hamper-inner">
-    <p class="section-eyebrow">Included in Every Plan</p>
-    <h2 class="section-title">The <em>Wellness Hamper</em></h2>
-    <div class="divider"></div>
-    <p style="color: var(--ink-light); font-size: 0.9rem; max-width: 640px; line-height: 1.8; margin-bottom: 0.5rem;">
-      Every plan includes a Wellness Hamper — a beautifully presented box of handcrafted, natural wellness products made in Nepal, delivered on a date that means something. Tissue, ribbon, and a personal card carrying your message are included.
-    </p>
-    <p style="color: var(--ink-light); font-size: 0.9rem; max-width: 640px; line-height: 1.8; margin-bottom: 2.5rem;">
-      The selection varies by tier, with each product thoughtfully chosen for the person receiving it. All products are natural, handcrafted, and made in Nepal.
-    </p>
-    <div class="hamper-grid">
-      <div class="hamper-item">
-        <h4>Pain Relief Kizhi Potli</h4>
-        <p>A wrapped potli of special Nepali herbs for muscle pain relief — warm, traditional, and deeply comforting for aching joints and tired bodies.</p>
-      </div>
-      <div class="hamper-item">
-        <h4>Ayurvedic Massage Oil</h4>
-        <p>A fresh blend with lemongrass — pairs beautifully with the Kizhi Potli for a gentle home ritual that soothes and nourishes.</p>
-      </div>
-      <div class="hamper-item">
-        <h4>Goat / Yak Milk Soap Bars</h4>
-        <p>Cold-pressed, handmade with real milk in Jasmine or Lavender. Gentle on skin and rich in the kind of natural care that a bottle of body wash can't replicate.</p>
-      </div>
-      <div class="hamper-item">
-        <h4>Himalayan Bath Salts</h4>
-        <p>Lavender, Rose, or Jasmine — for a deeply relaxing shower or bucket bath. A small, daily ritual that signals the day is for them.</p>
-      </div>
-      <div class="hamper-item">
-        <h4>Natural Body Scrubs</h4>
-        <p>Coconut oil, rice flour, chickpeas, and essential oil blends. Roasted Coffee, Rose, or Cookie variants — indulgent, effective, entirely natural.</p>
-      </div>
-      <div class="hamper-item">
-        <h4>Rosemary & Ginger Hair Oil</h4>
-        <p>A thoughtful combination for hair strength, growth, and shine — in a glass bottle that feels considered, not clinical.</p>
-      </div>
-      <div class="hamper-item">
-        <h4>After Shower Body Oil</h4>
-        <p>Non-greasy, non-sticky, all-natural almond, apricot, and coconut oils. Nourishing without the heaviness — the kind of thing people don't buy for themselves but love once they have it.</p>
-      </div>
-      <div class="hamper-item">
-        <h4>Essential Oil (10ml)</h4>
-        <p>Lavender, Sandalwood, Rosemary, Jasmine and more — for diffusing, bathing, sleep, or simple home care. One small bottle with a dozen uses.</p>
-      </div>
-      <div class="hamper-item">
-        <h4>Pack of 4 Soap Set</h4>
-        <p>Yak Milk, Himalayan Salt, Nettle, and Tuberose — in a wooden tray. A gift within the gift; the kind of thing that sits on a bathroom shelf and reminds them of you.</p>
-      </div>
-    </div>
-    <p class="hamper-note">Products included are curated per tier. All items are natural and handcrafted in Nepal.</p>
+<!-- RETREATS -->
+<div id="retreats" style="background:var(--cream);">
+<div class="section">
+  <p class="eyebrow">Standard, Premium & Luxury</p>
+  <h2 class="display">The Community<br><em>Day Retreat</em></h2>
+  <div class="rule"></div>
+  <div class="luxury-badge"><span>★★★★★</span><span>Hosted at a Luxury 5-Star Venue · Within Kathmandu Valley</span></div>
+  <p class="body-text" style="margin-bottom:0.6rem;">A full day guided by experts across four pillars: physical health, mental wellness, nutrition, and community. Pickup and drop included. All vegetarian lunch and beverages provided.</p>
+  <div class="retreat-luxury-note">★★★★★ &nbsp;All retreats are hosted exclusively at <strong>luxury 5-star venues.</strong> Your loved one will be welcomed into spaces that reflect the care you intended.</div>
+  <p style="font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--stone-dark);margin-bottom:1.2rem;">The Experts You'll Meet</p>
+  <div class="experts">
+    <div class="expert"><p class="expert-label">Physical Wellness</p><h4>Yoga & Movement Guide</h4><p>A morning yoga session for all abilities — grounding, breath-led, energising, with guidance on daily practices to continue at home.</p></div>
+    <div class="expert"><p class="expert-label">Holistic Health</p><h4>Ayurvedic Practitioner</h4><p>Personal consultation on lifestyle, body constitution, and natural remedies for pain, sleep, digestion, and energy.</p></div>
+    <div class="expert"><p class="expert-label">Mental Wellbeing</p><h4>Mental Health Guide</h4><p>A stigma-free session on emotional health — stress, sleep, anxiety, and simple daily practices for calm and resilience.</p></div>
+    <div class="expert"><p class="expert-label">Nourishment</p><h4>Nutrition Consultant</h4><p>Expert guidance on eating for energy, immunity, and longevity — specific to Nepali food culture and practical for everyday life.</p></div>
+    <div class="expert"><p class="expert-label">Therapy</p><h4>Foot Massage Therapist</h4><p>A therapeutic foot massage session for circulation, pain relief, and full-body relaxation.</p></div>
+    <div class="expert"><p class="expert-label">Community</p><h4>Facilitated Connection</h4><p>Games, shared meals, and activities to spark genuine friendships that continue beyond the retreat.</p></div>
+  </div>
+  <p style="font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--stone-dark);margin:2rem 0 0.8rem;">Also Included</p>
+  <div class="retreat-also">
+    <div class="also-item"><h5>Vegetarian Nutritious Lunch</h5><p>A wholesome, freshly prepared meal and beverages throughout the day.</p></div>
+    <div class="also-item"><h5>Pickup & Drop from Home</h5><p>Door-to-door transportation arranged by our team.</p></div>
+    <div class="also-item"><h5>Pre-Retreat Health Call</h5><p>We gather brief health info beforehand so experts are prepared to care for them individually.</p></div>
   </div>
 </div>
-
-
-<!-- TRANQUILITY -->
-<div class="tranq-section">
-  <div class="tranq-inner">
-    <p class="section-eyebrow">Our Wellness Partner</p>
-    <h2 class="section-title">In partnership with <em>Tranquility</em></h2>
-    <div class="divider"></div>
-    <div class="tranq-grid">
-      <div class="tranq-left">
-        <p>Every massage experience in a CAB plan is delivered by Tranquility — one of Nepal's most trusted wellness brands, known for their signature 90-minute Sahi Malisa and their commitment to authentic, therapeutic care.</p>
-        <p>We chose Tranquility because of their consistency, their professional standards, and their presence across multiple locations in Nepal. All locations are accessible under every CAB plan at the same price — your loved one simply chooses the branch closest and most convenient to them.</p>
-        <p>Massages are not just a relaxation session. At Premium and above, each session is preceded by an Ayurvedic consultation so the treatment is adapted to the individual's specific needs — whether that is muscle pain, fatigue, stress, or recovery. The massage follows the body, not a template.</p>
-      </div>
-      <div class="tranq-right">
-        <div class="tranq-card">
-          <h4>The Signature Sahi Malisa (90 min)</h4>
-          <p>Tranquility's signature massage — a deeply therapeutic 90-minute session designed to relieve tension, improve circulation, and leave the body genuinely restored. This is the anchor experience of every CAB plan.</p>
-        </div>
-        <div class="tranq-card">
-          <h4>All Locations, One Price</h4>
-          <p>Tranquility operates across multiple locations in Nepal. Every location is accessible under every CAB plan at the same price — your loved one chooses whichever branch feels most convenient to them, and we take care of the rest.</p>
-        </div>
-        <div class="tranq-card">
-          <h4>We Handle the Booking</h4>
-          <p>Your loved one never has to call, schedule, or coordinate. Our team books their appointments, confirms the timing, and arranges pickup and drop — door to door.</p>
-        </div>
-        <div class="tranq-card">
-          <h4>Flexible, Year-Round Redemption</h4>
-          <p>Massages in every CAB plan are redeemable at any point during the year — on their schedule, when they feel ready. No expiry pressure, no rush.</p>
-        </div>
-        <div class="tranq-card" style="border-left-color: var(--gold); background: rgba(201,168,76,0.04);">
-          <h4 style="color: var(--clay);">A Note on Customisation</h4>
-          <p>At Premium and Luxury tiers, massages are guided by an Ayurvedic doctor's consultation and tailored to the individual's condition — targeting pain, fatigue, stress, or specific concerns. Sessions can also be swapped for another Tranquility service of equivalent value. We work with your loved one directly to find what suits them best.</p>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
-
-
-<!-- COMMUNITY DAY RETREAT -->
-<div class="retreat-day-section">
-  <div class="retreat-day-inner">
-    <p class="section-eyebrow">Standard, Premium & Luxury · Within Kathmandu Valley</p>
-    <div style="display: inline-flex; align-items: center; gap: 0.6rem; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.35); padding: 0.5rem 1.2rem; margin-bottom: 1.2rem;">
-      <span style="color: var(--gold); font-size: 0.75rem;">★★★★★</span>
-      <span style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); font-family: 'Jost', -apple-system, sans-serif; font-weight: 400;">Hosted at a Luxury 5-Star Venue</span>
-    </div>
-    <h2 class="section-title">The Community<br><em>Day Retreat</em></h2>
-    <div class="divider"></div>
-    <p style="color: var(--ink-light); font-size: 0.92rem; max-width: 680px; line-height: 1.9; margin-bottom: 0.5rem;">
-      A full day curated entirely around your loved one's wellbeing — not a generic event, but a considered experience guided by experts across the four pillars that matter most: physical health, mental wellness, nutrition, and community connection.
-    </p>
-    <p style="color: var(--ink-light); font-size: 0.92rem; max-width: 680px; line-height: 1.9; margin-bottom: 0.5rem;">
-      Pickup and drop from home is included. A fully vegetarian, nutritious lunch and beverages are provided throughout the day. Small group sizes ensure every participant feels seen and attended to.
-    </p>
-    <p style="background: rgba(201,168,76,0.08); border-left: 3px solid var(--gold); padding: 0.8rem 1.2rem; font-size: 0.85rem; max-width: 680px; line-height: 1.8; margin-bottom: 3rem; color: var(--gold-light);">
-      ★★★★★ &nbsp; All retreats — day and residential — are hosted exclusively at <strong style="font-weight: 500;">luxury 5-star venues</strong>. Your loved one will be welcomed into spaces that reflect the care you intended.
-    </p>
-
-    <p style="font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--stone-dark); margin-bottom: 1.5rem; font-weight: 400;">The Experts You'll Meet</p>
-    <div class="retreat-experts">
-      <div class="expert-card">
-        <p class="expert-label">Physical Wellness</p>
-        <h4>Yoga & Movement Guide</h4>
-        <p>A morning yoga session designed for all abilities — grounding, breath-led, and energising. Followed by guidance on daily movement practices that can be continued at home for lasting benefit.</p>
-      </div>
-      <div class="expert-card">
-        <p class="expert-label">Holistic Health</p>
-        <h4>Ayurvedic Practitioner</h4>
-        <p>A personal consultation with an Ayurvedic doctor focused on lifestyle, body constitution, and natural remedies for pain relief, sleep, digestion, and daily energy. Practical guidance grounded in tradition.</p>
-      </div>
-      <div class="expert-card">
-        <p class="expert-label">Mental Wellbeing</p>
-        <h4>Mental Health Guide</h4>
-        <p>An approachable, stigma-free session on emotional health — covering stress, sleep, anxiety, and simple daily practices for calm and resilience. Not clinical, not overwhelming. Human and honest.</p>
-      </div>
-      <div class="expert-card">
-        <p class="expert-label">Nourishment</p>
-        <h4>Nutrition Consultant</h4>
-        <p>Expert guidance on eating for energy, immunity, and longevity — specific to Nepali food culture and practical for everyday life. Understanding what to eat and why, not what to avoid.</p>
-      </div>
-      <div class="expert-card">
-        <p class="expert-label">Therapy</p>
-        <h4>Foot Massage Therapist</h4>
-        <p>A therapeutic foot massage session — one of the most effective treatments for circulation, pain relief, and full-body relaxation. A moment of genuine rest in the middle of the day.</p>
-      </div>
-      <div class="expert-card">
-        <p class="expert-label">Community</p>
-        <h4>Facilitated Connection</h4>
-        <p>Light games, group activities, and shared meals designed to spark genuine connection. Many participants leave with friendships they continue beyond the retreat — that community is part of the care.</p>
-      </div>
-    </div>
-
-    <p style="font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--stone-dark); margin: 2rem 0 1rem; font-weight: 400;">The Day Also Includes</p>
-    <div class="retreat-day-also">
-      <div class="retreat-also-item">
-        <h5>Vegetarian Nutritious Lunch</h5>
-        <p>A wholesome, freshly prepared vegetarian meal and beverages throughout the day — nourishing the body as much as the sessions nourish the mind.</p>
-      </div>
-      <div class="retreat-also-item">
-        <h5>Pickup & Drop from Home</h5>
-        <p>Door-to-door transportation arranged by our team. They simply prepare to enjoy the day — we take care of everything else.</p>
-      </div>
-      <div class="retreat-also-item">
-        <h5>Pre-Retreat Health Consultation</h5>
-        <p>Before the retreat, our team gathers brief health information via a friendly call — so the experts on the day are already prepared to care for them individually.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
 
 <!-- 3-DAY RETREAT -->
-<div class="retreat-3day-section">
-  <div class="retreat-3day-inner">
-    <p class="section-eyebrow">Luxury Tier Only · Outside Kathmandu Valley</p>
-    <div style="display: inline-flex; align-items: center; gap: 0.6rem; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.35); padding: 0.5rem 1.2rem; margin-bottom: 1.2rem;">
-      <span style="color: var(--gold); font-size: 0.75rem;">★★★★★</span>
-      <span style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); font-family: 'Jost', -apple-system, sans-serif; font-weight: 400;">Residential 5-Star Luxury Resort</span>
-    </div>
-    <h2 class="section-title">The 3-Day<br><em>Residential Retreat</em></h2>
-    <div class="divider"></div>
-    <p>An immersive three-day wellness retreat away from the valley — mornings of yoga and forest walks, days of Tranquility massages, Ayurvedic care, SSJ sessions, and evenings of meditation, storytelling, and deep rest. Hosted at a luxury 5-star resort outside Kathmandu Valley. A genuinely transformative experience, gifted by you.</p>
-
-    <div class="day-tabs">
-      <button class="day-tab active" onclick="showDay('day1', this)">Day 1 — Arrival</button>
-      <button class="day-tab" onclick="showDay('day2', this)">Day 2 — Immersion</button>
-      <button class="day-tab" onclick="showDay('day3', this)">Day 3 — Return</button>
-    </div>
-
-    <div id="day1" class="day-content active">
-      <div class="schedule-list">
-        <div class="schedule-item"><span class="schedule-time">2:00–3:00 PM</span><span class="schedule-activity">Welcoming the guests — arrival, orientation, and settling in</span></div>
-        <div class="schedule-item"><span class="schedule-time">3:00–3:30 PM</span><span class="schedule-activity">Introduction to the philosophy and concept of the retreat</span></div>
-        <div class="schedule-item"><span class="schedule-time">4:00–5:00 PM</span><span class="schedule-activity">SSJ Session — Sauna, Steam & Jacuzzi</span></div>
-        <div class="schedule-item"><span class="schedule-time">5:15–6:15 PM</span><span class="schedule-activity">Ayurvedic Malisa — traditional therapeutic massage</span></div>
-        <div class="schedule-item"><span class="schedule-time">6:15–7:00 PM</span><span class="schedule-activity">Intermission — free time, rest, exploration</span></div>
-        <div class="schedule-item"><span class="schedule-time">7:00–8:00 PM</span><span class="schedule-activity">Dinner — nutritious, vegetarian, communal</span></div>
-        <div class="schedule-item"><span class="schedule-time">8:00–8:30 PM</span><span class="schedule-activity">Evening walk around the resort</span></div>
-        <div class="schedule-item"><span class="schedule-time">8:30–9:00 PM</span><span class="schedule-activity">Trataka Session — candle gazing for focus and calm</span></div>
-        <div class="schedule-item"><span class="schedule-time">9:00–10:00 PM</span><span class="schedule-activity">Guest storytelling and introductions — community connection</span></div>
-        <div class="schedule-item"><span class="schedule-time">10:00 PM</span><span class="schedule-activity">BP and sugar check — Ayurvedic doctor's visit</span></div>
-      </div>
-    </div>
-
-    <div id="day2" class="day-content">
-      <div class="schedule-list">
-        <div class="schedule-item"><span class="schedule-time">6:00–7:30 AM</span><span class="schedule-activity">Stretch & Strength Yoga Session</span></div>
-        <div class="schedule-item"><span class="schedule-time">7:30–8:00 AM</span><span class="schedule-activity">Breakfast</span></div>
-        <div class="schedule-item"><span class="schedule-time">8:30–9:30 AM</span><span class="schedule-activity">Personal Ayurvedic Doctor Consultations</span></div>
-        <div class="schedule-item"><span class="schedule-time">9:30–10:30 AM</span><span class="schedule-activity">A short forest walk — grounding and nature therapy</span></div>
-        <div class="schedule-item"><span class="schedule-time">11:00 AM–12:30 PM</span><span class="schedule-activity">Tranquility Sahi Malisa — 90-minute signature massage</span></div>
-        <div class="schedule-item"><span class="schedule-time">12:30–1:30 PM</span><span class="schedule-activity">Lunch</span></div>
-        <div class="schedule-item"><span class="schedule-time">1:30–2:30 PM</span><span class="schedule-activity">Free time / Rest</span></div>
-        <div class="schedule-item"><span class="schedule-time">2:30–3:30 PM</span><span class="schedule-activity">Aqua Yoga</span></div>
-        <div class="schedule-item"><span class="schedule-time">3:30–4:15 PM</span><span class="schedule-activity">SSJ — Sauna, Steam & Jacuzzi</span></div>
-        <div class="schedule-item"><span class="schedule-time">4:15–6:30 PM</span><span class="schedule-activity">Facial Therapy and Hot Foot Immersion with Epsom Salt</span></div>
-        <div class="schedule-item"><span class="schedule-time">6:30–7:00 PM</span><span class="schedule-activity">Intermission</span></div>
-        <div class="schedule-item"><span class="schedule-time">7:00–8:00 PM</span><span class="schedule-activity">Dinner</span></div>
-        <div class="schedule-item"><span class="schedule-time">8:00–8:30 PM</span><span class="schedule-activity">Walk around the resort</span></div>
-        <div class="schedule-item"><span class="schedule-time">8:30–9:00 PM</span><span class="schedule-activity">Chakra Meditation</span></div>
-        <div class="schedule-item"><span class="schedule-time">9:00 PM+</span><span class="schedule-activity">Evening serenity — quiet rest and reflection</span></div>
-        <div class="schedule-item"><span class="schedule-time">10:00 PM</span><span class="schedule-activity">BP and sugar check — Ayurvedic doctor's visit</span></div>
-      </div>
-    </div>
-
-    <div id="day3" class="day-content">
-      <div class="schedule-list">
-        <div class="schedule-item"><span class="schedule-time">6:00–7:30 AM</span><span class="schedule-activity">Surya Namaskara — Sun Salutation practice</span></div>
-        <div class="schedule-item"><span class="schedule-time">7:30–8:00 AM</span><span class="schedule-activity">Breakfast</span></div>
-        <div class="schedule-item"><span class="schedule-time">8:30–10:00 AM</span><span class="schedule-activity">Temple visit — spiritual grounding and cultural connection</span></div>
-        <div class="schedule-item"><span class="schedule-time">10:30–11:30 AM</span><span class="schedule-activity">Head and Shoulder Massage</span></div>
-        <div class="schedule-item"><span class="schedule-time">11:45 AM–12:30 PM</span><span class="schedule-activity">Deep Relaxation Session</span></div>
-        <div class="schedule-item"><span class="schedule-time">12:30–1:30 PM</span><span class="schedule-activity">Lunch — a final communal meal</span></div>
-        <div class="schedule-item"><span class="schedule-time">1:30 PM</span><span class="schedule-activity">Checkout — returning home, restored</span></div>
-      </div>
-    </div>
-
+<div style="background:var(--forest);">
+<div class="section">
+  <p class="eyebrow eyebrow-light">Luxury Tier Only</p>
+  <h2 class="display display-light">The 3-Day<br><em>Residential Retreat</em></h2>
+  <div class="rule rule-dark"></div>
+  <div class="luxury-badge"><span>★★★★★</span><span>Residential 5-Star Luxury Resort · Outside Kathmandu Valley</span></div>
+  <p class="body-text body-text-light" style="margin-bottom:2rem;">Three days away from the valley — yoga at dawn, forest walks, Tranquility massages, Ayurvedic care, SSJ sessions, and evenings of meditation, storytelling, and deep rest.</p>
+  <div class="day-tabs">
+    <button class="day-tab active" onclick="showDay('d1',this)">Day 1 — Arrival</button>
+    <button class="day-tab" onclick="showDay('d2',this)">Day 2 — Immersion</button>
+    <button class="day-tab" onclick="showDay('d3',this)">Day 3 — Return</button>
   </div>
-</div>
-
-
-<!-- AAMA RA BABA / DUO -->
-<div class="couple-section">
-  <div class="couple-inner">
-    <div class="couple-grid">
-      <div class="couple-left">
-        <p class="section-eyebrow">For Two</p>
-        <h2 class="section-title"><em>Aama ra Buwa</em><br><span style="font-size: 1.4rem; font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-weight: 300; font-style: normal; color: var(--ink-light);">& the Duo Gift</span></h2>
-        <div class="divider"></div>
-        <p>Some people are gifting their parents. Others are gifting a grandmother and her sister. Or two people who mean everything to them. The Duo Gift is for any two people you want to care for together.</p>
-        <p><em style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1.05rem; color: var(--forest);">Aama ra Buwa</em> — Mum and Dad — is what most people have in mind. But this is your gift, for whoever matters to you.</p>
-        <p>When you purchase the same plan for two people, you receive 15% off the combined price. Since many costs — pickup routes, retreat seats, coordination — are shared when two people go together, you pay less, and they experience more.</p>
-        <p style="font-size: 0.82rem; color: var(--stone-dark); font-style: italic;">Mix-and-match tiers available on request — simply message us.</p>
-        <a href="https://wa.me/9779815045480?text=Hi%2C%20I%20came%20across%20the%20CAB%20%E2%80%94%20Care%20Across%20Borders%20brochure%20and%20would%20love%20to%20know%20more%20about%20the%20plans." class="btn-primary" style="margin-top: 1.5rem; display: inline-flex;">↗ Gift for Two</a>
-      </div>
-      <div>
-        <table class="couple-table">
-          <thead>
-            <tr>
-              <th>Plan</th>
-              <th>Single</th>
-              <th>Duo (15% off)</th>
-              <th>Saving</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Care Starter</td>
-              <td>$199</td>
-              <td>$338</td>
-              <td><span class="savings-tag">Save $60</span></td>
-            </tr>
-            <tr>
-              <td>Wellness Circle</td>
-              <td>$349</td>
-              <td>$593</td>
-              <td><span class="savings-tag">Save $105</span></td>
-            </tr>
-            <tr>
-              <td>Full Care</td>
-              <td>$499</td>
-              <td>$848</td>
-              <td><span class="savings-tag">Save $150</span></td>
-            </tr>
-            <tr>
-              <td>Total Sanctuary</td>
-              <td>$1,099</td>
-              <td>$1,868</td>
-              <td><span class="savings-tag">Save $330</span></td>
-            </tr>
-          </tbody>
-        </table>
-        <p style="font-size: 0.75rem; color: var(--ink-light); margin-top: 1rem; font-style: italic;">Same tier for two people. Shared pickup, same retreat dates, one seamless experience.</p>
-      </div>
+  <div id="d1" class="day-content active">
+    <div class="schedule">
+      <div class="sched-item"><span class="sched-time">2:00–3:00 PM</span><span class="sched-act">Welcoming guests — arrival, orientation, settling in</span></div>
+      <div class="sched-item"><span class="sched-time">3:00–3:30 PM</span><span class="sched-act">Introduction to the philosophy of the retreat</span></div>
+      <div class="sched-item"><span class="sched-time">4:00–5:00 PM</span><span class="sched-act">SSJ Session — Sauna, Steam & Jacuzzi</span></div>
+      <div class="sched-item"><span class="sched-time">5:15–6:15 PM</span><span class="sched-act">Ayurvedic Malisa — traditional therapeutic massage</span></div>
+      <div class="sched-item"><span class="sched-time">7:00–8:00 PM</span><span class="sched-act">Dinner — nutritious, vegetarian, communal</span></div>
+      <div class="sched-item"><span class="sched-time">8:30–9:00 PM</span><span class="sched-act">Trataka Session — candle gazing for focus and calm</span></div>
+      <div class="sched-item"><span class="sched-time">9:00–10:00 PM</span><span class="sched-act">Guest storytelling and introductions</span></div>
+      <div class="sched-item"><span class="sched-time">10:00 PM</span><span class="sched-act">BP and sugar check — Ayurvedic doctor's visit</span></div>
+    </div>
+  </div>
+  <div id="d2" class="day-content">
+    <div class="schedule">
+      <div class="sched-item"><span class="sched-time">6:00–7:30 AM</span><span class="sched-act">Stretch & Strength Yoga Session</span></div>
+      <div class="sched-item"><span class="sched-time">8:30–9:30 AM</span><span class="sched-act">Personal Ayurvedic Doctor Consultations</span></div>
+      <div class="sched-item"><span class="sched-time">9:30–10:30 AM</span><span class="sched-act">Short forest walk — grounding and nature therapy</span></div>
+      <div class="sched-item"><span class="sched-time">11:00 AM–12:30 PM</span><span class="sched-act">Tranquility Sahi Malisa — 90-minute signature massage</span></div>
+      <div class="sched-item"><span class="sched-time">2:30–3:30 PM</span><span class="sched-act">Aqua Yoga</span></div>
+      <div class="sched-item"><span class="sched-time">3:30–4:15 PM</span><span class="sched-act">SSJ — Sauna, Steam & Jacuzzi</span></div>
+      <div class="sched-item"><span class="sched-time">4:15–6:30 PM</span><span class="sched-act">Facial Therapy and Hot Foot Immersion with Epsom Salt</span></div>
+      <div class="sched-item"><span class="sched-time">8:30–9:00 PM</span><span class="sched-act">Chakra Meditation</span></div>
+      <div class="sched-item"><span class="sched-time">10:00 PM</span><span class="sched-act">BP and sugar check — Ayurvedic doctor's visit</span></div>
+    </div>
+  </div>
+  <div id="d3" class="day-content">
+    <div class="schedule">
+      <div class="sched-item"><span class="sched-time">6:00–7:30 AM</span><span class="sched-act">Surya Namaskara — Sun Salutation practice</span></div>
+      <div class="sched-item"><span class="sched-time">8:30–10:00 AM</span><span class="sched-act">Temple visit — spiritual grounding and cultural connection</span></div>
+      <div class="sched-item"><span class="sched-time">10:30–11:30 AM</span><span class="sched-act">Head and Shoulder Massage</span></div>
+      <div class="sched-item"><span class="sched-time">11:45 AM–12:30 PM</span><span class="sched-act">Deep Relaxation Session</span></div>
+      <div class="sched-item"><span class="sched-time">12:30–1:30 PM</span><span class="sched-act">Lunch — a final communal meal</span></div>
+      <div class="sched-item"><span class="sched-time">1:30 PM</span><span class="sched-act">Checkout — returning home, restored</span></div>
     </div>
   </div>
 </div>
+</div>
 
-
-<!-- VALUE FOR MONEY -->
-<div class="value-section">
-  <div class="value-inner">
-    <p class="section-eyebrow">What You're Actually Getting</p>
-    <h2 class="section-title">The value,<br><em>laid out clearly</em></h2>
-    <div class="divider"></div>
-    <p class="value-intro">We know you'll do the math. So here it is — what each plan would cost if you were to book and coordinate everything yourself, at market rates in Nepal, converted to USD. CAB brings it to you bundled, coordinated, and cared for.</p>
-
-    <div class="value-tables">
-
-      <!-- BASIC -->
-      <div class="value-tier-block">
-        <p class="value-tier-label">Basic</p>
-        <p class="value-tier-name">Pahilo Kadam — The Care Starter</p>
-        <table class="value-table">
-          <thead><tr><th>What's Included</th><th>Detail</th><th>Market Value</th></tr></thead>
-          <tbody>
-            <tr><td>Tranquility Signature Massage</td><td>2× 90-min sessions at NPR 9,000 each</td><td>~$133</td></tr>
-            <tr><td>Wellness Hamper</td><td>4 handcrafted natural wellness products at NPR 1,200–1,500 each</td><td>~$40–45</td></tr>
-            <tr><td>Pickup & Drop</td><td>2× round-trip coordination</td><td>~$15</td></tr>
-            <tr><td>Personal welcome call & year-round follow-up</td><td>Concierge coordination, booking support</td><td>Included</td></tr>
-            <tr><td>Gifting presentation</td><td>Branded box, ribbon, personal card</td><td>~$8</td></tr>
-            <tr class="total-row"><td>Total standalone market value</td><td></td><td class="total-value">~$196–201</td></tr>
-            <tr class="cab-row"><td>CAB Plan Price</td><td></td><td class="cab-price">$199</td></tr>
-          </tbody>
-        </table>
-        <p style="font-size: 0.75rem; color: var(--stone-dark); margin-top: 0.6rem; font-style: italic;">The premium reflects the coordination, the gifting ritual, and the guarantee that it's spent on them — not absorbed elsewhere.</p>
-      </div>
-
-      <!-- STANDARD -->
-      <div class="value-tier-block">
-        <p class="value-tier-label">Standard</p>
-        <p class="value-tier-name">Purnata — The Wellness Circle</p>
-        <table class="value-table">
-          <thead><tr><th>What's Included</th><th>Detail</th><th>Market Value</th></tr></thead>
-          <tbody>
-            <tr><td>Tranquility Signature Massage</td><td>3× 90-min sessions at NPR 9,000 each</td><td>~$200</td></tr>
-            <tr><td>Wellness Hamper</td><td>5–6 products at NPR 1,200–1,500 each</td><td>$53–67</td></tr>
-            <tr><td>Community Day Retreat</td><td>Yoga, Ayurvedic consult, mental health session, nutrition expert, foot massage, vegetarian lunch & beverages</td><td>$100–120</td></tr>
-            <tr><td>Pickup & Drop</td><td>4× round-trip coordination</td><td>~$30</td></tr>
-            <tr><td>Concierge coordination & follow-up</td><td>Year-round personal support</td><td>Included</td></tr>
-            <tr class="total-row"><td>Total standalone market value</td><td></td><td class="total-value">~$383–417</td></tr>
-            <tr class="cab-row"><td>CAB Plan Price</td><td></td><td class="cab-price">$349</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- PREMIUM -->
-      <div class="value-tier-block">
-        <p class="value-tier-label">Premium · Most Chosen</p>
-        <p class="value-tier-name">Sampurna Sewa — The Full Care</p>
-        <table class="value-table">
-          <thead><tr><th>What's Included</th><th>Detail</th><th>Market Value</th></tr></thead>
-          <tbody>
-            <tr><td>Tranquility Signature Massage</td><td>5× 90-min sessions at NPR 9,000 each</td><td>~$333</td></tr>
-            <tr><td>Wellness Hamper</td><td>7–8 products at NPR 1,200–1,500 each</td><td>$62–89</td></tr>
-            <tr><td>Community Day Retreat</td><td>Full-day with personal Ayurvedic consultation, vegetarian lunch & beverages</td><td>$100–120</td></tr>
-            <tr><td>1× Therapy Massage</td><td>Prescribed by Ayurvedic doctor per individual need</td><td>~$30–40</td></tr>
-            <tr><td>Pickup & Drop</td><td>6× round-trip coordination</td><td>~$45</td></tr>
-            <tr><td>Dedicated CAB coordinator</td><td>Personal point of contact all year</td><td>Included</td></tr>
-            <tr class="total-row"><td>Total standalone market value</td><td></td><td class="total-value">~$570–627</td></tr>
-            <tr class="cab-row"><td>CAB Plan Price</td><td></td><td class="cab-price">$499</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- LUXURY -->
-      <div class="value-tier-block">
-        <p class="value-tier-label">Luxury</p>
-        <p class="value-tier-name">Param Shanti — Total Sanctuary</p>
-        <table class="value-table">
-          <thead><tr><th>What's Included</th><th>Detail</th><th>Market Value</th></tr></thead>
-          <tbody>
-            <tr><td>Tranquility Signature Massage</td><td>6× 90-min sessions at NPR 9,000 each</td><td>~$400</td></tr>
-            <tr><td>Wellness Hamper</td><td>9–11 products at NPR 1,200–1,500 each</td><td>$80–111</td></tr>
-            <tr><td>Community Day Retreat</td><td>Full-day wellness retreat within the valley, vegetarian lunch & beverages</td><td>$100–120</td></tr>
-            <tr><td>3-Day Residential Retreat</td><td>Outside Kathmandu Valley — accommodation, all meals, full programme</td><td>~$370–500</td></tr>
-            <tr><td>2× Therapy Sessions</td><td>Ayurvedic doctor prescribed, personalised</td><td>~$60–80</td></tr>
-            <tr><td>Pickup & Drop</td><td>8+ coordinated trips across all experiences</td><td>~$60</td></tr>
-            <tr><td>Dedicated CAB concierge</td><td>Hands-on personal care all year</td><td>Included</td></tr>
-            <tr class="total-row"><td>Total standalone market value</td><td></td><td class="total-value">~$1,070–1,271</td></tr>
-            <tr class="cab-row"><td>CAB Plan Price</td><td></td><td class="cab-price">$1,099</td></tr>
-          </tbody>
-        </table>
-      </div>
-
+<!-- TRANQUILITY -->
+<div style="background:var(--warm);">
+<div class="section">
+  <p class="eyebrow">Our Wellness Partner</p>
+  <h2 class="display">In partnership with <em>Tranquility</em></h2>
+  <div class="rule"></div>
+  <div class="tranq-grid">
+    <div>
+      <p class="body-text">Every massage is delivered by Tranquility — one of Nepal's most trusted wellness brands, known for their signature 90-minute Sahi Malisa. We chose them for their consistency, professional standards, and presence across multiple locations in Nepal.</p>
+      <p class="body-text" style="margin-top:1rem;">All Tranquility locations are accessible under every plan at the same price — your loved one simply chooses the branch most convenient to them. We handle all booking and transportation.</p>
     </div>
-    <div class="value-note">
-      Market values are estimated in USD at ~NPR 150/USD and reflect individual booking rates. CAB plans include coordination, concierge follow-up, and the gifting experience — elements that have no direct market equivalent but are central to what makes CAB meaningful.
+    <div class="tranq-cards">
+      <div class="tranq-card"><h4>The Signature Sahi Malisa (90 min)</h4><p>A deeply therapeutic session to relieve tension, improve circulation, and restore the body.</p></div>
+      <div class="tranq-card"><h4>All Locations, One Price</h4><p>Multiple locations across Nepal. Your loved one chooses the branch closest to them — we take care of the rest.</p></div>
+      <div class="tranq-card"><h4>Flexible Year-Round Redemption</h4><p>Massages are redeemable any time during the year. No pressure, no rush.</p></div>
+      <div class="tranq-card highlight"><h4>A Note on Customisation</h4><p>At Premium and Luxury tiers, massages are guided by Ayurvedic consultation and tailored to individual needs. Sessions can also be swapped for an equivalent Tranquility service. We work with your loved one directly.</p></div>
     </div>
   </div>
 </div>
+</div>
 
+<!-- HAMPER -->
+<div style="background:var(--cream);">
+<div class="section">
+  <p class="eyebrow">Included in Every Plan</p>
+  <h2 class="display">The <em>Wellness Hamper</em></h2>
+  <div class="rule"></div>
+  <p class="body-text">Handcrafted, natural wellness products made in Nepal — beautifully presented with tissue, ribbon, and your personal card. Delivered on a date that means something.</p>
+  <div class="hamper-grid">
+    <div class="hamper-item"><h4>Pain Relief Kizhi Potli</h4><p>Special Nepali herbs for muscle pain relief — warm, traditional, deeply comforting.</p></div>
+    <div class="hamper-item"><h4>Ayurvedic Massage Oil</h4><p>Fresh lemongrass blend — pairs with the Potli for a gentle home self-care ritual.</p></div>
+    <div class="hamper-item"><h4>Goat / Yak Milk Soap Bars</h4><p>Cold-pressed, handmade with real milk. Gentle, natural, and genuinely luxurious.</p></div>
+    <div class="hamper-item"><h4>Himalayan Bath Salts</h4><p>Lavender, Rose, or Jasmine — a small daily ritual that signals the day is for them.</p></div>
+    <div class="hamper-item"><h4>Natural Body Scrubs</h4><p>Coconut oil, rice flour, chickpeas, and essential oils. Indulgent and entirely natural.</p></div>
+    <div class="hamper-item"><h4>Rosemary & Ginger Hair Oil</h4><p>For hair strength, growth, and shine — in a glass bottle that feels considered.</p></div>
+    <div class="hamper-item"><h4>After Shower Body Oil</h4><p>Non-greasy, all-natural almond, apricot and coconut oils. Nourishing without heaviness.</p></div>
+    <div class="hamper-item"><h4>Essential Oil (10ml)</h4><p>Lavender, Sandalwood, Jasmine and more — for diffusing, bathing, sleep, or home care.</p></div>
+    <div class="hamper-item"><h4>Pack of 4 Soap Set</h4><p>Yak Milk, Himalayan Salt, Nettle and Tuberose in a wooden tray. A gift within the gift.</p></div>
+  </div>
+  <p style="font-size:0.75rem;color:var(--ink-light);font-style:italic;text-align:center;margin-top:1.5rem;">Products curated per tier. All natural, handcrafted in Nepal.</p>
+</div>
+</div>
 
-<!-- PILOT -->
-<div class="pilot-section">
-  <div class="pilot-inner">
-    <p class="section-eyebrow">Now Open</p>
-    <h2 class="section-title" style="color: var(--warm-white);">The CAB <em style="color: var(--gold-light);">Pilot</em></h2>
-    <div class="divider" style="background: var(--stone-dark);"></div>
-    <div class="pilot-limit">Limited to 30 families · Founding Edition</div>
-    <p style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1.15rem; font-style: italic; color: var(--stone); text-align: center; margin-bottom: 2rem; max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.7;">Be one of the first 30 families to experience CAB — your feedback shapes what we become.</p>
-
-    <div class="pilot-grid">
-      <div class="pilot-col">
-        <p>Before CAB opens to the full community, we are welcoming 30 founding families to be part of the pilot. These prices are our pilot prices — set for this founding group as we build, learn, and refine the experience together.</p>
-        <p>Pilot families receive the full CAB experience — every element of their chosen plan, the personal follow-up, the coordination, the retreats. Nothing is cut. You simply get to be first.</p>
-        <p>As a pilot family, you will be dealing <strong style="color: var(--gold-light); font-weight: 400;">directly with the founders</strong> — one on one. CAB is not yet a large operation. We have exactly what is needed to care for 30 families, and not a person more. That means your loved one gets the kind of personal attention that no scaled business can offer. We will know their name, their health, their preferences, and their story. This is the most hands-on, founder-led care CAB will ever offer — and you get it at pilot prices.</p>
-        <p style="font-weight: 400; color: var(--gold-light);">What to know about the Pilot</p>
-        <div class="pilot-includes">
-          <div class="pilot-include-item">The Community Day Retreat takes place within Kathmandu Valley.</div>
-          <div class="pilot-include-item">The 3-Day Residential Retreat (Total Sanctuary) takes place outside the valley at a curated luxury retreat venue.</div>
-          <div class="pilot-include-item">Total Sanctuary includes one Community Day Retreat during the pilot period.</div>
-          <div class="pilot-include-item">You get direct access to the founders — your feedback shapes what CAB becomes.</div>
-          <div class="pilot-include-item">All plan inclusions are exactly as described throughout this brochure.</div>
-        </div>
-      </div>
-      <div class="pilot-col">
-        <div class="pilot-prices">
-          <h4>Pilot Prices — Founding 30 Families</h4>
-          <div class="pilot-price-row">
-            <span class="plan-name">Care Starter</span>
-            <span class="prices"><span class="pilot-p">$199</span></span>
-          </div>
-          <div class="pilot-price-row">
-            <span class="plan-name">Wellness Circle</span>
-            <span class="prices"><span class="pilot-p">$349</span></span>
-          </div>
-          <div class="pilot-price-row">
-            <span class="plan-name">Full Care</span>
-            <span class="prices"><span class="pilot-p">$499</span></span>
-          </div>
-          <div class="pilot-price-row">
-            <span class="plan-name">Total Sanctuary</span>
-            <span class="prices"><span class="pilot-p">$1,099</span></span>
-          </div>
-          <div class="pilot-price-row" style="border-top: 1px solid rgba(200,184,154,0.15); margin-top: 0.5rem; padding-top: 0.75rem;">
-            <span class="plan-name">Duo — Care Starter</span>
-            <span class="prices"><span class="pilot-p">$338</span></span>
-          </div>
-          <div class="pilot-price-row">
-            <span class="plan-name">Duo — Wellness Circle</span>
-            <span class="prices"><span class="pilot-p">$593</span></span>
-          </div>
-          <div class="pilot-price-row">
-            <span class="plan-name">Duo — Full Care</span>
-            <span class="prices"><span class="pilot-p">$848</span></span>
-          </div>
-          <div class="pilot-price-row">
-            <span class="plan-name">Duo — Total Sanctuary</span>
-            <span class="prices"><span class="pilot-p">$1,868</span></span>
-          </div>
-        </div>
-        <div class="pilot-cta">
-          <a href="https://wa.me/9779815045480?text=Hi%2C%20I%20came%20across%20the%20CAB%20%E2%80%94%20Care%20Across%20Borders%20brochure%20and%20would%20love%20to%20know%20more%20about%20the%20plans." class="btn-primary" style="width: 100%; justify-content: center;">↗ Reserve Your Spot on WhatsApp</a>
-          <a href="mailto:careacrossborder@gmail.com?subject=CAB%20Pilot%20Enquiry&body=Hi%2C%20I%20came%20across%20the%20CAB%20brochure%20and%20would%20love%20to%20know%20more%20about%20the%20plans." style="display: block; text-align: center; margin-top: 0.8rem; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone-dark); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='var(--stone)'" onmouseout="this.style.color='var(--stone-dark)'">Or email us · careacrossborder@gmail.com</a>
-          <p class="pilot-note">30 spots only. Message us to secure yours.</p>
-        </div>
-      </div>
+<!-- DUO -->
+<div style="background:var(--warm);">
+<div class="section">
+  <div class="duo-grid">
+    <div>
+      <p class="eyebrow">For Two</p>
+      <h2 class="display"><em>Aama ra Buwa</em><br><span style="font-size:1.3rem;font-weight:300;font-style:normal;color:var(--ink-light);">& the Duo Gift</span></h2>
+      <div class="rule"></div>
+      <p class="body-text">A mother and daughter. A couple who deserve a retreat together. Two friends who have always talked about doing something like this. The Duo Gift is for any two people in your life who you want to experience care, together — whoever that means to you.</p>
+      <p class="body-text" style="margin-top:1rem;">Purchase the same plan for two people and receive 15% off. Shared pickup, same retreat dates, one seamless experience.</p>
+      <p style="font-size:0.75rem;color:var(--stone-dark);font-style:italic;margin-top:1rem;">Mix-and-match tiers available on request.</p>
+      <a href="#" class="btn-gold" style="display:inline-flex;margin-top:1.5rem;" onclick="openGiftModal();return false;">↗ Gift for Two</a>
     </div>
-
-    <div style="margin-top: 3rem; border-top: 1px solid rgba(200,184,154,0.15); padding-top: 2.5rem;">
-      <p style="font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--stone-dark); margin-bottom: 0.6rem; font-weight: 400;">Pilot vs Full Launch Pricing</p>
-      <p style="font-size: 0.85rem; color: var(--stone); line-height: 1.8; margin-bottom: 1.5rem; max-width: 640px;">When CAB opens to the wider community, all plans will be priced at approximately 20% above what you see here. The table below shows exactly what you save by being part of the founding 30.</p>
-      <table style="width: 100%; border-collapse: collapse; font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;">
-        <thead>
-          <tr>
-            <th style="font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone-dark); padding: 0.6rem 1rem; text-align: left; border-bottom: 1px solid rgba(200,184,154,0.15); font-weight: 400;">Plan</th>
-            <th style="font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); padding: 0.6rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.15); font-weight: 400;">Pilot Price</th>
-            <th style="font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone-dark); padding: 0.6rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.15); font-weight: 400;">Full Launch Price</th>
-            <th style="font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone-dark); padding: 0.6rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.15); font-weight: 400;">You Save</th>
-          </tr>
-        </thead>
+    <div>
+      <table class="duo-table">
+        <thead><tr><th>Plan</th><th>Single</th><th>Duo (15% off)</th><th>Saving</th></tr></thead>
         <tbody>
-          <tr>
-            <td style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 0.95rem; color: var(--warm-white); padding: 0.65rem 1rem; border-bottom: 1px solid rgba(200,184,154,0.06);">Care Starter</td>
-            <td style="font-size: 0.88rem; color: var(--gold-light); padding: 0.65rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.06); font-weight: 500;">$199</td>
-            <td style="font-size: 0.88rem; color: var(--stone-dark); padding: 0.65rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.06);">~$239</td>
-            <td style="font-size: 0.88rem; color: var(--stone); padding: 0.65rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.06);">$40</td>
-          </tr>
-          <tr>
-            <td style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 0.95rem; color: var(--warm-white); padding: 0.65rem 1rem; border-bottom: 1px solid rgba(200,184,154,0.06);">Wellness Circle</td>
-            <td style="font-size: 0.88rem; color: var(--gold-light); padding: 0.65rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.06); font-weight: 500;">$349</td>
-            <td style="font-size: 0.88rem; color: var(--stone-dark); padding: 0.65rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.06);">~$419</td>
-            <td style="font-size: 0.88rem; color: var(--stone); padding: 0.65rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.06);">$70</td>
-          </tr>
-          <tr>
-            <td style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 0.95rem; color: var(--warm-white); padding: 0.65rem 1rem; border-bottom: 1px solid rgba(200,184,154,0.06);">Full Care</td>
-            <td style="font-size: 0.88rem; color: var(--gold-light); padding: 0.65rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.06); font-weight: 500;">$499</td>
-            <td style="font-size: 0.88rem; color: var(--stone-dark); padding: 0.65rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.06);">~$599</td>
-            <td style="font-size: 0.88rem; color: var(--stone); padding: 0.65rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.06);">$100</td>
-          </tr>
-          <tr>
-            <td style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 0.95rem; color: var(--warm-white); padding: 0.65rem 1rem; border-bottom: 1px solid rgba(200,184,154,0.06);">Total Sanctuary</td>
-            <td style="font-size: 0.88rem; color: var(--gold-light); padding: 0.65rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.06); font-weight: 500;">$1,099</td>
-            <td style="font-size: 0.88rem; color: var(--stone-dark); padding: 0.65rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.06);">~$1,319</td>
-            <td style="font-size: 0.88rem; color: var(--stone); padding: 0.65rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.06);">$220</td>
-          </tr>
-          <tr style="border-top: 1px solid rgba(200,184,154,0.15);">
-            <td style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 0.95rem; color: var(--warm-white); padding: 0.75rem 1rem; border-bottom: 1px solid rgba(200,184,154,0.06);">Duo — Care Starter</td>
-            <td style="font-size: 0.88rem; color: var(--gold-light); padding: 0.75rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.06); font-weight: 500;">$338</td>
-            <td style="font-size: 0.88rem; color: var(--stone-dark); padding: 0.75rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.06);">~$406</td>
-            <td style="font-size: 0.88rem; color: var(--stone); padding: 0.75rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.06);">$68</td>
-          </tr>
-          <tr>
-            <td style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 0.95rem; color: var(--warm-white); padding: 0.65rem 1rem; border-bottom: 1px solid rgba(200,184,154,0.06);">Duo — Wellness Circle</td>
-            <td style="font-size: 0.88rem; color: var(--gold-light); padding: 0.65rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.06); font-weight: 500;">$593</td>
-            <td style="font-size: 0.88rem; color: var(--stone-dark); padding: 0.65rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.06);">~$712</td>
-            <td style="font-size: 0.88rem; color: var(--stone); padding: 0.65rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.06);">$119</td>
-          </tr>
-          <tr>
-            <td style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 0.95rem; color: var(--warm-white); padding: 0.65rem 1rem; border-bottom: 1px solid rgba(200,184,154,0.06);">Duo — Full Care</td>
-            <td style="font-size: 0.88rem; color: var(--gold-light); padding: 0.65rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.06); font-weight: 500;">$848</td>
-            <td style="font-size: 0.88rem; color: var(--stone-dark); padding: 0.65rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.06);">~$1,018</td>
-            <td style="font-size: 0.88rem; color: var(--stone); padding: 0.65rem 1rem; text-align: right; border-bottom: 1px solid rgba(200,184,154,0.06);">$170</td>
-          </tr>
-          <tr>
-            <td style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 0.95rem; color: var(--warm-white); padding: 0.65rem 1rem; border-bottom: none;">Duo — Total Sanctuary</td>
-            <td style="font-size: 0.88rem; color: var(--gold-light); padding: 0.65rem 1rem; text-align: right; border-bottom: none; font-weight: 500;">$1,868</td>
-            <td style="font-size: 0.88rem; color: var(--stone-dark); padding: 0.65rem 1rem; text-align: right; border-bottom: none;">~$2,242</td>
-            <td style="font-size: 0.88rem; color: var(--stone); padding: 0.65rem 1rem; text-align: right; border-bottom: none;">$374</td>
-          </tr>
+          <tr><td>Care Starter</td><td>$199</td><td>$338</td><td><span class="save-tag">$60</span></td></tr>
+          <tr><td>Wellness Circle</td><td>$349</td><td>$593</td><td><span class="save-tag">$105</span></td></tr>
+          <tr><td>Full Care</td><td>$499</td><td>$848</td><td><span class="save-tag">$150</span></td></tr>
+          <tr><td>Total Sanctuary</td><td>$1,099</td><td>$1,868</td><td><span class="save-tag">$330</span></td></tr>
         </tbody>
       </table>
-      <p style="font-size: 0.72rem; color: var(--stone-dark); margin-top: 0.8rem; font-style: italic;">Full launch prices are indicative and subject to change. Pilot pricing is locked for all 30 founding families for their full plan year.</p>
-    </div>
-
-    <div style="margin-top: 3rem; border-top: 1px solid rgba(200,184,154,0.15); padding-top: 2.5rem;">
-      <p style="font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--stone-dark); margin-bottom: 1.2rem; font-weight: 400;">Refund & Cancellation Policy</p>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
-        <div style="background: rgba(200,184,154,0.06); border: 1px solid rgba(200,184,154,0.12); padding: 1.4rem 1.6rem;">
-          <h4 style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1rem; color: var(--warm-white); margin-bottom: 0.5rem; font-weight: 500;">Massages & Hamper</h4>
-          <p style="font-size: 0.8rem; color: var(--stone); line-height: 1.7;">Massage appointments can be rescheduled with 24 hours notice. If a plan is cancelled before any services have been used, a full refund is available within 7 days of purchase. Once massages have been redeemed, those sessions are non-refundable. The Wellness Hamper is non-refundable once dispatched.</p>
-        </div>
-        <div style="background: rgba(200,184,154,0.06); border: 1px solid rgba(201,168,76,0.2); padding: 1.4rem 1.6rem;">
-          <h4 style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1rem; color: var(--gold-light); margin-bottom: 0.5rem; font-weight: 500;">Retreats — Important</h4>
-          <p style="font-size: 0.8rem; color: var(--stone); line-height: 1.7;">All retreats — Community Day Retreats and the 3-Day Residential Retreat — are held on fixed, pre-announced dates. <strong style="color: var(--warm-white); font-weight: 400;">If a retreat date is missed, it cannot be rescheduled or refunded.</strong> We notify all participants well in advance and coordinate pickup personally to ensure no one misses their day.</p>
-        </div>
-      </div>
-      <p style="font-size: 0.75rem; color: var(--stone-dark); margin-top: 1rem; font-style: italic; line-height: 1.7;">For any questions about your plan, write to us at careacrossborder@gmail.com or message us on WhatsApp.</p>
     </div>
   </div>
 </div>
+</div>
 
+<!-- OCCASIONS -->
+<div style="background:var(--cream);">
+<div class="section">
+  <p class="eyebrow">Every Moment Is a Reason</p>
+  <h2 class="display">A gift for every <em>occasion</em></h2>
+  <div class="rule"></div>
+  <p class="body-text" style="margin-bottom:0;">Plans are delivered on any date you choose. There are more reasons to gift than you might realise.</p>
+  <div class="occasions-grid">
+    <div class="occasion"><p class="occasion-month">January</p><p class="occasion-name">New Year</p><p class="occasion-desc"><span class="occasion-nepali">नयाँ वर्षको शुभकामना —</span> start their year with care.</p></div>
+    <div class="occasion"><p class="occasion-month">February</p><p class="occasion-name">Valentine's</p><p class="occasion-desc">For the couple who gave you everything — an Aama ra Buwa gift.</p></div>
+    <div class="occasion"><p class="occasion-month">March</p><p class="occasion-name">Holi / Women's Day</p><p class="occasion-desc">Celebrate the women who shaped you with a year of wellness.</p></div>
+    <div class="occasion"><p class="occasion-month">May</p><p class="occasion-name">Mother's Day</p><p class="occasion-desc"><span class="occasion-nepali">आमालाई माया —</span> the gift she'd never buy herself.</p></div>
+    <div class="occasion"><p class="occasion-month">June</p><p class="occasion-name">Father's Day</p><p class="occasion-desc"><span class="occasion-nepali">बुवालाई सम्मान —</span> for the man who never asked for anything.</p></div>
+    <div class="occasion"><p class="occasion-month">August</p><p class="occasion-name">Teej / Janai Purnima</p><p class="occasion-desc">Gift the women of your family a day of true rest.</p></div>
+    <div class="occasion"><p class="occasion-month">October</p><p class="occasion-name">Dashain</p><p class="occasion-desc"><span class="occasion-nepali">दशैंको टीका —</span> give them something that lasts beyond the tika.</p></div>
+    <div class="occasion"><p class="occasion-month">November</p><p class="occasion-name">Tihar / Bhai Tika</p><p class="occasion-desc"><span class="occasion-nepali">तिहारको दियो —</span> light up their year with wellness.</p></div>
+    <div class="occasion-full"><p>Or simply — because it's their birthday, because you miss them, or because you felt like it. No occasion needed.</p></div>
+  </div>
+</div>
+</div>
 
-<!-- GIFTING OCCASIONS -->
-<div style="background: var(--warm-white); padding: 6rem 4rem;">
-  <div style="max-width: 1200px; margin: 0 auto;">
-    <p class="section-eyebrow">Every Moment Is a Reason</p>
-    <h2 class="section-title">A gift for every<br><em>occasion</em></h2>
-    <div class="divider"></div>
-    <p style="color: var(--ink-light); font-size: 0.9rem; line-height: 1.9; max-width: 580px; margin-bottom: 3rem;">CAB plans are delivered on any date you choose. There are more reasons to gift than you might realise.</p>
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--mist);">
-      <div style="background: var(--cream); padding: 1.6rem 1.4rem;">
-        <p style="font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--stone-dark); margin-bottom: 0.4rem; font-weight: 400;">January</p>
-        <p style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1.05rem; color: var(--ink); margin-bottom: 0.3rem;">New Year</p>
-        <p style="font-size: 0.75rem; color: var(--ink-light); line-height: 1.5;">नयाँ वर्षको शुभकामना — start their year with care.</p>
+<!-- FOUNDER -->
+<div id="founder" style="background:var(--forest);">
+<div class="section">
+  <div style="max-width:740px;margin:0 auto;">
+    <p class="eyebrow eyebrow-light">A Note from the Founder</p>
+    <h2 class="display display-light" style="margin-bottom:2rem;">Why I built <em>Care Across Borders</em></h2>
+    <div class="rule rule-dark"></div>
+    <p class="founder-text">As I've grown older, I've come to understand something that took me years to see clearly: wellness — the kind that reaches your mind, your body, and the quiet spaces in between — is not a luxury. It is what it means to live well. And yet, for most of our parents and grandparents in Nepal, it has always felt like something reserved for someone else.</p>
+    <p class="founder-text">My parents, until recently, had never spent on holistic wellness. Not because they didn't deserve it — but because the culture of it hadn't reached them. They spent their lives giving everything to their families. And somehow, in all that giving, the habit of caring for themselves simply never formed.</p>
+    <p class="founder-text">I also noticed something else: as they got older, their world got smaller. The active community they once had slowly faded into the rhythm of home and chores. That quiet isolation is one of the most invisible forms of suffering.</p>
+    <div class="founder-pull">"I found it was easier to gift wellness to others than to give it to myself. And I thought — if that's how it works, then let gifting be the door through which this culture of care finally enters."</div>
+    <p class="founder-text">Care Across Borders is my attempt to answer the question I kept asking: what can I give them that actually contributes to their life — not just fills a day, but genuinely changes how they feel?</p>
+    <p class="founder-text" style="margin-bottom:1.8rem;">I am 23. What I have is a deep belief that the people who raised us deserve to be cared for — and a commitment to making that possible, one family at a time.</p>
+    <p class="founder-sig">— Shreha, Founder, Care Across Borders</p>
+  </div>
+</div>
+</div>
+
+<!-- PILOT -->
+<div id="pilot" class="pilot-bg">
+<div class="section">
+  <p class="eyebrow eyebrow-light">Now Open</p>
+  <h2 class="display display-light">The Care Across Borders <em>Pilot</em></h2>
+  <div class="rule rule-dark"></div>
+  <div class="pilot-limit">Limited to 30 families · Founding Edition</div>
+  <p class="pilot-tagline">Be one of the first 30 families to experience Care Across Borders — your feedback shapes what we become.</p>
+  <div class="pilot-grid">
+    <div class="pilot-text">
+      <p>These are our pilot prices — set for this founding group as we build, learn, and refine together. Every element of your chosen plan is fully included. You simply get to be first.</p>
+      <p>As a pilot family, you will be dealing <strong class="pilot-highlight">directly with Shreha, the founder — one on one.</strong> We are not yet a large operation. We have exactly what is needed to care for 30 families. That means your loved one gets personal attention that no scaled business can offer.</p>
+      <p class="pilot-highlight" style="font-size:0.85rem;">What to know about the Pilot</p>
+      <div class="pilot-includes">
+        <div class="pilot-include">Community Day Retreat within Kathmandu Valley, at a luxury 5-star venue.</div>
+        <div class="pilot-include">3-Day Residential Retreat (Total Sanctuary) at a luxury 5-star resort outside the valley.</div>
+        <div class="pilot-include">Total Sanctuary includes one Community Day Retreat during the pilot period.</div>
+        <div class="pilot-include">Direct access to the founders — your feedback shapes what CAB becomes.</div>
+        <div class="pilot-include">All plan inclusions exactly as described. Nothing cut.</div>
       </div>
-      <div style="background: var(--cream); padding: 1.6rem 1.4rem;">
-        <p style="font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--stone-dark); margin-bottom: 0.4rem; font-weight: 400;">February</p>
-        <p style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1.05rem; color: var(--ink); margin-bottom: 0.3rem;">Valentine's</p>
-        <p style="font-size: 0.75rem; color: var(--ink-light); line-height: 1.5;">For the couple who gave you everything — an Aama ra Buwa gift.</p>
+    </div>
+    <div>
+      <div class="pilot-prices-box">
+        <h4>Pilot Prices — Founding 30 Families</h4>
+        <div class="price-row"><span class="pname">Care Starter</span><span class="pval">$199</span></div>
+        <div class="price-row"><span class="pname">Wellness Circle</span><span class="pval">$349</span></div>
+        <div class="price-row"><span class="pname">Full Care</span><span class="pval">$499</span></div>
+        <div class="price-row"><span class="pname">Total Sanctuary</span><span class="pval">$1,099</span></div>
+        <div class="price-row" style="border-top:1px solid rgba(184,166,136,0.12);margin-top:0.5rem;padding-top:0.7rem;"><span class="pname" style="font-size:0.82rem;color:var(--stone);">Duo — Care Starter</span><span class="pval duo">$338</span></div>
+        <div class="price-row"><span class="pname" style="font-size:0.82rem;color:var(--stone);">Duo — Wellness Circle</span><span class="pval duo">$593</span></div>
+        <div class="price-row"><span class="pname" style="font-size:0.82rem;color:var(--stone);">Duo — Full Care</span><span class="pval duo">$848</span></div>
+        <div class="price-row"><span class="pname" style="font-size:0.82rem;color:var(--stone);">Duo — Total Sanctuary</span><span class="pval duo">$1,868</span></div>
       </div>
-      <div style="background: var(--cream); padding: 1.6rem 1.4rem;">
-        <p style="font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--stone-dark); margin-bottom: 0.4rem; font-weight: 400;">March</p>
-        <p style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1.05rem; color: var(--ink); margin-bottom: 0.3rem;">Holi / Women's Day</p>
-        <p style="font-size: 0.75rem; color: var(--ink-light); line-height: 1.5;">Celebrate the women who shaped you — with a year of being shaped back into wellness.</p>
+      <div class="pilot-cta-wrap">
+        <a href="#" class="btn-gold" style="width:100%;justify-content:center;display:flex;" onclick="openGiftModal();return false;">↗ Choose a Plan & Reserve Your Spot</a>
+        <a href="mailto:careacrossborder@gmail.com?subject=Care%20Across%20Borders%20Pilot%20Enquiry" class="pilot-email-link">Or email · careacrossborder@gmail.com</a>
+        <p class="pilot-note-text">30 spots only. Pilot pricing locked for your full plan year.</p>
       </div>
-      <div style="background: var(--cream); padding: 1.6rem 1.4rem;">
-        <p style="font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--stone-dark); margin-bottom: 0.4rem; font-weight: 400;">May</p>
-        <p style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1.05rem; color: var(--ink); margin-bottom: 0.3rem;">Mother's Day</p>
-        <p style="font-size: 0.75rem; color: var(--ink-light); line-height: 1.5;">आमालाई माया — the gift she'd never buy herself.</p>
-      </div>
-      <div style="background: var(--cream); padding: 1.6rem 1.4rem;">
-        <p style="font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--stone-dark); margin-bottom: 0.4rem; font-weight: 400;">June</p>
-        <p style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1.05rem; color: var(--ink); margin-bottom: 0.3rem;">Father's Day</p>
-        <p style="font-size: 0.75rem; color: var(--ink-light); line-height: 1.5;">बुवालाई सम्मान — for the man who never asked for anything.</p>
-      </div>
-      <div style="background: var(--cream); padding: 1.6rem 1.4rem;">
-        <p style="font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--stone-dark); margin-bottom: 0.4rem; font-weight: 400;">August</p>
-        <p style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1.05rem; color: var(--ink); margin-bottom: 0.3rem;">Teej / Janai Purnima</p>
-        <p style="font-size: 0.75rem; color: var(--ink-light); line-height: 1.5;">A season of celebration — gift the women of your family a day of true rest.</p>
-      </div>
-      <div style="background: var(--cream); padding: 1.6rem 1.4rem;">
-        <p style="font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--stone-dark); margin-bottom: 0.4rem; font-weight: 400;">October</p>
-        <p style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1.05rem; color: var(--ink); margin-bottom: 0.3rem;">Dashain</p>
-        <p style="font-size: 0.75rem; color: var(--ink-light); line-height: 1.5;">दशैंको टीका — this year, give them something that lasts beyond the tika.</p>
-      </div>
-      <div style="background: var(--cream); padding: 1.6rem 1.4rem;">
-        <p style="font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--stone-dark); margin-bottom: 0.4rem; font-weight: 400;">November</p>
-        <p style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1.05rem; color: var(--ink); margin-bottom: 0.3rem;">Tihar / Bhai Tika</p>
-        <p style="font-size: 0.75rem; color: var(--ink-light); line-height: 1.5;">तिहारको दियो — light up their year with a year of wellness.</p>
-      </div>
-      <div style="background: var(--cream); padding: 1.6rem 1.4rem; grid-column: span 4; border-top: 1px solid var(--mist);">
-        <p style="font-size: 0.78rem; color: var(--ink-light); font-style: italic; line-height: 1.7; text-align: center;">Or simply — because it's their birthday, because you miss them, or because you felt like it. No occasion needed.</p>
+      <div class="launch-table-wrap">
+        <p>When Care Across Borders opens to the wider community, all prices will be approximately 20% higher. Here is exactly what you save by joining the founding 30.</p>
+        <table class="launch-table">
+          <thead><tr><th>Plan</th><th>Pilot</th><th>Full Launch</th><th>You Save</th></tr></thead>
+          <tbody>
+            <tr><td>Care Starter</td><td>$199</td><td>~$239</td><td>$40</td></tr>
+            <tr><td>Wellness Circle</td><td>$349</td><td>~$419</td><td>$70</td></tr>
+            <tr><td>Full Care</td><td>$499</td><td>~$599</td><td>$100</td></tr>
+            <tr><td>Total Sanctuary</td><td>$1,099</td><td>~$1,319</td><td>$220</td></tr>
+            <tr class="launch-divider"><td>Duo — Care Starter</td><td>$338</td><td>~$406</td><td>$68</td></tr>
+            <tr><td>Duo — Wellness Circle</td><td>$593</td><td>~$712</td><td>$119</td></tr>
+            <tr><td>Duo — Full Care</td><td>$848</td><td>~$1,018</td><td>$170</td></tr>
+            <tr><td>Duo — Total Sanctuary</td><td>$1,868</td><td>~$2,242</td><td>$374</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.68rem;color:var(--stone-dark);margin-top:0.7rem;font-style:italic;">Full launch prices indicative. Pilot pricing locked for founding families.</p>
       </div>
     </div>
   </div>
-</div>
-
-
-<!-- FOUNDER NOTE -->
-<div style="background: var(--forest); padding: 6rem 4rem;">
-  <div style="max-width: 800px; margin: 0 auto;">
-    <p class="section-eyebrow" style="color: var(--stone);">A Note from the Founder</p>
-    <h2 style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--warm-white); line-height: 1.15; margin-bottom: 2rem;">Why I built <em style="font-style: italic; color: var(--gold-light);">CAB</em></h2>
-    <div style="width: 60px; height: 1px; background: var(--stone-dark); margin-bottom: 2.5rem;"></div>
-    <div style="font-size: 1rem; color: var(--stone); line-height: 2; max-width: 680px;">
-      <p style="margin-bottom: 1.5rem;">As I've grown older, I've come to understand something that took me years to see clearly: wellness — the kind that reaches your mind, your body, and the quiet spaces in between — is not a luxury. It is what it means to live well. And yet, for most of our parents and grandparents in Nepal, it has always felt like something reserved for someone else. Something foreign. Something they simply don't do for themselves.</p>
-      <p style="margin-bottom: 1.5rem;">My parents, until recently, had never spent on holistic wellness. Not because they didn't deserve it — but because the culture of it hadn't reached them. They spent their lives giving everything to their families, their homes, their children. And somehow, in all that giving, the habit of caring for themselves simply never formed.</p>
-      <p style="margin-bottom: 1.5rem;">I also noticed something else: as they got older, their world got smaller. The active community they once had — the friendships, the shared purpose, the sense of belonging — slowly faded into the rhythm of home and chores. That kind of quiet isolation is one of the most invisible forms of suffering, and we rarely talk about it.</p>
-      <p style="margin-bottom: 1.5rem; font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1.2rem; font-style: italic; color: var(--gold-light); border-left: 2px solid var(--gold); padding-left: 1.5rem;">I found, oddly, that it was easier to gift wellness to others than to give it to myself. And I thought — if that's how it works, then let gifting be the door through which this culture of care finally enters.</p>
-      <p style="margin-bottom: 1.5rem;">CAB is my attempt to answer the question I kept asking myself: what can I give them that actually contributes to their life — not just fills a day, not just arrives in a packet, but genuinely changes how they feel and how they spend their time?</p>
-      <p style="margin-bottom: 2rem;">I am 23. I don't have a large team or a big office. What I have is a deep belief that the people who raised us deserve to be cared for — and a commitment to making that possible, one family at a time.</p>
-      <p style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1.1rem; color: var(--warm-white);">— Shreha, Founder, CAB</p>
+  <div style="margin-top:3rem;border-top:1px solid rgba(184,166,136,0.12);padding-top:2.5rem;">
+    <p style="font-size:0.6rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--stone-dark);margin-bottom:1.2rem;">Refund & Cancellation Policy</p>
+    <div class="refund-grid">
+      <div class="refund-card"><h4>Massages & Hamper</h4><p>Appointments reschedulable with 24 hours notice. Full refund within 7 days of purchase if unused. Once massages are redeemed or hamper dispatched, non-refundable.</p></div>
+      <div class="refund-card important"><h4>Retreats — Important</h4><p>All retreats are on fixed, pre-announced dates. <strong>If a retreat date is missed, it cannot be rescheduled or refunded.</strong> We notify all participants well in advance and coordinate pickup personally.</p></div>
     </div>
   </div>
 </div>
-
+</div>
 
 <!-- FAQ -->
-<div style="background: var(--cream); padding: 6rem 4rem;">
-  <div style="max-width: 900px; margin: 0 auto;">
-    <p class="section-eyebrow">Common Questions</p>
-    <h2 class="section-title">Before you <em>reach out</em></h2>
-    <div class="divider"></div>
-    <p style="color: var(--ink-light); font-size: 0.9rem; line-height: 1.9; margin-bottom: 3rem; max-width: 580px;">Everything you might want to know — answered honestly.</p>
-
-    <div style="display: flex; flex-direction: column; gap: 0;">
-
-      <details style="border-bottom: 1px solid var(--mist); padding: 1.4rem 0;" open>
-        <summary style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1.1rem; color: var(--ink); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; font-weight: 500;">
-          What if my loved one is unwell on a retreat day?
-          <span style="font-size: 1.4rem; color: var(--stone); font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 200; flex-shrink: 0; margin-left: 1rem;">+</span>
-        </summary>
-        <p style="font-size: 0.85rem; color: var(--ink-light); line-height: 1.8; margin-top: 1rem; max-width: 700px;">We understand that health doesn't follow a schedule. If your loved one is unwell on a retreat date, please reach out to us as soon as possible. We will work with you to explore the best option — whether that is carrying their retreat forward to the following year's programme, or arranging alternative wellness services of equivalent value at a time that suits them. We are always on your side.</p>
-      </details>
-
-      <details style="border-bottom: 1px solid var(--mist); padding: 1.4rem 0;">
-        <summary style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1.1rem; color: var(--ink); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; font-weight: 500;">
-          What if they are hesitant or don't want to attend?
-          <span style="font-size: 1.4rem; color: var(--stone); font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 200; flex-shrink: 0; margin-left: 1rem;">+</span>
-        </summary>
-        <p style="font-size: 0.85rem; color: var(--ink-light); line-height: 1.8; margin-top: 1rem; max-width: 700px;">This is more common than you might think — and it's exactly why we handle the relationship with your loved one personally. Our team will gently introduce the plan, explain what the experience looks and feels like, and give them the time they need to warm to the idea. Many people just need to understand what they're walking into. We are patient, warm, and persistent — in the kindest possible way. That said, if they ultimately choose not to attend a retreat, we are unable to offer a refund for that session, as venues and experts are confirmed in advance.</p>
-      </details>
-
-      <details style="border-bottom: 1px solid var(--mist); padding: 1.4rem 0;">
-        <summary style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1.1rem; color: var(--ink); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; font-weight: 500;">
-          How do I pay?
-          <span style="font-size: 1.4rem; color: var(--stone); font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 200; flex-shrink: 0; margin-left: 1rem;">+</span>
-        </summary>
-        <p style="font-size: 0.85rem; color: var(--ink-light); line-height: 1.8; margin-top: 1rem; max-width: 700px;">We accept payment via Visa, Mastercard, and major debit cards. International bank transfers and Wise are also accepted for those sending from abroad. Once you reach out on WhatsApp or email, we will send you a secure payment link along with a confirmation of your chosen plan. Payment is required in full to secure your spot — particularly important during the pilot, where only 30 places are available.</p>
-      </details>
-
-      <details style="border-bottom: 1px solid var(--mist); padding: 1.4rem 0;">
-        <summary style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1.1rem; color: var(--ink); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; font-weight: 500;">
-          When do the massages expire?
-          <span style="font-size: 1.4rem; color: var(--stone); font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 200; flex-shrink: 0; margin-left: 1rem;">+</span>
-        </summary>
-        <p style="font-size: 0.85rem; color: var(--ink-light); line-height: 1.8; margin-top: 1rem; max-width: 700px;">All massages are valid for the duration of the plan year — 12 months from the date of purchase. We do not want any session to go unused, which is why our team follows up regularly throughout the year to help your loved one book their appointments at a time that suits them. We will always chase them gently before the year closes. Think of us as the reminder they didn't know they needed.</p>
-      </details>
-
-      <details style="border-bottom: 1px solid var(--mist); padding: 1.4rem 0;">
-        <summary style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1.1rem; color: var(--ink); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; font-weight: 500;">
-          Can I upgrade to a higher plan later?
-          <span style="font-size: 1.4rem; color: var(--stone); font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 200; flex-shrink: 0; margin-left: 1rem;">+</span>
-        </summary>
-        <p style="font-size: 0.85rem; color: var(--ink-light); line-height: 1.8; margin-top: 1rem; max-width: 700px;">Mid-year upgrades are not available as a standard option during the pilot — we want to ensure every experience is planned and delivered properly from the start. That said, we never want to say a flat no. If you feel strongly about upgrading, please message us and we will do our best to find a way. We are a small, founder-led team and we will always try.</p>
-      </details>
-
-      <details style="border-bottom: 1px solid var(--mist); padding: 1.4rem 0;">
-        <summary style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1.1rem; color: var(--ink); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; font-weight: 500;">
-          What happens when the plan year ends?
-          <span style="font-size: 1.4rem; color: var(--stone); font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 200; flex-shrink: 0; margin-left: 1rem;">+</span>
-        </summary>
-        <p style="font-size: 0.85rem; color: var(--ink-light); line-height: 1.8; margin-top: 1rem; max-width: 700px;">As your plan year draws to a close, we will reach out to offer renewal — before we open renewal to anyone else. Founding families are offered the opportunity to renew at their original pilot pricing, locked in for as long as they continue with CAB. The care does not have to stop. In fact, we hope it becomes something your family looks forward to every year.</p>
-      </details>
-
-      <details style="padding: 1.4rem 0;">
-        <summary style="font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; font-size: 1.1rem; color: var(--ink); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; font-weight: 500;">
-          Is CAB only for Nepali families abroad?
-          <span style="font-size: 1.4rem; color: var(--stone); font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 200; flex-shrink: 0; margin-left: 1rem;">+</span>
-        </summary>
-        <p style="font-size: 0.85rem; color: var(--ink-light); line-height: 1.8; margin-top: 1rem; max-width: 700px;">CAB was built with Nepali expats in mind — people who understand the distance, the guilt, the love, and the culture. But the gift of wellness has no border. Anyone who has someone they care about in Nepal, and wants to give them something that genuinely contributes to their life, is welcome here.</p>
-      </details>
-
-    </div>
-  </div>
+<div id="faq" style="background:var(--cream);">
+<div class="section">
+  <p class="eyebrow">Common Questions</p>
+  <h2 class="display">Before you <em>reach out</em></h2>
+  <div class="rule"></div>
+  <p class="body-text" style="margin-bottom:2.5rem;">Everything you might want to know — answered honestly.</p>
+  <details open><summary>What if my loved one is unwell on a retreat day? <span class="plus">+</span></summary><p>We will work with you to find the best option — carrying the retreat forward to next year's programme, or arranging alternative wellness services of equivalent value. We are always on your side.</p></details>
+  <details><summary>What if they are hesitant or don't want to attend? <span class="plus">+</span></summary><p>Our team will gently introduce the plan, explain the experience, and give them time to warm to the idea. If they ultimately choose not to attend a retreat, we are unable to offer a refund as venues and experts are confirmed in advance.</p></details>
+  <details><summary>How do I pay? <span class="plus">+</span></summary><p>We accept Visa, Mastercard, and major debit cards. International bank transfers and Wise are also accepted. Once you reach out, we will send a secure payment link. Payment in full secures your spot.</p></details>
+  <details><summary>When do the massages expire? <span class="plus">+</span></summary><p>All massages are valid for 12 months from purchase. Our team follows up regularly throughout the year to help your loved one book. We will always chase them gently before the year closes.</p></details>
+  <details><summary>Can I upgrade to a higher plan later? <span class="plus">+</span></summary><p>Mid-year upgrades are not standard during the pilot. That said, message us — we are a small founder-led team and we will always try our best.</p></details>
+  <details><summary>What happens when the plan year ends? <span class="plus">+</span></summary><p>We reach out to you first — before anyone else — to offer renewal. Founding families are offered renewal at their original pilot pricing, locked in for as long as they continue with us.</p></details>
+  <details><summary>Is this only for Nepali families? <span class="plus">+</span></summary><p>Care Across Borders was built with Nepali expats in mind. But the gift of wellness has no border. Anyone who has someone they care about in Nepal is welcome here.</p></details>
 </div>
+</div>
+
+<!-- FOOTER -->
 <footer>
-  <div class="logo">Care Across Borders<span>careacrossborders.care · Nepal</span></div>
-  <div class="footer-links">
-    <a href="https://wa.me/9779815045480?text=Hi%2C%20I%20came%20across%20the%20CAB%20%E2%80%94%20Care%20Across%20Borders%20brochure%20and%20would%20love%20to%20know%20more%20about%20the%20plans." class="footer-link">WhatsApp</a>
-    <a href="mailto:careacrossborder@gmail.com?subject=CAB%20Enquiry&body=Hi%2C%20I%20came%20across%20the%20CAB%20brochure%20and%20would%20love%20to%20know%20more%20about%20the%20plans." class="footer-link">Email</a>
+  <div class="footer-logo">
+    <span style="font-style:italic;color:var(--stone);font-family:Georgia,serif;font-size:1.05rem;">Care</span>
+    <span style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#3A3530;margin-top:1px;display:block;">Across Borders</span>
+    <span style="display:block;font-size:0.48rem;letter-spacing:0.25em;text-transform:uppercase;color:#2A2520;margin-top:3px;">careacrossborders.care</span>
   </div>
-  <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-    <a href="https://wa.me/9779815045480?text=Hi%2C%20I%20came%20across%20the%20CAB%20%E2%80%94%20Care%20Across%20Borders%20brochure%20and%20would%20love%20to%20know%20more%20about%20the%20plans." target="_blank">
-      <svg width="64" height="64" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="background: white; padding: 4px; display: block;">
-        <rect width="200" height="200" fill="white"/>
-        <rect x="10" y="10" width="60" height="60" fill="#2A2620"/><rect x="18" y="18" width="44" height="44" fill="white"/><rect x="26" y="26" width="28" height="28" fill="#2A2620"/>
-        <rect x="130" y="10" width="60" height="60" fill="#2A2620"/><rect x="138" y="18" width="44" height="44" fill="white"/><rect x="146" y="26" width="28" height="28" fill="#2A2620"/>
-        <rect x="10" y="130" width="60" height="60" fill="#2A2620"/><rect x="18" y="138" width="44" height="44" fill="white"/><rect x="26" y="146" width="28" height="28" fill="#2A2620"/>
-        <rect x="78" y="10" width="8" height="8" fill="#2A2620"/><rect x="94" y="10" width="8" height="8" fill="#2A2620"/><rect x="110" y="10" width="8" height="8" fill="#2A2620"/>
-        <rect x="10" y="78" width="8" height="8" fill="#2A2620"/><rect x="10" y="94" width="8" height="8" fill="#2A2620"/><rect x="10" y="110" width="8" height="8" fill="#2A2620"/>
-        <rect x="78" y="78" width="8" height="8" fill="#2A2620"/><rect x="94" y="86" width="8" height="8" fill="#2A2620"/><rect x="110" y="78" width="8" height="8" fill="#2A2620"/>
-        <rect x="78" y="102" width="8" height="8" fill="#2A2620"/><rect x="110" y="102" width="8" height="8" fill="#2A2620"/>
-        <rect x="86" y="110" width="8" height="8" fill="#2A2620"/><rect x="102" y="118" width="8" height="8" fill="#2A2620"/>
-        <rect x="78" y="130" width="8" height="8" fill="#2A2620"/><rect x="94" y="138" width="8" height="8" fill="#2A2620"/><rect x="110" y="130" width="8" height="8" fill="#2A2620"/>
-        <rect x="86" y="154" width="8" height="8" fill="#2A2620"/><rect x="110" y="154" width="8" height="8" fill="#2A2620"/>
-        <rect x="78" y="162" width="8" height="8" fill="#2A2620"/><rect x="102" y="162" width="8" height="8" fill="#2A2620"/>
-        <rect x="130" y="78" width="8" height="8" fill="#2A2620"/><rect x="146" y="78" width="8" height="8" fill="#2A2620"/><rect x="162" y="78" width="8" height="8" fill="#2A2620"/>
-        <rect x="138" y="86" width="8" height="8" fill="#2A2620"/><rect x="154" y="94" width="8" height="8" fill="#2A2620"/>
-        <rect x="130" y="102" width="8" height="8" fill="#2A2620"/><rect x="162" y="102" width="8" height="8" fill="#2A2620"/>
-        <rect x="138" y="118" width="8" height="8" fill="#2A2620"/><rect x="154" y="110" width="8" height="8" fill="#2A2620"/>
-        <rect x="130" y="130" width="8" height="8" fill="#2A2620"/><rect x="162" y="138" width="8" height="8" fill="#2A2620"/>
-        <rect x="146" y="146" width="8" height="8" fill="#2A2620"/><rect x="130" y="154" width="8" height="8" fill="#2A2620"/>
-        <rect x="154" y="162" width="8" height="8" fill="#2A2620"/><rect x="138" y="162" width="8" height="8" fill="#2A2620"/>
-      </svg>
-    </a>
-    <p style="font-size: 0.55rem; letter-spacing: 0.15em; color: #3A3530; text-transform: uppercase;">Scan to message us</p>
+  <div class="footer-links">
+    <a href="https://wa.me/9779815045480" class="footer-link">WhatsApp</a>
+    <a href="mailto:careacrossborder@gmail.com" class="footer-link">Email</a>
   </div>
   <p class="footer-copy">© 2025 Care Across Borders · In partnership with Tranquility Nepal</p>
 </footer>
 
-<script>
-  function showDay(dayId, btn) {
-    document.querySelectorAll('.day-content').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.day-tab').forEach(el => el.classList.remove('active'));
-    document.getElementById(dayId).classList.add('active');
-    btn.classList.add('active');
-  }
-  // FAQ toggle arrows
-  document.querySelectorAll('details').forEach(d => {
-    d.addEventListener('toggle', () => {
-      const span = d.querySelector('summary span');
-      if (span) span.textContent = d.open ? '−' : '+';
-    });
-  });
-</script>
+<!-- GIFT MODAL -->
+<div class="modal-overlay" id="giftModal" onclick="if(event.target===this)closeGiftModal();">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-header-left">
+        <h2>Choose a plan &amp; <em>gift it today</em></h2>
+        <p>Select a plan below. Each button sends Shreha a message with your plan of interest — she will personally walk you through everything. No bots, no automated systems.</p>
+      </div>
+      <button class="modal-close" onclick="closeGiftModal()">✕ Close</button>
+    </div>
+    <div class="modal-inner">
+      <div class="modal-pilot-note">
+        <div class="modal-pilot-dot"></div>
+        <p><strong>This is a pilot programme.</strong> Care Across Borders is currently open to 30 founding families only. You will be dealing directly with Shreha, the founder — one on one. <strong>30 spots available. Once full, the pilot closes.</strong></p>
+      </div>
+      <div class="modal-plans">
+        <div class="mplan">
+          <div>
+            <p class="mplan-tier">Basic</p>
+            <p class="mplan-nepali">Pahilo Kadam</p>
+            <p class="mplan-name">The Care Starter</p>
+            <div class="mplan-tags">
+              <span class="mplan-tag">2× Tranquility Massage</span>
+              <span class="mplan-tag">4-product Wellness Hamper</span>
+              <span class="mplan-tag">Pickup & Drop</span>
+              <span class="mplan-tag">Year-round follow-up</span>
+            </div>
+          </div>
+          <div class="mplan-right">
+            <p class="mplan-price">$199</p>
+            <p class="mplan-sub">per year · one person</p>
+            <a href="https://wa.me/9779815045480?text=Hi%20Shreha%2C%20I%27m%20interested%20in%20the%20Care%20Starter%20plan%20(%24199).%20Could%20you%20walk%20me%20through%20the%20process%3F" target="_blank" class="mplan-btn">↗ Enquire on WhatsApp</a>
+          </div>
+        </div>
+        <div class="mplan">
+          <div>
+            <p class="mplan-tier">Standard</p>
+            <p class="mplan-nepali">Purnata</p>
+            <p class="mplan-name">The Wellness Circle</p>
+            <div class="mplan-tags">
+              <span class="mplan-tag">3× Tranquility Massage</span>
+              <span class="mplan-tag">5–6 product Hamper</span>
+              <span class="mplan-tag">★★★★★ Community Day Retreat</span>
+              <span class="mplan-tag">Pickup & Drop</span>
+            </div>
+          </div>
+          <div class="mplan-right">
+            <p class="mplan-price">$349</p>
+            <p class="mplan-sub">per year · one person</p>
+            <a href="https://wa.me/9779815045480?text=Hi%20Shreha%2C%20I%27m%20interested%20in%20the%20Wellness%20Circle%20plan%20(%24349).%20Could%20you%20walk%20me%20through%20the%20process%3F" target="_blank" class="mplan-btn">↗ Enquire on WhatsApp</a>
+          </div>
+        </div>
+        <div class="mplan mfeatured">
+          <div>
+            <p class="mplan-tier mgold">Premium <span class="mplan-badge">Best Value</span></p>
+            <p class="mplan-nepali">Sampurna Sewa</p>
+            <p class="mplan-name">The Full Care</p>
+            <div class="mplan-tags">
+              <span class="mplan-tag">5× Tranquility Massage</span>
+              <span class="mplan-tag">7–8 product Hamper</span>
+              <span class="mplan-tag">★★★★★ Day Retreat</span>
+              <span class="mplan-tag">1× Therapy Massage</span>
+              <span class="mplan-tag">Ayurvedic Consultation</span>
+            </div>
+          </div>
+          <div class="mplan-right">
+            <p class="mplan-price">$499</p>
+            <p class="mplan-sub">per year · one person</p>
+            <a href="https://wa.me/9779815045480?text=Hi%20Shreha%2C%20I%27m%20interested%20in%20the%20Full%20Care%20plan%20(%24499).%20Could%20you%20walk%20me%20through%20the%20process%3F" target="_blank" class="mplan-btn">↗ Enquire on WhatsApp</a>
+          </div>
+        </div>
+        <div class="mplan">
+          <div>
+            <p class="mplan-tier mgold">Luxury</p>
+            <p class="mplan-nepali">Param Shanti</p>
+            <p class="mplan-name">Total Sanctuary</p>
+            <div class="mplan-tags">
+              <span class="mplan-tag">6× Tranquility Massage</span>
+              <span class="mplan-tag">9–11 product Hamper</span>
+              <span class="mplan-tag">★★★★★ Day Retreat</span>
+              <span class="mplan-tag">★★★★★ 3-Day Resort Retreat</span>
+              <span class="mplan-tag">2× Therapy Sessions</span>
+            </div>
+          </div>
+          <div class="mplan-right">
+            <p class="mplan-price">$1,099</p>
+            <p class="mplan-sub">per year · one person</p>
+            <a href="https://wa.me/9779815045480?text=Hi%20Shreha%2C%20I%27m%20interested%20in%20the%20Total%20Sanctuary%20plan%20(%241%2C099).%20Could%20you%20walk%20me%20through%20the%20process%3F" target="_blank" class="mplan-btn">↗ Enquire on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <p><strong>Not sure which plan is right?</strong> That is completely fine. Message Shreha and she will help you choose based on who you are gifting for and what matters most to you.</p>
+        <p>Interested in the <strong>Duo Gift</strong> (15% off for two people)? Just mention it and Shreha will walk you through the combined options.</p>
+        <p style="margin-top:0.8rem;padding-top:0.8rem;border-top:1px solid var(--mist);font-size:0.72rem;color:var(--stone-dark);">
+          <strong style="color:var(--ink);">Shreha</strong> · Founder, Care Across Borders ·
+          <a href="mailto:careacrossborder@gmail.com">careacrossborder@gmail.com</a> ·
+          <a href="https://wa.me/9779815045480">+977 98150 45480</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
+<script>
+function showDay(id,btn){
+  document.querySelectorAll('.day-content').forEach(e=>e.classList.remove('active'));
+  document.querySelectorAll('.day-tab').forEach(e=>e.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function openMenu(){document.getElementById('mobileMenu').classList.add('open');document.body.style.overflow='hidden';}
+function closeMenu(){document.getElementById('mobileMenu').classList.remove('open');document.body.style.overflow='';}
+function openGiftModal(){document.getElementById('giftModal').classList.add('open');document.body.style.overflow='hidden';}
+function closeGiftModal(){document.getElementById('giftModal').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeGiftModal();closeMenu();}});
+document.querySelectorAll('details').forEach(d=>{
+  d.addEventListener('toggle',()=>{
+    const s=d.querySelector('.plus');if(s)s.textContent=d.open?'−':'+';
+  });
+});
+</script>
 </body>
 </html>
