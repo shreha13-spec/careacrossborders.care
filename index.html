@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Care Across Borders — Wellness Gifting for Families in Nepal</title>
-<meta name="description" content="Gift your loved ones in Nepal an annual wellness plan — Tranquility massages, luxury 5-star retreats, curated hampers and personal care all year. Pilot open, 30 families only.">
+<meta name="description" content="Gift a year of real care to someone you love in Nepal. Wellness credits, luxury retreats, curated hampers — handled personally. From $199. Pilot open, 30 families only.">
 <meta property="og:title" content="Care Across Borders — Wellness Gifting for Families in Nepal">
-<meta property="og:description" content="Gift your loved ones in Nepal an annual wellness plan — massages, luxury retreats, hampers and personal care all year. Pilot open, 30 families only. From $199.">
+<meta property="og:description" content="Gift a year of care to someone you love in Nepal. This isn't luxury — it's science. From $199. Pilot open, 30 families only.">
 <meta property="og:image" content="http://careacrossborders.care/preview.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Care Across Borders">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Care Across Borders — Wellness Gifting for Families in Nepal">
-<meta name="twitter:description" content="Gift your loved ones in Nepal a full year of wellness. Massages, retreats, hampers and personal care. Pilot open, 30 families only.">
+<meta name="twitter:description" content="There is someone you think about. Gift them a year of real care — from wherever you are in the world.">
 <meta name="twitter:image" content="http://careacrossborders.care/preview.png">
 <style>
 :root {
@@ -42,6 +42,34 @@ body{
   font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
   font-weight:300;
   overflow-x:hidden;
+}
+
+
+/* ── Plan feature links ── */
+.plan-feature a.feat-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.plan-feature a.feat-link strong {
+  text-decoration: underline;
+  text-decoration-color: rgba(196,153,58,0.35);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s;
+}
+.plan-feature a.feat-link:hover {
+  color: var(--gold-bright);
+}
+.plan-feature a.feat-link:hover strong {
+  text-decoration-color: var(--gold-bright);
+}
+.plan-feature a.feat-link:not(:has(strong)) {
+  text-decoration: underline;
+  text-decoration-color: rgba(196,153,58,0.35);
+  text-underline-offset: 3px;
+}
+.plan-feature a.feat-link:not(:has(strong)):hover {
+  text-decoration-color: var(--gold-bright);
 }
 
 /* ── NAV ── */
@@ -109,20 +137,43 @@ nav{
   display:none;position:fixed;
   top:0;left:0;right:0;bottom:0;
   background:var(--forest);z-index:99;
-  flex-direction:column;justify-content:center;
-  align-items:center;gap:2rem;
+  flex-direction:column;justify-content:flex-start;
+  align-items:stretch;gap:0;
+  padding:0;overflow-y:auto;
 }
 .mobile-menu.open{display:flex;}
+.mobile-menu-inner{
+  display:flex;flex-direction:column;
+  padding:5rem 2rem 2.5rem;gap:0;
+  min-height:100%;justify-content:center;
+}
 .mobile-menu a{
-  font-size:1.2rem;color:var(--stone);
-  text-decoration:none;letter-spacing:0.1em;
+  text-decoration:none;
   font-family:Georgia,serif;
+  display:block;
+  transition:color 0.15s;
 }
 .mobile-menu a:hover{color:var(--gold-bright);}
+.mob-primary{
+  font-size:1.65rem;color:var(--white);
+  letter-spacing:0.02em;
+  padding:0.75rem 0;
+  border-bottom:1px solid rgba(184,166,136,0.08);
+}
+.mob-secondary{
+  font-size:1rem;color:var(--stone-dark);
+  letter-spacing:0.06em;
+  padding:0.55rem 0;
+  border-bottom:1px solid rgba(184,166,136,0.05);
+}
+.mob-divider{
+  height:1px;background:rgba(184,166,136,0.1);
+  margin:1rem 0;
+}
 .mobile-close{
   position:absolute;top:1.5rem;right:1.5rem;
-  font-size:1.5rem;color:var(--stone);cursor:pointer;
-  background:none;border:none;
+  font-size:1.3rem;color:var(--stone);cursor:pointer;
+  background:none;border:none;z-index:101;
 }
 
 /* ── HERO ── */
@@ -575,29 +626,32 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
 
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" onclick="closeMenu()">✕</button>
-  <a href="#how" onclick="closeMenu()">How It Works</a>
-  <a href="#plans" onclick="closeMenu()">Plans</a>
-  <a href="#retreats" onclick="closeMenu()">Retreats</a>
-  <a href="#founder" onclick="closeMenu()">Our Story</a>
-  <a href="#faq" onclick="closeMenu()">FAQ</a>
-  <a href="#" onclick="openGiftModal();closeMenu();return false;" style="background:var(--gold);color:var(--ink);padding:0.85rem 2.5rem;font-size:0.72rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;margin-top:1rem;display:inline-block;">Gift a Plan</a>
+  <div class="mobile-menu-inner">
+    <a href="#plans" class="mob-primary" onclick="closeMenu()">Plans</a>
+    <a href="#retreats" class="mob-primary" onclick="closeMenu()">Retreats</a>
+    <a href="#how" class="mob-primary" onclick="closeMenu()">How It Works</a>
+    <div class="mob-divider"></div>
+    <a href="#founder" class="mob-secondary" onclick="closeMenu()">Our Story</a>
+    <a href="#faq" class="mob-secondary" onclick="closeMenu()">FAQ</a>
+    <div class="mob-divider"></div>
+    <a href="#" onclick="openGiftModal();closeMenu();return false;" style="background:var(--gold);color:var(--ink) !important;padding:1rem 2rem;font-size:0.72rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;text-decoration:none;display:block;text-align:center;margin-top:0.5rem;">↗ GIFT A PLAN</a>
+  </div>
 </div>
 
 <!-- HERO -->
 <section class="hero">
-  <p class="hero-tag">Wellness Gifting for Families in Nepal</p>
-  <p class="hero-nepali">आफ्नो माया, स्याहारको रूपमा।</p>
-  <h1>Give them the gift<br>of <em>being cared for</em></h1>
-  <p class="hero-sub">Annual wellness plans gifted from abroad — for the people who raised you, cared for you, and deserve to be looked after in return.</p>
+  <p class="hero-tag">आफ्नो माया, स्याहारको रूपमा।</p>
+  <h1>There's someone<br>you think about.</h1>
+  <p class="hero-sub">Maybe every day. Maybe when you're falling asleep. You wonder if they're okay. Care Across Borders is how you reach them — a full year of real care, gifted from wherever you are in the world.</p>
   <div class="hero-actions">
-    <a href="#" class="btn-gold" onclick="openGiftModal();return false;">↗ Gift a Plan</a>
+    <a href="#" class="btn-gold" onclick="openGiftModal();return false;">↗ Gift them care</a>
     <a href="#plans" class="btn-outline">View Plans</a>
   </div>
   <div class="hero-badges">
-    <span class="hero-badge">Tranquility Massages</span>
+    <span class="hero-badge">Tranquility Wellness Credits</span>
     <span class="hero-badge">Wellness Hamper</span>
     <span class="hero-badge">★★★★★ Retreats</span>
-    <span class="hero-badge">Community & Connection</span>
+    <span class="hero-badge">Expert Consultation Included</span>
     <span class="hero-badge">Pickup & Drop Included</span>
   </div>
 </section>
@@ -606,19 +660,19 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
 <div class="why-bg">
 <div class="section">
   <p class="eyebrow">Why Care Across Borders</p>
-  <h2 class="display">More than a gift.<br>A <em>year of care.</em></h2>
+  <h2 class="display">You're doing everything<br>you can. And it still<br>doesn't feel like <em>enough.</em></h2>
   <div class="rule"></div>
   <div class="why-grid">
     <div>
-      <p class="body-text">When you're abroad, you send money. But money disappears — into groceries, bills, things that need fixing. Rarely into something just for them. Care Across Borders exists because the people who matter most to you almost never spend on themselves.</p>
-      <div class="why-quote">"They won't buy it for themselves. But they'll accept the gift of being cared for — if it comes from you."</div>
-      <p class="body-text">Whether you're gifting your parents, grandparents, a sibling, or anyone who holds a special place in your life — we give them a full year of wellness, handled entirely by us.</p>
+      <p class="body-text">You send money. You call. You remind them to eat well, to rest, to look after themselves. But you know them. The money goes into the household. Into everyone else. Their tired shoulders, their aching back, their skin that hasn't been cared for in years — that can wait. It always waits.</p>
+      <div class="why-quote">"They would never spend this on themselves. That's exactly what makes it the most meaningful thing you can give."</div>
+      <p class="body-text">Care Across Borders exists because of that feeling — the one that sits quietly in your chest when you hang up the phone. The wish that you could reach through the distance and actually take care of them. Now you can.</p>
     </div>
     <div class="why-cards">
-      <div class="why-card"><h4>It spreads throughout the year</h4><p>Massages redeemable any time, a hamper on a special day, retreats to look forward to. The care keeps coming long after the gift is given.</p></div>
-      <div class="why-card"><h4>They won't spend on themselves</h4><p>Money sent home gets absorbed into daily life. A gifted plan guarantees it's spent on the person — on them, not bills.</p></div>
-      <div class="why-card"><h4>Community, connection, belonging</h4><p>Our retreats bring people together — building friendships, shared experience, and a genuine sense of community.</p></div>
-      <div class="why-card"><h4>We handle everything</h4><p>Booking, coordination, pickup, drop-off. Your loved one simply shows up. That's the full promise of Care Across Borders.</p></div>
+      <div class="why-card"><h4>This isn't luxury. It's science.</h4><p>Stress lives in the body. Inflammation builds. Fatigue becomes chronic. The services we offer aren't indulgences — they are clinically proven treatments for real conditions your loved one is probably carrying right now.</p></div>
+      <div class="why-card"><h4>They won't spend on themselves</h4><p>Money sent home disappears into bills and daily life. A gifted plan guarantees it's spent on them — on their body, their rest, their wellbeing.</p></div>
+      <div class="why-card"><h4>A full year of care</h4><p>Wellness credits redeemable any time, a hamper on a special day, retreats to look forward to. The care keeps coming long after the gift is given.</p></div>
+      <div class="why-card"><h4>We handle everything</h4><p>Booking, coordination, pickup, drop-off. Your loved one simply shows up and feels what it's like when someone truly takes care of them.</p></div>
     </div>
   </div>
 </div>
@@ -648,18 +702,25 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
   <p class="eyebrow eyebrow-light">The Plans</p>
   <h2 class="display display-light">Choose the care<br>they <em>deserve</em></h2>
   <div class="rule rule-dark"></div>
-  <div class="gift-note">✦ &nbsp;Every plan delivered on a special date of your choice — birthdays, Mother's Day, Father's Day, Dashain, or simply because. &nbsp;·&nbsp; Massages redeemable any time.</div>
+  <div class="gift-note">✦ &nbsp;Every plan includes a personal wellness consultation with a Tranquility expert — so your loved one knows exactly how to make the most of their credits. &nbsp;·&nbsp; Delivered on a date that means something.</div>
+
+  <!-- Credit explainer -->
+  <div style="background:rgba(196,153,58,0.08);border:1px solid rgba(196,153,58,0.2);padding:1.4rem 1.6rem;margin-bottom:2.5rem;border-left:3px solid var(--gold);">
+    <p style="font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;">How Wellness Credits Work</p>
+    <p style="font-size:0.88rem;color:var(--stone);line-height:1.7;">Each plan includes Tranquility wellness credits. <strong style="color:var(--white);">One credit = one 60-minute session</strong> — your loved one chooses from the full Tranquility menu: Signature Massage, Hot Stone Massage, Potli Therapy, Pichu, Foot Reflexology / Spinal / Head & Shoulder, Premium Care Facial, or Manicure & Pedicure. Or combine 2 credits for one Ayurvedic Half Day (180 mins). The choice is theirs.</p>
+  </div>
+
   <div class="plans-grid">
     <div class="plan">
       <p class="plan-tier">Basic</p><p class="plan-nepali">Pahilo Kadam</p>
       <p class="plan-name">The Care<br>Starter</p>
       <p class="plan-price">$199</p><p class="plan-price-sub">per year · one person</p>
       <div class="plan-rule"></div>
-      <div class="plan-feature"><span><strong>2×</strong> Tranquility Signature Massage — redeem any time</span></div>
-      <div class="plan-feature"><span><strong>Wellness Hamper</strong> — 4 natural wellness products with your card</span></div>
+      <div class="plan-feature"><span><a class="feat-link" href="#tranquility"><strong>2 wellness credits</strong></a> — any Tranquility service, any time</span></div>
+      <div class="plan-feature"><span><a class="feat-link" href="#hamper"><strong>Wellness Hamper</strong></a> — 4 natural products with your card</span></div>
       <div class="plan-feature"><span>Delivered on a <strong>special date of your choice</strong></span></div>
-      <div class="plan-feature"><span><strong>Pickup & drop</strong> included</span></div>
-      <div class="plan-feature"><span>Personal welcome call & year-round follow-up</span></div>
+      <div class="plan-feature"><span><a class="feat-link" href="#how"><strong>Pickup & drop</strong> included</a></span></div>
+      <div class="plan-feature"><span><a class="feat-link" href="#tranquility"><strong>Personal consultation</strong> with Tranquility expert</a></span></div>
       <a href="#" class="plan-btn" onclick="openGiftModal();return false;">Gift this plan →</a>
     </div>
     <div class="plan">
@@ -667,11 +728,11 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
       <p class="plan-name">The Wellness<br>Circle</p>
       <p class="plan-price">$349</p><p class="plan-price-sub">per year · one person</p>
       <div class="plan-rule"></div>
-      <div class="plan-feature"><span><strong>3×</strong> Tranquility Signature Massage — redeem any time</span></div>
-      <div class="plan-feature"><span><strong>Wellness Hamper</strong> — 5–6 natural products with personal card</span></div>
-      <div class="plan-feature"><span><strong>Community Day Retreat</strong> at a luxury 5-star venue</span></div>
-      <div class="plan-feature"><span><strong>Pickup & drop</strong> for all experiences</span></div>
-      <div class="plan-feature"><span>Personal welcome call & year-round coordination</span></div>
+      <div class="plan-feature"><span><a class="feat-link" href="#tranquility"><strong>3 wellness credits</strong></a> — any Tranquility service, any time</span></div>
+      <div class="plan-feature"><span><a class="feat-link" href="#hamper"><strong>Wellness Hamper</strong></a> — 5–6 natural products with personal card</span></div>
+      <div class="plan-feature"><span><a class="feat-link" href="#retreats"><strong>Community Day Retreat</strong> at a luxury 5-star venue</a></span></div>
+      <div class="plan-feature"><span><a class="feat-link" href="#how"><strong>Pickup & drop</strong> for all experiences</a></span></div>
+      <div class="plan-feature"><span><a class="feat-link" href="#tranquility"><strong>Personal consultation</strong> with Tranquility expert</a></span></div>
       <a href="#" class="plan-btn" onclick="openGiftModal();return false;">Gift this plan →</a>
     </div>
     <div class="plan featured">
@@ -680,12 +741,12 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
       <p class="plan-name">The Full<br>Care</p>
       <p class="plan-price">$499</p><p class="plan-price-sub">per year · one person</p>
       <div class="plan-rule"></div>
-      <div class="plan-feature"><span><strong>5×</strong> Tranquility Signature Massage — redeem any time</span></div>
-      <div class="plan-feature"><span><strong>Wellness Hamper</strong> — 7–8 natural products, full curated box</span></div>
-      <div class="plan-feature"><span><strong>Community Day Retreat</strong> at a luxury 5-star venue with personal Ayurvedic consultation</span></div>
-      <div class="plan-feature"><span><strong>1×</strong> Therapy massage — prescribed by Ayurvedic doctor</span></div>
-      <div class="plan-feature"><span>Body, mental health & nutrition guidance</span></div>
-      <div class="plan-feature"><span><strong>Pickup & drop</strong> for all · Dedicated coordinator</span></div>
+      <div class="plan-feature"><span><a class="feat-link" href="#tranquility"><strong>5 wellness credits</strong></a> — any Tranquility service, any time</span></div>
+      <div class="plan-feature"><span><a class="feat-link" href="#hamper"><strong>Wellness Hamper</strong></a> — 7–8 natural products, full curated box</span></div>
+      <div class="plan-feature"><span><a class="feat-link" href="#retreats"><strong>Community Day Retreat</strong> at a luxury 5-star venue</a></span></div>
+      <div class="plan-feature"><span><a class="feat-link" href="#ayurvedic-consult">Ayurvedic & nutrition consultation</a></span></div>
+      <div class="plan-feature"><span><a class="feat-link" href="#how"><strong>Pickup & drop</strong> all year · Dedicated coordinator</a></span></div>
+      <div class="plan-feature"><span><a class="feat-link" href="#tranquility"><strong>Personal consultation</strong> with Tranquility expert</a></span></div>
       <a href="#" class="plan-btn gold-btn" onclick="openGiftModal();return false;">Gift this plan →</a>
     </div>
     <div class="plan">
@@ -693,13 +754,60 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
       <p class="plan-name">Total<br>Sanctuary</p>
       <p class="plan-price">$1,099</p><p class="plan-price-sub">per year · one person</p>
       <div class="plan-rule"></div>
-      <div class="plan-feature"><span><strong>6×</strong> Tranquility Signature Massage — tailored after consultation</span></div>
-      <div class="plan-feature"><span><strong>Wellness Hamper</strong> — 9–11 products, premium presentation</span></div>
-      <div class="plan-feature"><span><strong>Community Day Retreat</strong> at a luxury 5-star venue</span></div>
-      <div class="plan-feature"><span><strong>3-Day Residential Retreat</strong> at a luxury 5-star resort outside Kathmandu Valley</span></div>
-      <div class="plan-feature"><span>Personal Ayurvedic consultation & <strong>2×</strong> therapy sessions</span></div>
-      <div class="plan-feature"><span>Dedicated CAB concierge · <strong>Pickup & drop</strong> for all</span></div>
+      <div class="plan-feature"><span><a class="feat-link" href="#tranquility"><strong>6 wellness credits</strong></a> — any Tranquility service, any time</span></div>
+      <div class="plan-feature"><span><a class="feat-link" href="#hamper"><strong>Wellness Hamper</strong></a> — 9–11 products, premium presentation</span></div>
+      <div class="plan-feature"><span><a class="feat-link" href="#retreats"><strong>Community Day Retreat</strong> at a luxury 5-star venue</a></span></div>
+      <div class="plan-feature"><span><a class="feat-link" href="#retreats"><strong>3-Day Residential Retreat</strong> at a luxury 5-star resort outside Kathmandu Valley</a></span></div>
+      <div class="plan-feature"><span><a class="feat-link" href="#ayurvedic-consult">Ayurvedic & nutrition consultation</a></span></div>
+      <div class="plan-feature"><span><a class="feat-link" href="#how">Dedicated CAB concierge · <strong>Priority pickup & drop</strong></a></span></div>
+      <div class="plan-feature"><span><a class="feat-link" href="#tranquility"><strong>Personal consultation</strong> with Tranquility expert</a></span></div>
       <a href="#" class="plan-btn gold-btn" onclick="openGiftModal();return false;">Gift this plan →</a>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SCIENCE -->
+<div style="background:var(--forest);">
+<div class="section">
+  <p class="eyebrow eyebrow-light">This Isn't Luxury. It's Science.</p>
+  <h2 class="display display-light">The conditions they're carrying<br>have <em>real treatments.</em></h2>
+  <div class="rule rule-dark"></div>
+  <p class="body-text body-text-light" style="margin-bottom:0.8rem;">We've all been told that spa treatments are indulgences — something for special occasions. But what your loved one is carrying right now: the stress, the tension, the inflammation, the fatigue — these are real medical conditions with real, proven solutions. Here's what each service actually does.</p>
+  <div style="display:inline-flex;align-items:center;gap:0.6rem;background:rgba(196,153,58,0.08);border:1px solid rgba(196,153,58,0.2);padding:0.6rem 1.1rem;margin-bottom:2rem;">
+    <span style="font-size:0.85rem;color:var(--stone);">Each plan includes wellness credits. <strong style="color:var(--white);">1 credit = 1 session</strong> from the menu below. <strong style="color:var(--white);">2 credits = Ayurvedic Half Day.</strong> Your loved one chooses what their body needs.</span>
+  </div>
+  <div class="why-cards" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;">
+    <div class="why-card" style="background:rgba(255,255,255,0.04);border-color:rgba(196,153,58,0.15);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;"><h4 style="color:var(--gold-bright);margin:0;">Signature & Hot Stone Massage</h4><span style="font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;background:rgba(196,153,58,0.15);border:1px solid rgba(196,153,58,0.3);color:var(--gold);padding:3px 10px;white-space:nowrap;">1 credit · 60 min</span></div>
+      <p style="color:var(--stone);">For the one who carries stress in their body. Clinical studies show a single 60-minute massage reduces cortisol by up to 30%, lowers heart rate, and significantly relieves muscle tension. Hot stone therapy uses heat to reach deeper muscle layers — particularly effective for chronic fatigue and poor circulation.</p>
+    </div>
+    <div class="why-card" style="background:rgba(255,255,255,0.04);border-color:rgba(196,153,58,0.15);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;"><h4 style="color:var(--gold-bright);margin:0;">Potli (Herbal Poultice Therapy)</h4><span style="font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;background:rgba(196,153,58,0.15);border:1px solid rgba(196,153,58,0.3);color:var(--gold);padding:3px 10px;white-space:nowrap;">1 credit · 60 min</span></div>
+      <p style="color:var(--stone);">For the one with joint pain, inflammation, or a body that aches in ways they never mention. Potli combines heat therapy with Ayurvedic herbs absorbed through the skin — clinically effective for musculoskeletal conditions, arthritis, and chronic inflammation. The aches they've learned to live with don't have to stay.</p>
+    </div>
+    <div class="why-card" style="background:rgba(255,255,255,0.04);border-color:rgba(196,153,58,0.15);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;"><h4 style="color:var(--gold-bright);margin:0;">Pichu</h4><span style="font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;background:rgba(196,153,58,0.15);border:1px solid rgba(196,153,58,0.3);color:var(--gold);padding:3px 10px;white-space:nowrap;">1 credit · 60 min</span></div>
+      <p style="color:var(--stone);">For the one who never truly switches off. Pichu applies warm medicated oil to the head and spine, directly calming the sympathetic nervous system. Used for chronic headaches, mental fatigue, anxiety, and insomnia. For someone who has forgotten what stillness feels like — this is the gift of it.</p>
+    </div>
+    <div class="why-card" style="background:rgba(255,255,255,0.04);border-color:rgba(196,153,58,0.15);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;"><h4 style="color:var(--gold-bright);margin:0;">Foot Reflexology · Spinal · Head & Shoulder</h4><span style="font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;background:rgba(196,153,58,0.15);border:1px solid rgba(196,153,58,0.3);color:var(--gold);padding:3px 10px;white-space:nowrap;">1 credit · 60 min</span></div>
+      <p style="color:var(--stone);">For the one who stands all day, sits all day, or carries the weight of the household in their posture. Targeted pressure on specific reflex points stimulates circulation, reduces nerve compression, and releases the postural strain that accumulates over years of physical and emotional labour.</p>
+    </div>
+    <div class="why-card" style="background:rgba(255,255,255,0.04);border-color:rgba(196,153,58,0.15);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;"><h4 style="color:var(--gold-bright);margin:0;">Premium Care Facial</h4><span style="font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;background:rgba(196,153,58,0.15);border:1px solid rgba(196,153,58,0.3);color:var(--gold);padding:3px 10px;white-space:nowrap;">1 credit · 60 min</span></div>
+      <p style="color:var(--stone);">For the one whose skin has been last on their list. In Nepal's climate — the dust, sun exposure, pollution — skin health deteriorates in ways that are not just cosmetic. A clinical facial addresses blocked pores, UV damage, dehydration, and early aging at the cellular level. For the one who has looked after everyone else's face but their own.</p>
+    </div>
+    <div class="why-card" style="background:rgba(255,255,255,0.04);border-color:rgba(196,153,58,0.15);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;"><h4 style="color:var(--gold-bright);margin:0;">Manicure & Pedicure</h4><span style="font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;background:rgba(196,153,58,0.15);border:1px solid rgba(196,153,58,0.3);color:var(--gold);padding:3px 10px;white-space:nowrap;">1 credit · 60 min</span></div>
+      <p style="color:var(--stone);">This one matters more than it sounds. Fungal nail infections affect up to 10% of adults and are significantly more common in older people — often untreated for years. Professional nail and foot care addresses infection, cracked heels, ingrown nails, and the circulatory benefits of foot massage are well-documented for older adults. For the hands that worked their whole life.</p>
+    </div>
+  <div class="why-card" style="background:rgba(196,153,58,0.06);border:1px solid rgba(196,153,58,0.3);grid-column:1/-1;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+        <h4 style="color:var(--gold-bright);margin:0;">Ayurvedic Half Day Programme</h4>
+        <span style="font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;background:rgba(196,153,58,0.2);border:1px solid rgba(196,153,58,0.4);color:var(--gold-bright);padding:3px 10px;white-space:nowrap;">2 credits · 180 min</span>
+      </div>
+      <p style="color:var(--stone);">The deepest, most complete Ayurvedic experience. A three-hour programme that combines multiple traditional therapies — targeted to your loved one's body constitution and specific health needs. Use 2 credits together for a full half-day of Ayurvedic restoration. For the one who needs more than one session can give.</p>
     </div>
   </div>
 </div>
@@ -717,7 +825,7 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
   <p style="font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--stone-dark);margin-bottom:1.2rem;">The Experts You'll Meet</p>
   <div class="experts">
     <div class="expert"><p class="expert-label">Physical Wellness</p><h4>Yoga & Movement Guide</h4><p>A morning yoga session for all abilities — grounding, breath-led, energising, with guidance on daily practices to continue at home.</p></div>
-    <div class="expert"><p class="expert-label">Holistic Health</p><h4>Ayurvedic Practitioner</h4><p>Personal consultation on lifestyle, body constitution, and natural remedies for pain, sleep, digestion, and energy.</p></div>
+    <div class="expert" id="ayurvedic-consult"><p class="expert-label">Holistic Health</p><h4>Ayurvedic Practitioner</h4><p>Personal consultation on lifestyle, body constitution, and natural remedies for pain, sleep, digestion, and energy.</p></div>
     <div class="expert"><p class="expert-label">Mental Wellbeing</p><h4>Mental Health Guide</h4><p>A stigma-free session on emotional health — stress, sleep, anxiety, and simple daily practices for calm and resilience.</p></div>
     <div class="expert"><p class="expert-label">Nourishment</p><h4>Nutrition Consultant</h4><p>Expert guidance on eating for energy, immunity, and longevity — specific to Nepali food culture and practical for everyday life.</p></div>
     <div class="expert"><p class="expert-label">Therapy</p><h4>Foot Massage Therapist</h4><p>A therapeutic foot massage session for circulation, pain relief, and full-body relaxation.</p></div>
@@ -784,28 +892,28 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
 </div>
 
 <!-- TRANQUILITY -->
-<div style="background:var(--warm);">
+<div id="tranquility" style="background:var(--warm);">
 <div class="section">
   <p class="eyebrow">Our Wellness Partner</p>
   <h2 class="display">In partnership with <em>Tranquility</em></h2>
   <div class="rule"></div>
   <div class="tranq-grid">
     <div>
-      <p class="body-text">Every massage is delivered by Tranquility — one of Nepal's most trusted wellness brands, known for their signature 90-minute Sahi Malisa. We chose them for their consistency, professional standards, and presence across multiple locations in Nepal.</p>
-      <p class="body-text" style="margin-top:1rem;">All Tranquility locations are accessible under every plan at the same price — your loved one simply chooses the branch most convenient to them. We handle all booking and transportation.</p>
+      <p class="body-text">Every wellness session is delivered by Tranquility — one of Nepal's most trusted wellness centres, with trained therapists, clinical-grade treatments, and a standard of care we verified personally before making them our exclusive partner.</p>
+      <p class="body-text" style="margin-top:1rem;">Every CAB customer is received as a priority guest. Every session is tracked. Every experience is followed up on — because your loved one deserves to feel that someone is looking out for them, not just at the centre, but before they arrive and after they leave.</p>
     </div>
     <div class="tranq-cards">
-      <div class="tranq-card"><h4>The Signature Sahi Malisa (90 min)</h4><p>A deeply therapeutic session to relieve tension, improve circulation, and restore the body.</p></div>
-      <div class="tranq-card"><h4>All Locations, One Price</h4><p>Multiple locations across Nepal. Your loved one chooses the branch closest to them — we take care of the rest.</p></div>
-      <div class="tranq-card"><h4>Flexible Year-Round Redemption</h4><p>Massages are redeemable any time during the year. No pressure, no rush.</p></div>
-      <div class="tranq-card highlight"><h4>A Note on Customisation</h4><p>At Premium and Luxury tiers, massages are guided by Ayurvedic consultation and tailored to individual needs. Sessions can also be swapped for an equivalent Tranquility service. We work with your loved one directly.</p></div>
+      <div class="tranq-card"><h4>7 Services. One Credit.</h4><p>Signature Massage · Hot Stone · Potli Therapy · Pichu · Foot Reflexology / Spinal / Head & Shoulder · Premium Facial · Manicure & Pedicure. One credit, their choice.</p></div>
+      <div class="tranq-card"><h4>Ayurvedic Half Day</h4><p>Combine 2 credits for a full 180-minute Ayurvedic Half Day programme — the deepest, most restorative option on the menu.</p></div>
+      <div class="tranq-card"><h4>All Branches, One Price</h4><p>Multiple Tranquility locations across Nepal. Your loved one chooses the branch closest to them. We handle all booking and transportation.</p></div>
+      <div class="tranq-card highlight"><h4>Expert Consultation Included</h4><p>Every plan includes a personal wellness consultation with a Tranquility expert — so your loved one gets a care experience designed specifically for them.</p></div>
     </div>
   </div>
 </div>
 </div>
 
 <!-- HAMPER -->
-<div style="background:var(--cream);">
+<div id="hamper" style="background:var(--cream);">
 <div class="section">
   <p class="eyebrow">Included in Every Plan</p>
   <h2 class="display">The <em>Wellness Hamper</em></h2>
@@ -875,6 +983,20 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
 </div>
 </div>
 
+<!-- CSR VISION -->
+<div style="background:var(--ink);padding:clamp(3rem,5vw,5rem) clamp(1.5rem,4vw,3rem);">
+<div style="max-width:1100px;margin:0 auto;">
+  <p style="font-size:0.6rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;">Our Long-Term Vision</p>
+  <h2 style="font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;color:var(--white);line-height:1.2;margin-bottom:1.5rem;">We're building toward<br>something <em style="color:var(--gold-bright);">bigger.</em></h2>
+  <div style="width:48px;height:2px;background:var(--gold);margin-bottom:2rem;opacity:0.5;"></div>
+  <div style="max-width:740px;">
+    <p style="font-size:1rem;color:var(--stone);line-height:1.85;margin-bottom:1.2rem;">Care Across Borders started with a simple observation: the people who spent their whole lives caring for others — their children, their families, their communities — are often the ones who end up most alone.</p>
+    <p style="font-size:1rem;color:var(--stone);line-height:1.85;margin-bottom:1.2rem;">Our long-term vision is to contribute a portion of CAB's profits to old age homes across Nepal. To make sure that the people who gave everything are not forgotten. That the warmth they gave their families finds its way back to them.</p>
+    <p style="font-size:1rem;color:rgba(184,166,136,0.6);line-height:1.85;font-style:italic;">We're not there yet. We're in our pilot — learning, building, proving the model. But every plan you gift moves us closer to that. Because this was never just about wellness. It was always about care.</p>
+  </div>
+</div>
+</div>
+
 <!-- FOUNDER -->
 <div id="founder" style="background:var(--forest);">
 <div class="section">
@@ -910,7 +1032,8 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
         <div class="pilot-include">Community Day Retreat within Kathmandu Valley, at a luxury 5-star venue.</div>
         <div class="pilot-include">3-Day Residential Retreat (Total Sanctuary) at a luxury 5-star resort outside the valley.</div>
         <div class="pilot-include">Total Sanctuary includes one Community Day Retreat during the pilot period.</div>
-        <div class="pilot-include">Direct access to the founders — your feedback shapes what CAB becomes.</div>
+        <div class="pilot-include">Wellness credits redeemable for any Tranquility service — massage, hot stone, potli, pichu, facial, manicure & pedicure, or Ayurvedic half day.</div>
+        <div class="pilot-include">Direct access to Shreha, the founder — your feedback shapes what CAB becomes.</div>
         <div class="pilot-include">All plan inclusions exactly as described. Nothing cut.</div>
       </div>
     </div>
@@ -970,7 +1093,7 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
   <details open><summary>What if my loved one is unwell on a retreat day? <span class="plus">+</span></summary><p>We will work with you to find the best option — carrying the retreat forward to next year's programme, or arranging alternative wellness services of equivalent value. We are always on your side.</p></details>
   <details><summary>What if they are hesitant or don't want to attend? <span class="plus">+</span></summary><p>Our team will gently introduce the plan, explain the experience, and give them time to warm to the idea. If they ultimately choose not to attend a retreat, we are unable to offer a refund as venues and experts are confirmed in advance.</p></details>
   <details><summary>How do I pay? <span class="plus">+</span></summary><p>We accept Visa, Mastercard, and major debit cards. International bank transfers and Wise are also accepted. Once you reach out, we will send a secure payment link. Payment in full secures your spot.</p></details>
-  <details><summary>When do the massages expire? <span class="plus">+</span></summary><p>All massages are valid for 12 months from purchase. Our team follows up regularly throughout the year to help your loved one book. We will always chase them gently before the year closes.</p></details>
+  <details><summary>When do the wellness credits expire? <span class="plus">+</span></summary><p>All wellness credits are valid for 12 months from purchase. Your loved one can use them any time during the year — at any Tranquility branch, for any service on the menu. Our team follows up regularly to help them book, and will always remind them before the year closes.</p></details>
   <details><summary>Can I upgrade to a higher plan later? <span class="plus">+</span></summary><p>Mid-year upgrades are not standard during the pilot. That said, message us — we are a small founder-led team and we will always try our best.</p></details>
   <details><summary>What happens when the plan year ends? <span class="plus">+</span></summary><p>We reach out to you first — before anyone else — to offer renewal. Founding families are offered renewal at their original pilot pricing, locked in for as long as they continue with us.</p></details>
   <details><summary>Is this only for Nepali families? <span class="plus">+</span></summary><p>Care Across Borders was built with Nepali expats in mind. But the gift of wellness has no border. Anyone who has someone they care about in Nepal is welcome here.</p></details>
@@ -1013,7 +1136,7 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
             <p class="mplan-nepali">Pahilo Kadam</p>
             <p class="mplan-name">The Care Starter</p>
             <div class="mplan-tags">
-              <span class="mplan-tag">2× Tranquility Massage</span>
+              <span class="mplan-tag">2 wellness credits</span>
               <span class="mplan-tag">4-product Wellness Hamper</span>
               <span class="mplan-tag">Pickup & Drop</span>
               <span class="mplan-tag">Year-round follow-up</span>
@@ -1031,7 +1154,7 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
             <p class="mplan-nepali">Purnata</p>
             <p class="mplan-name">The Wellness Circle</p>
             <div class="mplan-tags">
-              <span class="mplan-tag">3× Tranquility Massage</span>
+              <span class="mplan-tag">3 wellness credits</span>
               <span class="mplan-tag">5–6 product Hamper</span>
               <span class="mplan-tag">★★★★★ Community Day Retreat</span>
               <span class="mplan-tag">Pickup & Drop</span>
@@ -1049,10 +1172,10 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
             <p class="mplan-nepali">Sampurna Sewa</p>
             <p class="mplan-name">The Full Care</p>
             <div class="mplan-tags">
-              <span class="mplan-tag">5× Tranquility Massage</span>
+              <span class="mplan-tag">5 wellness credits</span>
               <span class="mplan-tag">7–8 product Hamper</span>
               <span class="mplan-tag">★★★★★ Day Retreat</span>
-              <span class="mplan-tag">1× Therapy Massage</span>
+              <span class="mplan-tag">Expert consultation included</span>
               <span class="mplan-tag">Ayurvedic Consultation</span>
             </div>
           </div>
@@ -1068,11 +1191,11 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
             <p class="mplan-nepali">Param Shanti</p>
             <p class="mplan-name">Total Sanctuary</p>
             <div class="mplan-tags">
-              <span class="mplan-tag">6× Tranquility Massage</span>
+              <span class="mplan-tag">6 wellness credits</span>
               <span class="mplan-tag">9–11 product Hamper</span>
               <span class="mplan-tag">★★★★★ Day Retreat</span>
               <span class="mplan-tag">★★★★★ 3-Day Resort Retreat</span>
-              <span class="mplan-tag">2× Therapy Sessions</span>
+              <span class="mplan-tag">Expert consultation included</span>
             </div>
           </div>
           <div class="mplan-right">
