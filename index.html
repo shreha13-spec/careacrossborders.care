@@ -44,7 +44,6 @@ body{
   overflow-x:hidden;
 }
 
-
 /* ── Plan feature links ── */
 .plan-feature a.feat-link {
   color: inherit;
@@ -189,6 +188,8 @@ nav{
   justify-content:center;align-items:center;
   text-align:center;
   padding:8rem clamp(1.5rem,4vw,4rem) 4rem;
+  position:relative;
+  overflow:hidden;
   position:relative;overflow:hidden;
 }
 .hero::before{
@@ -607,6 +608,64 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
   .mplan-right{text-align:left;margin-top:0.5rem;}
   .mplan-btn{width:100%;justify-content:center;}
 }
+/* ── IMAGE STYLES ── */
+.hero-bg-img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center 20%;
+  opacity:1;z-index:0;
+  transform:scale(1.06);
+  transition:transform 7s ease-out;
+}
+.hero-bg-img.loaded{transform:scale(1.0);}
+.hero-gradient{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(105deg,rgba(15,22,15,0.90) 0%,rgba(15,22,15,0.72) 40%,rgba(15,22,15,0.35) 72%,rgba(15,22,15,0.08) 100%);
+}
+.hero>*:not(.hero-bg-img):not(.hero-gradient){position:relative;z-index:2;}
+
+.why-img-col{overflow:hidden;border-radius:2px;}
+.why-img-col img{width:100%;height:clamp(340px,42vw,540px);object-fit:cover;object-position:center 25%;display:block;transition:transform 0.9s ease;}
+.why-img-col:hover img{transform:scale(1.03);}
+
+.cinematic-strip{width:100%;height:clamp(180px,24vw,380px);overflow:hidden;position:relative;margin:2rem 0;}
+.cinematic-strip img{width:100%;height:100%;object-fit:cover;object-position:center 38%;display:block;}
+.cinematic-caption{position:absolute;bottom:0;left:0;right:0;padding:1rem 2rem;background:linear-gradient(to top,rgba(15,22,15,0.7),transparent);font-family:Georgia,serif;font-size:0.82rem;color:rgba(245,240,234,0.8);font-style:italic;letter-spacing:0.06em;}
+
+.science-room-img{width:100%;height:clamp(260px,32vw,480px);object-fit:cover;object-position:center;display:block;margin-bottom:3rem;}
+
+.card-img-reveal{height:0;overflow:hidden;transition:height 0.4s cubic-bezier(0.4,0,0.2,1);}
+.card-img-reveal img{width:100%;height:160px;object-fit:cover;object-position:center;display:block;transition:transform 0.4s ease;transform:scale(1.06);}
+.why-card:hover .card-img-reveal{height:160px;}
+.why-card:hover .card-img-reveal img{transform:scale(1.0);}
+
+.retreat-hero-wrap{position:relative;height:clamp(360px,48vw,620px);overflow:hidden;}
+.retreat-hero-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 28%;display:block;}
+.retreat-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,22,15,0.88) 0%,rgba(15,22,15,0.3) 55%,rgba(15,22,15,0.0) 100%);}
+.retreat-hero-text{position:absolute;bottom:clamp(1.5rem,4vw,3rem);left:clamp(1.5rem,4vw,3rem);z-index:2;}
+.retreat-hero-text .eyebrow{color:var(--gold);margin-bottom:0.4rem;}
+.retreat-hero-text h2{color:var(--white);margin:0;line-height:1.1;}
+
+.resort-grid{display:grid;grid-template-columns:1fr 1fr;}
+.resort-img-col{overflow:hidden;min-height:460px;}
+.resort-img-col img{width:100%;height:100%;object-fit:cover;display:block;object-position:center;transition:transform 7s ease;}
+.resort-img-col:hover img{transform:scale(1.04);}
+@media(max-width:768px){.resort-grid{grid-template-columns:1fr;}.resort-img-col{min-height:260px;}}
+
+.hamper-img-wrap{width:100%;height:clamp(260px,30vw,460px);overflow:hidden;}
+.hamper-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 45%;display:block;transition:transform 8s ease;}
+.hamper-img-wrap.zoomed img{transform:scale(1.06);}
+
+.pilot-bg{position:relative;overflow:hidden;}
+.pilot-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.11;filter:grayscale(15%);z-index:0;pointer-events:none;}
+.pilot-bg>.section{position:relative;z-index:1;}
+.pilot-bg>.section~*{position:relative;z-index:1;}
+
+.final-cta-section{position:relative;overflow:hidden;min-height:clamp(420px,55vw,680px);display:flex;align-items:center;justify-content:center;}
+.final-cta-section img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 28%;display:block;}
+.final-cta-section .cta-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,22,15,0.08) 0%,rgba(15,22,15,0.0) 35%,rgba(15,22,15,0.0) 60%,rgba(15,22,15,0.5) 100%);}
+.final-cta-section .cta-content{position:relative;z-index:2;text-align:center;padding:3rem 2rem;}
+
+
 </style>
 </head>
 <body>
@@ -645,6 +704,8 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
 
 <!-- HERO -->
 <section class="hero">
+  <img class="hero-bg-img" src="img/CAB%20image%201.png" alt="Elderly Nepali mother holding tea by window"/>
+  <div class="hero-gradient"></div>
   <p class="hero-tag">आफ्नो माया, स्याहारको रूपमा।</p>
   <h1>There's someone<br>you think about.</h1>
   <p class="hero-sub">Maybe every day. Maybe when you're falling asleep. You wonder if they're okay. Care Across Borders is how you reach them — a full year of real care, gifted from wherever you are in the world.</p>
@@ -659,6 +720,7 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
     <span class="hero-badge">Expert Consultation Included</span>
     <span class="hero-badge">Pickup & Drop Included</span>
   </div>
+
 </section>
 
 <!-- WHY -->
@@ -669,15 +731,13 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
   <div class="rule"></div>
   <div class="why-grid">
     <div>
+      
       <p class="body-text">You send money. You call. You remind them to eat well, to rest, to look after themselves. But you know them. The money goes into the household. Into everyone else. Their tired shoulders, their aching back, their skin that hasn't been cared for in years — that can wait. It always waits.</p>
       <div class="why-quote">"They would never spend this on themselves. That's exactly what makes it the most meaningful thing you can give."</div>
       <p class="body-text">Care Across Borders exists because of that feeling — the one that sits quietly in your chest when you hang up the phone. The wish that you could reach through the distance and actually take care of them. Now you can.</p>
     </div>
-    <div class="why-cards">
-      <div class="why-card"><h4>This isn't luxury. It's science.</h4><p>Stress lives in the body. Inflammation builds. Fatigue becomes chronic. The services we offer aren't indulgences — they are clinically proven treatments for real conditions your loved one is probably carrying right now.</p></div>
-      <div class="why-card"><h4>They won't spend on themselves</h4><p>Money sent home disappears into bills and daily life. A gifted plan guarantees it's spent on them — on their body, their rest, their wellbeing.</p></div>
-      <div class="why-card"><h4>A full year of care</h4><p>Wellness credits redeemable any time, a hamper on a special day, retreats to look forward to. The care keeps coming long after the gift is given.</p></div>
-      <div class="why-card"><h4>We handle everything</h4><p>Booking, coordination, pickup, drop-off. Your loved one simply shows up and feels what it's like when someone truly takes care of them.</p></div>
+    <div class="why-img-col rv">
+      <img src="img/CAB%20image%202.png" alt="Nepali parents laughing on video call" loading="lazy"/>
     </div>
   </div>
 </div>
@@ -690,6 +750,10 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
   <h2 class="display">How <em>it works</em></h2>
   <div class="rule"></div>
   <p class="body-text" style="margin-bottom:0;">Designed to feel personal from the very first moment — for both the person gifting, and the person receiving.</p>
+  <div class="cinematic-strip rv">
+    <img src="img/CAB%20image%203.png" alt="Elderly woman receiving CAB gift box at her door" loading="lazy"/>
+    <div class="cinematic-caption">The moment the gift arrives.</div>
+  </div>
   <div class="steps">
     <div class="step"><div class="step-num">1</div><h4>Choose & Fill a Form</h4><p>Pick a plan, fill a short form — who the gift is for, delivery date, and your personal note.</p></div>
     <div class="step"><div class="step-num">2</div><h4>The Gift Reveal</h4><p>A personal call, a Wellness Hamper at their door with your card, and a WhatsApp message — all on the date you chose.</p></div>
@@ -775,7 +839,9 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
 <!-- SCIENCE -->
 <div id="science" style="background:var(--forest);">
 <div class="section">
-  <p class="eyebrow eyebrow-light">This Isn't Luxury. It's Science.</p>
+  
+  <img class="science-room-img rv" src="img/CAB%20image%204%20.png" alt="Luxury wellness treatment room" loading="lazy"/>
+  <p class="eyebrow eyebrow-light" style="margin-top:2.5rem;">This Isn't Luxury. It's Science.</p>
   <h2 class="display display-light">The conditions they're carrying<br>have <em>real treatments.</em></h2>
   <div class="rule rule-dark"></div>
   <p class="body-text body-text-light" style="margin-bottom:0.8rem;">We've all been told that spa treatments are indulgences — something for special occasions. But what your loved one is carrying right now: the stress, the tension, the inflammation, the fatigue — these are real medical conditions with real, proven solutions. Here's what each service actually does.</p>
@@ -820,10 +886,16 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
 
 <!-- RETREATS -->
 <div id="retreats" style="background:var(--cream);">
+<div style="position:relative;height:clamp(360px,48vw,620px);overflow:hidden;">
+  <img src="img/CAB%20image%207.png" alt="Outdoor yoga retreat Himalayas sunrise" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 28%;display:block;"/>
+  <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(15,22,15,0.88) 0%,rgba(15,22,15,0.3) 55%,rgba(15,22,15,0.0) 100%);"></div>
+  <div style="position:absolute;bottom:clamp(1.5rem,4vw,3rem);left:clamp(1.5rem,4vw,3rem);z-index:2;">
+    <p style="font-size:0.58rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;">STANDARD, PREMIUM & LUXURY</p>
+    <h2 style="font-family:Georgia,serif;font-size:clamp(2rem,4vw,3.2rem);color:var(--white);font-weight:300;margin:0;line-height:1.1;">The Community<br><em style="color:var(--gold-bright);">Day Retreat</em></h2>
+  </div>
+</div>
 <div class="section">
-  <p class="eyebrow">Standard, Premium & Luxury</p>
-  <h2 class="display">The Community<br><em>Day Retreat</em></h2>
-  <div class="rule"></div>
+  <div class="rule" style="margin-top:2.5rem;"></div>
   <div class="luxury-badge"><span>★★★★★</span><span>Hosted at a Luxury 5-Star Venue · Within Kathmandu Valley</span></div>
   <p class="body-text" style="margin-bottom:0.6rem;">A full day guided by experts across four pillars: physical health, mental wellness, nutrition, and community. Pickup and drop included. All vegetarian lunch and beverages provided.</p>
   <div class="retreat-luxury-note">★★★★★ &nbsp;All retreats are hosted exclusively at <strong>luxury 5-star venues.</strong> Your loved one will be welcomed into spaces that reflect the care you intended.</div>
@@ -847,7 +919,12 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
 
 <!-- 3-DAY RETREAT -->
 <div style="background:var(--forest);">
-<div class="section">
+<div style="display:grid;grid-template-columns:1fr 1fr;">
+  <div style="overflow:hidden;min-height:460px;">
+    <img src="img/CAB%20image%208.png" alt="Luxury 5-star mountain resort Nepal" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+  </div>
+  <div class="section">
+  
   <p class="eyebrow eyebrow-light">Luxury Tier Only</p>
   <h2 class="display display-light">The 3-Day<br><em>Residential Retreat</em></h2>
   <div class="rule rule-dark"></div>
@@ -895,6 +972,8 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
   </div>
 </div>
 </div>
+</div>
+</div>
 
 <!-- TRANQUILITY -->
 <div id="tranquility" style="background:var(--warm);">
@@ -919,7 +998,11 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
 
 <!-- HAMPER -->
 <div id="hamper" style="background:var(--cream);">
+<div id="hamperImg" style="width:100%;height:clamp(260px,30vw,460px);overflow:hidden;">
+  <img src="img/Cab%20image%209.png" alt="Premium wellness hamper flatlay" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 45%;display:block;transition:transform 8s ease;"/>
+</div>
 <div class="section">
+  
   <p class="eyebrow">Included in Every Plan</p>
   <h2 class="display">The <em>Wellness Hamper</em></h2>
   <div class="rule"></div>
@@ -1022,7 +1105,9 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
 
 <!-- PILOT -->
 <div id="pilot" class="pilot-bg">
+  <img class="pilot-bg-img" src="img/Cab%20image%2010.png" alt="" aria-hidden="true" loading="lazy"/>
 <div class="section">
+  
   <p class="eyebrow eyebrow-light">Now Open</p>
   <h2 class="display display-light">The Care Across Borders <em>Pilot</em></h2>
   <div class="rule rule-dark"></div>
@@ -1103,6 +1188,17 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
   <details><summary>What happens when the plan year ends? <span class="plus">+</span></summary><p>We reach out to you first — before anyone else — to offer renewal. Founding families are offered renewal at their original pilot pricing, locked in for as long as they continue with us.</p></details>
   <details><summary>Is this only for Nepali families? <span class="plus">+</span></summary><p>Care Across Borders was built with Nepali expats in mind. But the gift of wellness has no border. Anyone who has someone they care about in Nepal is welcome here.</p></details>
 </div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="final-cta-section">
+  <img src="img/CAB%20image%2011.png" alt="Elderly Nepali couple smiling in garden" loading="lazy"/>
+  <div class="cta-overlay"></div>
+  <div class="cta-content">
+    <p style="font-family:Georgia,serif;font-size:clamp(1.2rem,2.8vw,1.8rem);color:var(--white);font-style:italic;margin-bottom:0.5rem;text-shadow:0 2px 16px rgba(0,0,0,0.35);">Gift them a year of being truly cared for.</p>
+    <p style="font-size:0.85rem;color:rgba(254,252,249,0.72);font-family:Georgia,serif;font-style:italic;margin-bottom:1.8rem;">The person you're thinking about right now.</p>
+    <a href="#" onclick="openGiftModal();return false;" style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--gold);color:var(--ink);padding:1rem 2.8rem;font-size:0.72rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;text-decoration:none;">↗ Gift them care</a>
+  </div>
 </div>
 
 <!-- FOOTER -->
