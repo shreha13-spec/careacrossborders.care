@@ -35,14 +35,16 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;overflow-x:clip;}
 body{
   background:var(--cream);
   color:var(--ink);
   font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
   font-weight:300;
-  overflow-x:hidden;
+  overflow-x:clip;
+  max-width:100%;
 }
+img,svg,video{max-width:100%;}
 
 /* ── Plan feature links ── */
 .plan-feature a.feat-link {
@@ -633,9 +635,14 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
 
 .science-room-img{width:100%;height:clamp(260px,32vw,480px);object-fit:cover;object-position:center;display:block;margin-bottom:3rem;}
 
-.card-img-wrap{width:100%;height:240px;overflow:hidden;margin:-1.4rem -1.8rem 1.2rem;width:calc(100% + 3.6rem);}
-.card-img-wrap img{width:100%;height:240px;object-fit:cover;object-position:center center;display:block;transition:transform 0.6s ease;}
+.card-img-wrap{width:100%;height:var(--reveal-h,240px);overflow:hidden;margin:-1.4rem -1.8rem 1.2rem;width:calc(100% + 3.6rem);transition:height 0.45s ease,margin 0.45s ease;}
+.card-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;transition:transform 0.6s ease;}
 .why-card:hover .card-img-wrap img{transform:scale(1.04);}
+/* Hover-reveal: image stays collapsed until the card is hovered (hover-capable devices only) */
+@media (hover:hover){
+  .card-img-wrap{height:0;margin:0 -1.8rem 0;}
+  .why-card:hover .card-img-wrap{height:var(--reveal-h,240px);margin:-1.4rem -1.8rem 1.2rem;}
+}
 
 .retreat-hero-wrap{position:relative;height:clamp(360px,48vw,620px);overflow:hidden;}
 .retreat-hero-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 28%;display:block;}
@@ -873,7 +880,7 @@ footer{background:var(--ink);padding:2.5rem clamp(1.5rem,4vw,3rem);display:flex;
       <p style="color:var(--stone);">This one matters more than it sounds. Fungal nail infections affect up to 10% of adults — more common in older people, and in Nepal's climate, frequently untreated for years. Left unaddressed, they spread, thicken the nail bed, and cause chronic pain. This session treats fungal infection, cracked heels, ingrown nails, and includes a therapeutic foot massage clinically shown to improve circulation and reduce nerve compression. For the hands and feet that worked a lifetime without anyone looking after them.</p>
     </div>
   <div class="why-card" style="background:rgba(196,153,58,0.06);border:1px solid rgba(196,153,58,0.3);grid-column:1/-1;">
-      <div class="card-img-wrap" style="height:280px;"><img src="img/img_ayurvedic.jpg" alt="Ayurvedic Half Day Programme" loading="lazy" style="object-position:center 30%;"/></div>
+      <div class="card-img-wrap" style="--reveal-h:280px;"><img src="img/img_ayurvedic.jpg" alt="Ayurvedic Half Day Programme" loading="lazy" style="object-position:center 30%;"/></div>
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
         <h4 style="color:var(--gold-bright);margin:0;">Ayurvedic Half Day Programme</h4>
         <span style="font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;background:rgba(196,153,58,0.2);border:1px solid rgba(196,153,58,0.4);color:var(--gold-bright);padding:3px 10px;white-space:nowrap;">2 credits · 200 min</span>
